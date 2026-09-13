@@ -1136,9 +1136,12 @@ async function generateGenieTTS(
   const response = await geniePost(baseUrl, '/tts', {
     character_name: GENIE_CHARACTER_NAME,
     text,
-    // Split long text into sentence chunks: keeps synthesis stable and lets
-    // playback start sooner on the CPU-only path.
-    split_sentence: true,
+    // genie-side sentence splitting re-runs the prompt pipeline per chunk and
+    // measured ~2x slower end-to-end, and single-pass T2S truncates beyond
+    // ~100 chars — so long text is pre-split client-side instead
+    // (TTS_MAX_TEXT_LENGTH). split only as a completeness safety net for
+    // over-length requests that bypassed the client-side split.
+    split_sentence: text.length > 150,
   }, signal);
   if (!response.ok) {
     throwIfTtsRateLimited('Genie', response.status);

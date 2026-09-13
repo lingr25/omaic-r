@@ -11,6 +11,9 @@ const log = createLogger('TTS');
 /** Provider-specific max text length limits. */
 export const TTS_MAX_TEXT_LENGTH: Partial<Record<TTSProviderId, number>> = {
   'glm-tts': 1024,
+  // genie on CPU synthesizes ~1.2x realtime; keep each request short so a
+  // clip lands well inside TTS_REQUEST_TIMEOUT_MS and playback starts sooner
+  'genie-tts': 100,
 };
 
 /**
