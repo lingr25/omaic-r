@@ -17,6 +17,7 @@ import type { TTSProviderId } from '@/lib/audio/types';
 import type { AudioIndicatorState } from '@/components/roundtable/audio-indicator';
 import { useI18n } from '@/lib/hooks/use-i18n';
 import { isQwenCloneVoice, resolveTTSModelForVoice } from '@/lib/audio/constants';
+import { splitLongSpeechText, TTS_MAX_TEXT_LENGTH } from '@/lib/audio/tts-utils';
 import { toast } from 'sonner';
 import {
   isVoiceBindingUnavailable,
@@ -434,18 +435,27 @@ export function useDiscussionTTS({ enabled, agents, onAudioStateChange }: Discus
               ttsProvidersConfig,
             )
           : undefined;
-      queueRef.current.push({
-        messageId,
-        partId,
-        text: fullText,
-        agentId,
-        providerId,
-        modelId: effectiveModelId,
-        voiceId,
-        ...(fallbackVoice &&
-        (fallbackVoice.providerId !== providerId || fallbackVoice.voiceId !== voiceId)
-          ? { fallbackVoice }
-          : {}),
+      // Long lines must be pre-split per provider limit (same contract as the
+      // scene flow): a >100-char single request on genie's CPU path can exceed
+      // the request timeout or truncate. Each chunk becomes its own clip.
+      const textChunks = splitLongSpeechText(
+        fullText,
+        TTS_MAX_TEXT_LENGTH[providerId] ?? Number.POSITIVE_INFINITY,
+      );
+      textChunks.forEach((chunk, chunkIndex) => {
+        queueRef.current.push({
+          messageId,
+          partId: chunkIndex === 0 ? partId : `${partId}_tts_${chunkIndex + 1}`,
+          text: chunk,
+          agentId,
+          providerId,
+          modelId: effectiveModelId,
+          voiceId,
+          ...(fallbackVoice &&
+          (fallbackVoice.providerId !== providerId || fallbackVoice.voiceId !== voiceId)
+            ? { fallbackVoice }
+            : {}),
+        });
       });
 
       if (!isPlayingRef.current) {
