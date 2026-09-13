@@ -12,6 +12,7 @@
  * - MiniMax TTS: https://platform.minimaxi.com/docs/api-reference/speech-t2a-http
  * - Doubao TTS: https://www.volcengine.com/docs/6561/1257543
  * - ElevenLabs TTS: https://elevenlabs.io/docs/api-reference/text-to-speech/convert
+ * - Genie TTS: local GPT-SoVITS ONNX server (start-genie-tts.cmd, see tools/genie-tts/)
  * - Browser Native: Web Speech API (client-side only)
  *
  * HOW TO ADD A NEW PROVIDER:
@@ -98,6 +99,8 @@ import { isQwenCloneVoice, resolveTTSModelForVoice, TTS_PROVIDERS } from './cons
 import { downloadAudio, QwenVoiceCloneError, synthesizeQwenVoiceClone } from './qwen-voice-clone';
 import { evictQwenVoiceRegistrationMemo } from './qwen-voice-clone-registration';
 import { splitConcatenatedJsonObjects } from './json-stream';
+import fs from 'fs';
+import path from 'path';
 import {
   VOXCPM_VLLM_MODEL_ID,
   VOXCPM_AUTO_VOICE_ID,
@@ -265,6 +268,9 @@ export async function generateTTS(
 
       case 'lemonade-tts':
         return await generateLemonadeTTS(config, text, signal);
+
+      case 'genie-tts':
+        return await generateGenieTTS(config, text, signal);
 
       case 'browser-native-tts':
         throw new Error(
@@ -1000,6 +1006,151 @@ async function generateMiniMaxTTS(
     audio,
     format: data?.extra_info?.audio_format || config.format || 'mp3',
   };
+}
+
+// ---------------------------------------------------------------------------
+// Genie TTS implementation (local GPT-SoVITS V2ProPlus ONNX server)
+// ---------------------------------------------------------------------------
+
+/** One entry of tools/genie-tts/voices.json. */
+interface GenieVoiceEntry {
+  name?: string;
+  language?: string;
+  /** Absolute path of the reference wav, readable by the genie server process. */
+  audio_path: string;
+  /** Transcript of the reference audio (drives zero-shot cloning quality). */
+  audio_text: string;
+}
+
+const GENIE_CHARACTER_NAME = 'maic';
+const GENIE_SAMPLE_RATE = 32000;
+
+function resolveGenieServerPath(envValue: string | undefined, fallback: string): string {
+  const value = envValue?.trim();
+  return path.isAbsolute(value ? value : fallback)
+    ? value || fallback
+    : path.resolve(process.cwd(), value || fallback);
+}
+
+function loadGenieVoices(): Record<string, GenieVoiceEntry> {
+  const file = resolveGenieServerPath(
+    process.env.TTS_GENIE_VOICES_FILE,
+    'tools/genie-tts/voices.json',
+  );
+  const parsed = JSON.parse(fs.readFileSync(file, 'utf-8')) as {
+    voices?: Record<string, GenieVoiceEntry>;
+  };
+  if (!parsed.voices || typeof parsed.voices !== 'object') {
+    throw new Error(`Genie TTS voice registry has no "voices" object: ${file}`);
+  }
+  return parsed.voices;
+}
+
+/**
+ * Wrap the headerless s16le mono PCM stream that genie's /tts returns into a
+ * WAV container so downstream persistence treats it as regular wav audio.
+ */
+function pcm16MonoToWav(pcm: Uint8Array, sampleRate: number): Uint8Array {
+  const header = Buffer.alloc(44);
+  header.write('RIFF', 0);
+  header.writeUInt32LE(36 + pcm.length, 4);
+  header.write('WAVE', 8);
+  header.write('fmt ', 12);
+  header.writeUInt32LE(16, 16); // fmt chunk size (PCM)
+  header.writeUInt16LE(1, 20); // audio format: PCM
+  header.writeUInt16LE(1, 22); // mono
+  header.writeUInt32LE(sampleRate, 24);
+  header.writeUInt32LE(sampleRate * 2, 28); // byte rate (s16le)
+  header.writeUInt16LE(2, 32); // block align
+  header.writeUInt16LE(16, 34); // bits per sample
+  header.write('data', 36);
+  header.writeUInt32LE(pcm.length, 40);
+  return new Uint8Array(Buffer.concat([header, Buffer.from(pcm)]));
+}
+
+async function geniePost(
+  baseUrl: string,
+  route: string,
+  body: unknown,
+  signal: AbortSignal,
+): Promise<Response> {
+  return fetch(`${baseUrl}${route}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json; charset=utf-8' },
+    body: JSON.stringify(body),
+    signal,
+  });
+}
+
+/**
+ * Genie TTS (local GPT-SoVITS server, CPU inference, zero-shot voice cloning).
+ *
+ * A single shared base character serves every voice: each request re-points it
+ * at the selected voice's reference audio (genie's LRU cache keeps repeat
+ * voices cheap — see the memory notes in tools/genie-tts/), then streams
+ * synthesis. Requires the server from start-genie-tts.cmd to be running.
+ */
+async function generateGenieTTS(
+  config: TTSModelConfig,
+  text: string,
+  signal: AbortSignal,
+): Promise<TTSGenerationResult> {
+  const baseUrl = (config.baseUrl || TTS_PROVIDERS['genie-tts'].defaultBaseUrl || '').replace(
+    /\/$/,
+    '',
+  );
+
+  const voiceEntry = loadGenieVoices()[config.voice];
+  if (!voiceEntry) {
+    throw new Error(
+      `Genie TTS: unknown voice "${config.voice}". Register it in tools/genie-tts/voices.json.`,
+    );
+  }
+
+  const loaded = await geniePost(baseUrl, '/load_character', {
+    character_name: GENIE_CHARACTER_NAME,
+    onnx_model_dir: resolveGenieServerPath(
+      process.env.TTS_GENIE_MODEL_DIR,
+      'tools/genie-tts/models/base_v2proplus_onnx',
+    ),
+    language: 'zh',
+  }, signal);
+  if (!loaded.ok) {
+    throw new Error(
+      `Genie TTS: load_character failed: ${await loaded.text().catch(() => loaded.statusText)}`,
+    );
+  }
+
+  const ref = await geniePost(baseUrl, '/set_reference_audio', {
+    character_name: GENIE_CHARACTER_NAME,
+    audio_path: voiceEntry.audio_path,
+    audio_text: voiceEntry.audio_text,
+    language: voiceEntry.language || 'zh',
+  }, signal);
+  if (!ref.ok) {
+    throw new Error(
+      `Genie TTS: set_reference_audio failed: ${await ref.text().catch(() => ref.statusText)}`,
+    );
+  }
+
+  const response = await geniePost(baseUrl, '/tts', {
+    character_name: GENIE_CHARACTER_NAME,
+    text,
+    // Split long text into sentence chunks: keeps synthesis stable and lets
+    // playback start sooner on the CPU-only path.
+    split_sentence: true,
+  }, signal);
+  if (!response.ok) {
+    throwIfTtsRateLimited('Genie', response.status);
+    const errorText = await response.text().catch(() => response.statusText);
+    throw new Error(`Genie TTS API error: ${errorText}`);
+  }
+
+  const pcm = new Uint8Array(await response.arrayBuffer());
+  if (pcm.length === 0) {
+    throw new Error('Genie TTS error: empty audio stream');
+  }
+  return { audio: pcm16MonoToWav(pcm, GENIE_SAMPLE_RATE), format: 'wav' };
 }
 
 /**

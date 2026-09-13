@@ -1,0 +1,29 @@
+{
+  "$comment": "Genie-TTS 音色注册表。MAIC 的 genie-tts provider 按此文件把 voiceId 映射到参考音频。audio_path 相对于仓库根目录（genie 服务进程由 start-genie-tts.cmd 启动，其工作目录即仓库根）。新增音色：把 wav 放进 voices/ 并在此登记；同时需在 lib/audio/constants.ts 的 genie-tts voices 列表同步 id/name。",
+  "voices": {
+    "amiya": {
+      "name": "阿米娅",
+      "language": "zh",
+      "audio_path": "tools/genie-tts/voices/amiya.wav",
+      "audio_text": "凯尔希医生教导过我，工作的时候一定要保持全神贯注。嗯，全神贯注。"
+    },
+    "rosmontis": {
+      "name": "迷迭香",
+      "language": "zh",
+      "audio_path": "tools/genie-tts/voices/rosmontis.wav",
+      "audio_text": "该出任务了吗？嗯，我知道的，我会保护好罗德岛的干员们的，一定。"
+    },
+    "angelina": {
+      "name": "安洁莉娜",
+      "language": "zh",
+      "audio_path": "tools/genie-tts/voices/angelina.wav",
+      "audio_text": "博士，今天没有急件要送，我来帮你整理一下文件吧。放心放心，这么久了，这些文件的分类我早就一清二楚了。"
+    },
+    "muelsyse": {
+      "name": "缪尔赛斯",
+      "language": "zh",
+      "audio_path": "tools/genie-tts/voices/muelsyse.wav",
+      "audio_text": "你是说把工作时间和行程的决定权交给我吗？那就意味着我在备忘录上写什么？"
+    }
+  }
+}

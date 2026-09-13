@@ -1067,6 +1067,25 @@ export const TTS_PROVIDERS: Record<BuiltInTTSProviderId, TTSProviderConfig> = {
     supportedFormats: ['wav'],
     speedRange: { min: 0.25, max: 4.0, default: 1.0 },
   },
+
+  'genie-tts': {
+    id: 'genie-tts',
+    name: 'Genie TTS',
+    requiresApiKey: false,
+    defaultBaseUrl: 'http://127.0.0.1:8001',
+    // Voice cloning via reference audio. The voice ids below MUST stay in sync
+    // with tools/genie-tts/voices.json, which maps each id to its reference
+    // audio file + transcript read by the genie server process.
+    models: [],
+    defaultModelId: '',
+    voices: [
+      { id: 'amiya', name: '阿米娅', language: 'zh-CN', gender: 'female' },
+      { id: 'rosmontis', name: '迷迭香', language: 'zh-CN', gender: 'female' },
+      { id: 'angelina', name: '安洁莉娜', language: 'zh-CN', gender: 'female' },
+      { id: 'muelsyse', name: '缪尔赛斯', language: 'zh-CN', gender: 'female' },
+    ],
+    supportedFormats: ['wav'],
+  },
 };
 
 /**
@@ -1343,6 +1362,7 @@ export const DEFAULT_TTS_VOICES: Record<BuiltInTTSProviderId, string> = {
   'elevenlabs-tts': 'EXAVITQu4vr4xnSDxMaL',
   'minimax-tts': 'female-yujie',
   'lemonade-tts': 'af_heart',
+  'genie-tts': 'amiya',
   'browser-native-tts': 'default',
 };
 
@@ -1356,6 +1376,7 @@ export const DEFAULT_TTS_MODELS: Record<BuiltInTTSProviderId, string> = {
   'elevenlabs-tts': 'eleven_multilingual_v2',
   'minimax-tts': 'speech-2.8-hd',
   'lemonade-tts': 'kokoro-v1',
+  'genie-tts': '',
   'browser-native-tts': '',
 };
 
