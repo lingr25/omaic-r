@@ -96,6 +96,7 @@
 import type { TTSModelConfig } from './types';
 import { isCustomTTSProvider } from './types';
 import { isQwenCloneVoice, resolveTTSModelForVoice, TTS_PROVIDERS } from './constants';
+import { ensureGenieSentenceTerminator } from './tts-utils';
 import { downloadAudio, QwenVoiceCloneError, synthesizeQwenVoiceClone } from './qwen-voice-clone';
 import { evictQwenVoiceRegistrationMemo } from './qwen-voice-clone-registration';
 import { splitConcatenatedJsonObjects } from './json-stream';
@@ -1133,15 +1134,13 @@ async function generateGenieTTS(
     );
   }
 
+  const spokenText = ensureGenieSentenceTerminator(text);
   const response = await geniePost(baseUrl, '/tts', {
     character_name: GENIE_CHARACTER_NAME,
-    text,
-    // genie-side sentence splitting re-runs the prompt pipeline per chunk and
-    // measured ~2x slower end-to-end, and single-pass T2S truncates beyond
-    // ~100 chars — so long text is pre-split client-side instead
-    // (TTS_MAX_TEXT_LENGTH). split only as a completeness safety net for
-    // over-length requests that bypassed the client-side split.
-    split_sentence: text.length > 150,
+    text: spokenText,
+    // Genie's TextSplitter soft-caps at ~20 hanzi; always on so a bypassed
+    // long request still splits instead of dropping the tail at EOS.
+    split_sentence: true,
   }, signal);
   if (!response.ok) {
     throwIfTtsRateLimited('Genie', response.status);

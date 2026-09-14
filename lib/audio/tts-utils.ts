@@ -11,10 +11,26 @@ const log = createLogger('TTS');
 /** Provider-specific max text length limits. */
 export const TTS_MAX_TEXT_LENGTH: Partial<Record<TTSProviderId, number>> = {
   'glm-tts': 1024,
-  // genie on CPU synthesizes ~1.2x realtime; keep each request short so a
-  // clip lands well inside TTS_REQUEST_TIMEOUT_MS and playback starts sooner
-  'genie-tts': 100,
+  // Genie's own TextSplitter soft-caps at effective width 40 (CJK counts as 2,
+  // ~20 hanzi). Longer single-pass T2S hits EOS early and drops the tail.
+  'genie-tts': 24,
 };
+
+const GENIE_TERMINATORS = /[。！？!?…]$/;
+const GENIE_CLAUSE_MARKS = /[，,、；;：:]$/;
+
+/**
+ * GPT-SoVITS / Genie drop the last few characters when a line has no
+ * terminator (the decoder emits EOS a token early). Mirror the official
+ * webui: guarantee a sentence-ending mark.
+ */
+export function ensureGenieSentenceTerminator(text: string): string {
+  const trimmed = text.trim();
+  if (!trimmed) return trimmed;
+  if (GENIE_TERMINATORS.test(trimmed)) return trimmed;
+  if (GENIE_CLAUSE_MARKS.test(trimmed)) return `${trimmed.slice(0, -1)}。`;
+  return `${trimmed}。`;
+}
 
 /**
  * Split long text into chunks that respect sentence boundaries.

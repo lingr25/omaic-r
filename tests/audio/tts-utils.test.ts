@@ -4,6 +4,7 @@ import {
   splitLongSpeechText,
   splitLongSpeechActions,
   TTS_MAX_TEXT_LENGTH,
+  ensureGenieSentenceTerminator,
 } from '@/lib/audio/tts-utils';
 import type { Action, SpeechAction } from '@/lib/types/action';
 
@@ -79,5 +80,37 @@ describe('splitLongSpeechActions', () => {
     expect(out.every((a) => a.audioId === undefined)).toBe(true);
     // …and the text is preserved across the split.
     expect(out.map((a) => a.text).join('')).toBe(long);
+  });
+
+  it('splits genie-tts lecture lines at the tight ~24-char cap', () => {
+    const max = TTS_MAX_TEXT_LENGTH['genie-tts']!;
+    expect(max).toBe(24);
+    const lecture =
+      '同学们，我们先来回顾一下上节课的内容。生态系统由生物群落和非生物环境两部分组成，它们之间通过能量流动和物质循环紧密联系在一起。';
+    const out = splitLongSpeechActions([speech('a', lecture)], 'genie-tts') as SpeechAction[];
+    expect(out.length).toBeGreaterThan(1);
+    expect(out.every((a) => a.text.length <= max)).toBe(true);
+    expect(out.map((a) => a.text).join('')).toBe(lecture);
+  });
+});
+
+describe('ensureGenieSentenceTerminator', () => {
+  it('leaves a sentence that already ends with a terminator unchanged', () => {
+    expect(ensureGenieSentenceTerminator('今天要重点讨论分解者的作用。')).toBe(
+      '今天要重点讨论分解者的作用。',
+    );
+    expect(ensureGenieSentenceTerminator('真的吗？')).toBe('真的吗？');
+  });
+
+  it('appends a period when the line has no terminator', () => {
+    expect(ensureGenieSentenceTerminator('今天要重点讨论分解者的作用')).toBe(
+      '今天要重点讨论分解者的作用。',
+    );
+  });
+
+  it('promotes a trailing clause mark to a period', () => {
+    expect(ensureGenieSentenceTerminator('今天要重点讨论分解者的作用，')).toBe(
+      '今天要重点讨论分解者的作用。',
+    );
   });
 });
