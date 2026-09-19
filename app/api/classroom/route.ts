@@ -5,6 +5,7 @@ import { apiSuccess, apiError, API_ERROR_CODES } from '@/lib/server/api-response
 import {
   buildRequestOrigin,
   isValidClassroomId,
+  listClassroomSummaries,
   persistClassroom,
   readClassroom,
 } from '@/lib/server/classroom-storage';
@@ -104,12 +105,20 @@ export async function GET(request: NextRequest) {
   try {
     const id = request.nextUrl.searchParams.get('id');
 
+    // No id: the homepage library lists shareable classrooms persisted under
+    // `data/classrooms/` (batch / generate-classroom). Those files are not in
+    // the browser IndexedDB document store, so the home grid never sees them
+    // unless this listing is merged into `listStages`.
     if (!id) {
-      return apiError(
-        API_ERROR_CODES.MISSING_REQUIRED_FIELD,
-        400,
-        'Missing required parameter: id',
-      );
+      const classrooms = await listClassroomSummaries();
+      return apiSuccess({
+        classrooms: classrooms.map((classroom) => ({
+          ...classroom,
+          ...(classroom.firstSlide
+            ? { firstSlide: sanitizeSceneContent(classroom.firstSlide) }
+            : {}),
+        })),
+      });
     }
 
     if (!isValidClassroomId(id)) {

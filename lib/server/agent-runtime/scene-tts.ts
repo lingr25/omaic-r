@@ -1,5 +1,6 @@
 import { DEFAULT_TTS_MODELS, DEFAULT_TTS_VOICES, TTS_PROVIDERS } from '@/lib/audio/constants';
 import { generateTTS, TTSRequestTimeoutError } from '@/lib/audio/tts-providers';
+import { prepareSpeechActionsForTts } from '@/lib/audio/tts-utils';
 import type { TTSProviderId } from '@/lib/audio/types';
 import { BROWSER_NATIVE_TTS_PROVIDER_ID } from '@/lib/audio/provider-enablement';
 import type { LegacySpeechAction, SpeechAction } from '@/lib/types/action';
@@ -71,6 +72,7 @@ export async function synthesizeSceneNarration(input: SceneTtsInput): Promise<Sc
   let generated = 0;
   let skipped = 0;
   const failed: string[] = [];
+  input.scene.actions = prepareSpeechActionsForTts(input.scene.actions ?? [], providerId);
   for (const action of input.scene.actions ?? []) {
     if (action.type !== 'speech' || !(action as SpeechAction).text) continue;
     const speech = action as SpeechAction;

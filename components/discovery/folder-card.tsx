@@ -155,10 +155,10 @@ export function FolderCard({
       <div
         ref={thumbRef}
         className={cn(
-          'relative w-full aspect-[16/9] rounded-2xl bg-gradient-to-br from-violet-50 to-blue-50 dark:from-violet-900/20 dark:to-blue-900/20 overflow-hidden transition-transform duration-200 group-hover:scale-[1.02] ring-1',
+          'relative w-full aspect-[16/9] rounded-2xl bg-gradient-to-br from-teal-50 to-blue-50 dark:from-teal-900/20 dark:to-blue-900/20 overflow-hidden transition-transform duration-200 group-hover:scale-[1.02] ring-1',
           dropActive
-            ? 'ring-2 ring-violet-500 ring-offset-2 ring-offset-background scale-[1.03]'
-            : 'ring-violet-200/50 dark:ring-violet-800/40',
+            ? 'ring-2 ring-teal-500 ring-offset-2 ring-offset-background scale-[1.03]'
+            : 'ring-teal-200/50 dark:ring-teal-800/40',
         )}
       >
         {hasCovers ? (
@@ -166,8 +166,8 @@ export function FolderCard({
         ) : courseCount === 0 ? (
           // Truly empty folder: folder icon.
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
-            <div className="size-14 rounded-2xl bg-violet-100 dark:bg-violet-900/40 flex items-center justify-center">
-              <Folder className="size-7 text-violet-500 dark:text-violet-300" />
+            <div className="size-14 rounded-2xl bg-teal-100 dark:bg-teal-900/40 flex items-center justify-center">
+              <Folder className="size-7 text-teal-500 dark:text-teal-300" />
             </div>
           </div>
         ) : (
@@ -175,11 +175,11 @@ export function FolderCard({
           // distinct from the empty-folder icon, so it does not read as empty.
           <div className="absolute inset-0 flex items-center justify-center">
             <div
-              className="w-[60%] aspect-[16/9] rounded-xl bg-violet-200/60 dark:bg-violet-800/30 shadow-md ring-1 ring-violet-300/30 dark:ring-violet-700/30"
+              className="w-[60%] aspect-[16/9] rounded-xl bg-teal-200/60 dark:bg-teal-800/30 shadow-md ring-1 ring-teal-300/30 dark:ring-teal-700/30"
               style={{ transform: 'translate(-3%, 2%)' }}
             />
             <div
-              className="absolute w-[60%] aspect-[16/9] rounded-xl bg-violet-300/50 dark:bg-violet-700/20 shadow-md ring-1 ring-violet-300/30 dark:ring-violet-700/30"
+              className="absolute w-[60%] aspect-[16/9] rounded-xl bg-teal-300/50 dark:bg-teal-700/20 shadow-md ring-1 ring-teal-300/30 dark:ring-teal-700/30"
               style={{ transform: 'translate(3%, -1%)' }}
             />
           </div>
@@ -191,7 +191,7 @@ export function FolderCard({
         </span>
 
         {dropActive && (
-          <div className="absolute inset-0 z-20 flex items-center justify-center bg-violet-500/20 backdrop-blur-[2px]">
+          <div className="absolute inset-0 z-20 flex items-center justify-center bg-teal-500/20 backdrop-blur-[2px]">
             <Folder className="size-8 text-white drop-shadow" />
           </div>
         )}
@@ -325,7 +325,7 @@ export function FolderCard({
       </div>
 
       <div className="mt-2.5 px-1 flex items-center gap-2">
-        <span className="shrink-0 inline-flex items-center rounded-full bg-violet-100 dark:bg-violet-900/30 px-2 py-0.5 text-[11px] font-medium text-violet-600 dark:text-violet-400">
+        <span className="shrink-0 inline-flex items-center rounded-full bg-teal-100 dark:bg-teal-900/30 px-2 py-0.5 text-[11px] font-medium text-teal-600 dark:text-teal-400">
           {t('classroom.folderBadge')}
         </span>
         {editing ? (
@@ -344,7 +344,7 @@ export function FolderCard({
               onBlur={commit}
               disabled={submitting}
               maxLength={80}
-              className="w-full bg-transparent border-b border-violet-400/60 text-[15px] font-medium text-foreground/90 outline-none disabled:opacity-50"
+              className="w-full bg-transparent border-b border-teal-400/60 text-[15px] font-medium text-foreground/90 outline-none disabled:opacity-50"
             />
             {error && <p className="mt-1 text-[11px] text-destructive">{error}</p>}
           </div>

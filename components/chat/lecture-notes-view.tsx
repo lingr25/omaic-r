@@ -85,7 +85,7 @@ export function LectureNotesView({
   if (notes.length === 0) {
     return (
       <div className="h-full flex flex-col items-center justify-center text-center p-6">
-        <div className="w-12 h-12 bg-purple-50 dark:bg-purple-900/20 rounded-2xl flex items-center justify-center mb-3 text-purple-300 dark:text-purple-600 ring-1 ring-purple-100 dark:ring-purple-800/30">
+        <div className="w-12 h-12 bg-teal-50 dark:bg-teal-900/20 rounded-2xl flex items-center justify-center mb-3 text-teal-300 dark:text-teal-600 ring-1 ring-teal-100 dark:ring-teal-800/30">
           <BookOpen className="w-6 h-6" />
         </div>
         <p className="text-xs font-medium text-gray-500 dark:text-gray-400">
@@ -115,7 +115,7 @@ export function LectureNotesView({
             className={cn(
               'relative mb-3 last:mb-0 rounded-lg px-3 py-2.5 transition-colors duration-200',
               isCurrent
-                ? 'bg-purple-50/80 dark:bg-purple-950/25 ring-1 ring-purple-200/60 dark:ring-purple-700/30'
+                ? 'bg-teal-50/80 dark:bg-teal-950/25 ring-1 ring-teal-200/60 dark:ring-teal-700/30'
                 : 'bg-gray-50/50 dark:bg-gray-800/30',
             )}
           >
@@ -126,7 +126,7 @@ export function LectureNotesView({
                 className={cn(
                   'w-2 h-2 rounded-full shrink-0',
                   isCurrent
-                    ? 'bg-purple-500 dark:bg-purple-400 shadow-sm shadow-purple-400/40'
+                    ? 'bg-teal-500 dark:bg-teal-400 shadow-sm shadow-teal-400/40'
                     : 'bg-gray-300 dark:bg-gray-600',
                 )}
               />
@@ -134,14 +134,14 @@ export function LectureNotesView({
                 className={cn(
                   'text-[10px] font-semibold tracking-wide',
                   isCurrent
-                    ? 'text-purple-600 dark:text-purple-400'
+                    ? 'text-teal-600 dark:text-teal-400'
                     : 'text-gray-400 dark:text-gray-500',
                 )}
               >
                 {pageLabel}
               </span>
               {isCurrent && (
-                <span className="text-[9px] font-bold px-1.5 py-px rounded-full bg-purple-100 dark:bg-purple-900/40 text-purple-600 dark:text-purple-300">
+                <span className="text-[9px] font-bold px-1.5 py-px rounded-full bg-teal-100 dark:bg-teal-900/40 text-teal-600 dark:text-teal-300">
                   {t('chat.lectureNotes.currentPage')}
                 </span>
               )}
@@ -259,10 +259,10 @@ export function LectureNotesView({
                         className={cn(
                           'block w-full text-left rounded-md px-1 py-0.5 text-[12px] leading-[1.8] transition-colors',
                           isActiveSpeech
-                            ? 'bg-purple-100/80 text-purple-800 dark:bg-purple-900/35 dark:text-purple-200'
+                            ? 'bg-teal-100/80 text-teal-800 dark:bg-teal-900/35 dark:text-teal-200'
                             : 'text-gray-700 dark:text-gray-300',
                           canJump
-                            ? 'cursor-pointer hover:bg-purple-50 dark:hover:bg-purple-950/25'
+                            ? 'cursor-pointer hover:bg-teal-50 dark:hover:bg-teal-950/25'
                             : 'cursor-default',
                         )}
                         aria-label={jumpTitle}

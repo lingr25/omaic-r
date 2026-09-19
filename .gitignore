@@ -91,14 +91,19 @@ e2e/screenshots/
 e2e/__screenshots-619/
 /.playwright-mcp/
 
-# genie-tts local deployment: heavy binaries are downloaded/built on setup,
-# only the registry, scripts and reference audio are versioned
-# (see start-genie-tts.cmd and tools/genie-tts/)
-/tools/genie-tts/venv/
-/tools/genie-tts/GenieData/
-/tools/genie-tts/models/
-/tools/genie-tts/output/
-/tools/genie-tts/sdist_check/
-/tools/genie-tts/Cache/
-/tools/genie-tts/*.json.bak
+# textbooks and other local source materials (not part of this fork)
+/books/
+/素材/
+*.pdf
+
+# leftover local GPT-SoVITS tree (removed from the working tree)
+/tools/genie-tts/
+
+# local TTS debug dumps
+/tmp-stepfun-tts/
+
+# root-level raw avatar dumps; runtime copies live under public/avatars/
+/头像_*.png
+
+
 

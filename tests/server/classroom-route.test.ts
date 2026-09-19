@@ -8,6 +8,7 @@ import { NextRequest } from 'next/server';
 const mocks = vi.hoisted(() => ({
   persistClassroom: vi.fn(),
   readClassroom: vi.fn(),
+  listClassroomSummaries: vi.fn(),
 }));
 
 vi.mock('@/lib/server/classroom-storage', async (importOriginal) => {
@@ -16,6 +17,7 @@ vi.mock('@/lib/server/classroom-storage', async (importOriginal) => {
     ...actual,
     persistClassroom: mocks.persistClassroom,
     readClassroom: mocks.readClassroom,
+    listClassroomSummaries: mocks.listClassroomSummaries,
   };
 });
 
@@ -131,5 +133,58 @@ describe('POST /api/classroom — id validation before persistence', () => {
       expect.objectContaining({ id: 'abc-123_XY' }),
       'http://localhost',
     );
+  });
+});
+
+describe('GET /api/classroom — list shareable classrooms', () => {
+  beforeEach(() => {
+    vi.resetModules();
+    mocks.listClassroomSummaries.mockReset();
+  });
+
+  it('lists disk classrooms when no id is provided', async () => {
+    mocks.listClassroomSummaries.mockResolvedValue([
+      {
+        id: 'XO8XbxdHPw',
+        name: '1.1 生物的特征',
+        sceneCount: 12,
+        createdAt: 100,
+        updatedAt: 200,
+        firstSlide: {
+          id: 'slide-1',
+          viewportSize: 1000,
+          viewportRatio: 0.5625,
+          elements: [
+            {
+              type: 'text',
+              id: 'el-1',
+              content: '<p>hello</p>',
+              left: 0,
+              top: 0,
+              width: 100,
+              height: 40,
+              rotate: 0,
+              defaultFontName: 'Microsoft YaHei',
+              defaultColor: '#333',
+            },
+          ],
+        },
+      },
+    ]);
+
+    const { GET } = await import('@/app/api/classroom/route');
+    const res = await GET(new NextRequest('http://localhost/api/classroom'));
+    const json = await res.json();
+
+    expect(res.status).toBe(200);
+    expect(json.success).toBe(true);
+    expect(json.classrooms).toEqual([
+      expect.objectContaining({
+        id: 'XO8XbxdHPw',
+        name: '1.1 生物的特征',
+        sceneCount: 12,
+      }),
+    ]);
+    expect(mocks.listClassroomSummaries).toHaveBeenCalledTimes(1);
   });
 });

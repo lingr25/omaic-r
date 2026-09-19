@@ -25,7 +25,7 @@ export function MarkdownText({ content, className }: Props) {
         'prose-p:my-2 prose-pre:my-2 prose-headings:mt-3 prose-headings:mb-1',
         'prose-a:text-primary prose-strong:text-foreground prose-li:marker:text-muted-foreground',
         'prose-code:before:content-none prose-code:after:content-none',
-        'prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:bg-white/10 prose-code:text-violet-100',
+        'prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:bg-white/10 prose-code:text-teal-100',
         'prose-pre:bg-zinc-950 prose-pre:text-zinc-100 prose-pre:p-3 prose-pre:rounded-md',
         'prose-pre:overflow-x-auto',
         '[&_div[data-streamdown=code-block]]:relative [&_div[data-streamdown=code-block]]:my-2 [&_div[data-streamdown=code-block]]:gap-0',

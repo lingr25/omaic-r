@@ -1,0 +1,26 @@
+{
+  "$comment": "Persistent StepFun clone IDs from POST /audio/voices. Official ref audio is 5-10s (not the 3s zero-shot figure). TTS must send voiceId only — never re-attach the wav.",
+  "model": "stepaudio-2.5-tts",
+  "voices": {
+    "amiya": {
+      "voiceId": "voice-tone-UTrmAPdndo",
+      "fileId": "file-UTrmAPdndo",
+      "fileHash": "6a9ccc535a28602bc234d036556175be1b74b60ab72ffa453151e72e21766e08"
+    },
+    "rosmontis": {
+      "voiceId": "voice-tone-UTs1QveHE8",
+      "fileId": "file-UTs1QveHE8",
+      "fileHash": "feff1c6def952d6f8a0d6e2c6a4cde40c24d0326da241d05cfd06d41ebcb6826"
+    },
+    "angelina": {
+      "voiceId": "voice-tone-UTs1lupWXw",
+      "fileId": "file-UTs1lupWXw",
+      "fileHash": "f8c553ff82095c02324a031eaa5a589f47d56b69af471a5b5d4d4645fd3b04af"
+    },
+    "muelsyse": {
+      "voiceId": "voice-tone-UTs2AOah2u",
+      "fileId": "file-UTs2AOah2u",
+      "fileHash": "e7734dc03264cf7165ab81e19158109f22c2f91fa22fb362dccdc324793f3288"
+    }
+  }
+}

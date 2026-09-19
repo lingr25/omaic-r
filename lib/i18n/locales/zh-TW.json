@@ -10,7 +10,7 @@
     "close": "關閉"
   },
   "home": {
-    "slogan": "多智能體互動課室中的生成式學習",
+    "slogan": "羅德島課堂 · 多智能體生成式學習",
     "greetingWithName": "嗨，{{name}}"
   },
   "toolbar": {
@@ -126,7 +126,7 @@
   },
   "chat": {
     "lecture": "授課",
-    "noConversations": "暫無對話",
+    "noConversations": "暫無對話——博士，等你發言",
     "startConversation": "輸入訊息開始對話",
     "noMessages": "暫無訊息",
     "ended": "已結束",
@@ -988,7 +988,7 @@
     "folderDeleteFailed": "刪除資料夾失敗",
     "moveFailed": "移動課程失敗",
     "emptyFolderHint": "這個資料夾是空的",
-    "emptyLibraryHint": "還沒有課程——在上方建立，或匯入一個課程。",
+    "emptyLibraryHint": "資料庫空空如也——博士，在上方建立一門課程，或匯入一份課件。",
     "folderNameEmpty": "資料夾名稱不能為空",
     "deleteFolderOnly": "僅刪除資料夾",
     "deleteFolderAndCourses": "刪除資料夾和 {{count}} 門課程",
@@ -1002,7 +1002,7 @@
     "pdfSizeLimit": "支援最大50MB的PDF檔案",
     "courseMaterialSizeLimit": "支援文件、簡報、表格、圖像、純文字，最大 50MB（實際支援格式依所選解析器而定）",
     "generateFailed": "生成課堂失敗，請重試",
-    "requirementPlaceholder": "輸入你想學的任何內容，例如：\n「從零學 Python，30 分鐘寫出第一個程式」\n「用白板為我講解傅立葉轉換」\n「阿瓦隆桌遊怎麼玩」",
+    "requirementPlaceholder": "博士，今天想學什麼？例如：\n「從零學 Python，30 分鐘寫出第一個程式」\n「用白板為我講解傅立葉轉換」\n「阿瓦隆桌遊怎麼玩」",
     "requirementRequired": "請輸入課程需求",
     "fileTooLarge": "檔案過大，請選擇小於 50MB 的檔案",
     "courseMaterialCountLimit": "最多可上傳 5 個課程材料檔案",
@@ -1018,7 +1018,7 @@
     "courseMaterialParseFailed": "課程材料解析失敗",
     "streamNotReadable": "無法讀取生成資料流",
     "generatingOutlines": "生成課程大綱",
-    "generatingOutlinesDesc": "正在建構學習路徑...",
+    "generatingOutlinesDesc": "PRTS 正在建構學習路徑…",
     "generatingSlideContent": "生成頁面內容",
     "generatingSlideContentDesc": "正在建立投影片、測驗和互動內容...",
     "generatingActions": "生成教學動作",
@@ -1033,7 +1033,7 @@
     "sessionNotFoundDesc": "請先填寫課程需求開始生成流程。",
     "goBackAndRetry": "返回重試",
     "classroomReady": "你的個人化AI學習環境已成功生成。",
-    "aiWorking": "AI智能體工作中...",
+    "aiWorking": "正在接入羅德島終端，PRTS 演算中…",
     "textTruncated": "文件文字較長，已擷取前 {{n}} 字元用於生成",
     "imageTruncated": "文件含 {{total}} 張圖片，超出上限 {{max}} 張，多餘圖片將僅以文字描述傳遞",
     "agentGeneration": "生成課堂角色",
@@ -1173,12 +1173,10 @@
     "selectedAgents": "選中的智能體",
     "required": "必選",
     "agentNames": {
-      "default-1": "AI教師",
-      "default-2": "AI助教",
-      "default-3": "活潑同學",
-      "default-4": "好奇寶寶",
-      "default-5": "記錄員",
-      "default-6": "深思同學"
+      "default-1": "繆爾賽思",
+      "default-2": "阿米婭",
+      "default-3": "迷迭香",
+      "default-4": "安潔莉娜"
     },
     "agentRoles": {
       "teacher": "教師",
@@ -1186,12 +1184,10 @@
       "student": "學生"
     },
     "agentDescriptions": {
-      "default-1": "主講教師，清晰有條理地講解知識",
-      "default-2": "輔助講解，幫助同學理解重點",
-      "default-3": "活躍氣氛，用幽默讓課堂更有趣",
-      "default-4": "充滿好奇心，總愛追問為什麼",
-      "default-5": "認真記錄，整理課堂重點筆記",
-      "default-6": "深入思考，喜歡探討問題本質"
+      "default-1": "萊因生命生態科主任，用生動的類比把知識講得清晰有趣",
+      "default-2": "羅德島的公開領袖，溫柔耐心地幫助大家理解要點",
+      "default-3": "安靜專注的菲林幹員，偶爾會冒出天真卻深刻的問題",
+      "default-4": "活潑好奇的信使少女，總能帶來輕鬆有趣的話題"
     },
     "close": "關閉",
     "save": "儲存",
@@ -1384,7 +1380,8 @@
     "providerElevenLabsTTS": "ElevenLabs TTS",
     "providerMiniMaxTTS": "MiniMax TTS",
     "providerLemonadeTTS": "Lemonade TTS（本機）",
-    "providerGenieTTS": "Genie TTS（本地）",
+    "providerMimoTTS": "MiMo TTS（小米音色複刻）",
+    "providerStepfunTTS": "階躍星辰 TTS（音色複刻）",
     "providerBrowserNativeTTS": "瀏覽器原生 TTS",
     "voxcpmBackend": "後端",
     "voxcpmBaseUrlPending": "輸入 Base URL 以產生請求 URL",
@@ -1852,7 +1849,7 @@
       "download": "下載",
       "detailFailed": "技能詳情載入失敗",
       "contentLabel": "正文",
-      "builtinDetailNote": "該技能隨 OpenMAIC 提供。下載後可匯入其他智能體工作台。",
+      "builtinDetailNote": "該技能隨 OMAIC-R 提供。下載後可匯入其他智能體工作台。",
       "upload": "上傳",
       "uploading": "正在上傳…",
       "uploadFailed": "技能上傳失敗。請檢查檔案後重試。",
@@ -1964,7 +1961,7 @@
   },
   "profile": {
     "title": "個人資料",
-    "defaultNickname": "同學",
+    "defaultNickname": "博士",
     "chooseAvatar": "選擇頭像",
     "uploadAvatar": "上傳",
     "bioPlaceholder": "介紹一下自己，AI老師會根據你的背景提供個人化教學...",

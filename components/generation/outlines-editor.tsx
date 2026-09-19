@@ -65,10 +65,10 @@ const TYPE_THEME: Record<
     dot: 'bg-blue-400',
   },
   quiz: {
-    chip: 'bg-purple-50 text-purple-600 dark:bg-purple-500/10 dark:text-purple-300',
-    chipHover: 'hover:bg-purple-100/80 dark:hover:bg-purple-500/15',
-    accent: 'bg-purple-500',
-    dot: 'bg-purple-400',
+    chip: 'bg-teal-50 text-teal-600 dark:bg-teal-500/10 dark:text-teal-300',
+    chipHover: 'hover:bg-teal-100/80 dark:hover:bg-teal-500/15',
+    accent: 'bg-teal-500',
+    dot: 'bg-teal-400',
   },
   interactive: {
     chip: 'bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-300',
@@ -1117,7 +1117,7 @@ function QuizConfigDisclosure({
                     'flex-1 rounded-md px-2 py-1.5 text-xs font-medium transition-all',
                     'border',
                     selected
-                      ? 'border-purple-500/40 bg-purple-500/10 text-purple-700 dark:text-purple-200'
+                      ? 'border-teal-500/40 bg-teal-500/10 text-teal-700 dark:text-teal-200'
                       : 'border-border/40 bg-transparent text-muted-foreground hover:border-border hover:bg-muted/60 hover:text-foreground',
                     isOnlySelected && 'cursor-not-allowed opacity-90',
                   )}

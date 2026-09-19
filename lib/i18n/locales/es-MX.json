@@ -10,7 +10,7 @@
     "close": "Cerrar"
   },
   "home": {
-    "slogan": "Aprendizaje generativo en un aula interactiva multiagente",
+    "slogan": "Aula de Rhodes Island · Aprendizaje generativo multiagente",
     "greetingWithName": "Hola, {{name}}"
   },
   "toolbar": {
@@ -126,7 +126,7 @@
   },
   "chat": {
     "lecture": "Clase",
-    "noConversations": "Sin conversaciones",
+    "noConversations": "Sin conversaciones — Doctor, te toca hablar",
     "startConversation": "Escribe un mensaje abajo para comenzar a chatear",
     "noMessages": "Aún no hay mensajes",
     "ended": "finalizó",
@@ -1003,7 +1003,7 @@
     "folderDeleteFailed": "Error al eliminar la carpeta",
     "moveFailed": "Error al mover el curso",
     "emptyFolderHint": "Esta carpeta está vacía",
-    "emptyLibraryHint": "Aún no hay cursos — crea uno arriba o importa un curso.",
+    "emptyLibraryHint": "El archivo está vacío — Doctor, crea un curso arriba o importa uno.",
     "folderNameEmpty": "El nombre de la carpeta no puede estar vacío",
     "deleteFolderOnly": "Solo eliminar carpeta",
     "deleteFolderAndCourses": "Eliminar carpeta y {{count}} curso",
@@ -1017,7 +1017,7 @@
     "pdfSizeLimit": "Admite archivos PDF de hasta 50 MB",
     "courseMaterialSizeLimit": "Documentos, diapositivas, hojas de cálculo, imágenes y texto plano — hasta 50 MB (los formatos aceptados dependen del extractor seleccionado)",
     "generateFailed": "No se pudo generar el aula, inténtalo de nuevo",
-    "requirementPlaceholder": "Dime qué quieres aprender, p. ej.\n\"Enséñame Python desde cero en 30 minutos\"\n\"Explica la transformada de Fourier en el pizarrón\"\n\"Cómo jugar el juego de mesa Avalon\"",
+    "requirementPlaceholder": "Doctor, ¿qué quieres aprender hoy? P. ej.\n\"Enséñame Python desde cero en 30 minutos\"\n\"Explica la transformada de Fourier en el pizarrón\"\n\"Cómo jugar el juego de mesa Avalon\"",
     "requirementRequired": "Ingresa los requisitos del curso",
     "fileTooLarge": "Archivo demasiado grande. Selecciona uno de menos de 50 MB",
     "courseMaterialCountLimit": "Puedes subir hasta 5 archivos de material del curso",
@@ -1033,7 +1033,7 @@
     "courseMaterialParseFailed": "Error al procesar el material del curso",
     "streamNotReadable": "No se puede leer el stream de generación",
     "generatingOutlines": "Redactando el esquema del curso",
-    "generatingOutlinesDesc": "Estructurando la ruta de aprendizaje...",
+    "generatingOutlinesDesc": "PRTS está estructurando la ruta de aprendizaje…",
     "generatingSlideContent": "Generando contenido de las páginas",
     "generatingSlideContentDesc": "Creando diapositivas, cuestionarios y contenido interactivo...",
     "generatingActions": "Generando acciones de enseñanza",
@@ -1048,7 +1048,7 @@
     "sessionNotFoundDesc": "Completa los requisitos del curso para iniciar el proceso de generación.",
     "goBackAndRetry": "Volver e intentar de nuevo",
     "classroomReady": "Tu entorno de aprendizaje personalizado con IA se generó correctamente.",
-    "aiWorking": "Agentes IA trabajando...",
+    "aiWorking": "Conectando con la terminal de Rhodes Island — PRTS calculando…",
     "textTruncated": "El texto del documento es largo; se usarán los primeros {{n}} caracteres para la generación",
     "imageTruncated": "Se encontraron {{total}} imágenes, más del límite de {{max}}. Las imágenes extra usarán solo descripciones de texto",
     "agentGeneration": "Generando roles del aula",
@@ -1188,12 +1188,10 @@
     "selectedAgents": "Agentes seleccionados",
     "required": "Obligatorio",
     "agentNames": {
-      "default-1": "Maestro IA",
-      "default-2": "Asistente IA",
-      "default-3": "Payaso del salón",
-      "default-4": "Mente curiosa",
-      "default-5": "Tomador de apuntes",
-      "default-6": "Pensador profundo"
+      "default-1": "Muelsyse",
+      "default-2": "Amiya",
+      "default-3": "Rosmontis",
+      "default-4": "Angelina"
     },
     "agentRoles": {
       "teacher": "Maestro",
@@ -1201,12 +1199,10 @@
       "student": "Estudiante"
     },
     "agentDescriptions": {
-      "default-1": "Maestro titular con explicaciones claras y estructuradas",
-      "default-2": "Apoya el aprendizaje y ayuda a aclarar los puntos clave",
-      "default-3": "Aporta humor y energía al salón de clases",
-      "default-4": "Siempre con curiosidad, le encanta preguntar por qué y cómo",
-      "default-5": "Registra y organiza con esmero los apuntes de la clase",
-      "default-6": "Piensa a fondo y explora la esencia de los temas"
+      "default-1": "Directora del departamento de ecología de Rhine Lab; explica el conocimiento de forma clara y divertida con analogías vívidas",
+      "default-2": "La líder pública de Rhodes Island; ayuda a todos con dulzura y paciencia a comprender los puntos clave",
+      "default-3": "Una operadora felina callada y concentrada que ocasionalmente hace preguntas ingenuas pero profundas",
+      "default-4": "Una mensajera alegre y curiosa que siempre trae temas ligeros y divertidos"
     },
     "close": "Cerrar",
     "save": "Guardar",
@@ -1399,7 +1395,8 @@
     "providerElevenLabsTTS": "ElevenLabs TTS",
     "providerMiniMaxTTS": "MiniMax TTS",
     "providerLemonadeTTS": "Lemonade TTS (local)",
-    "providerGenieTTS": "Genie TTS (Local)",
+    "providerMimoTTS": "MiMo TTS (Xiaomi Voice Clone)",
+    "providerStepfunTTS": "StepFun TTS (Voice Clone)",
     "providerBrowserNativeTTS": "TTS nativo del navegador",
     "voxcpmBackend": "Backend",
     "voxcpmBaseUrlPending": "Ingresa una URL base para generar la URL de solicitud",
@@ -1867,7 +1864,7 @@
       "download": "Descargar",
       "detailFailed": "No se pudieron cargar los detalles del skill",
       "contentLabel": "Contenido",
-      "builtinDetailNote": "Este skill viene incluido con OpenMAIC. Descárgalo para importarlo a otro espacio de trabajo de agente.",
+      "builtinDetailNote": "Este skill viene incluido con OMAIC-R. Descárgalo para importarlo a otro espacio de trabajo de agente.",
       "upload": "Subir",
       "uploading": "Subiendo…",
       "uploadFailed": "No se pudo subir el skill. Revisa el archivo e inténtalo de nuevo.",
@@ -1979,7 +1976,7 @@
   },
   "profile": {
     "title": "Perfil",
-    "defaultNickname": "Aprendiz",
+    "defaultNickname": "Doctor",
     "chooseAvatar": "Elegir avatar",
     "uploadAvatar": "Subir",
     "bioPlaceholder": "Cuéntanos de ti: el maestro IA personalizará las lecciones para ti...",

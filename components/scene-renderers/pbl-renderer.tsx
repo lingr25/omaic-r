@@ -483,7 +483,7 @@ function PBLV2WorkspaceLayer({
             onClick={() => {
               document.exitFullscreen?.().catch(() => {});
             }}
-            className="absolute right-4 top-4 z-40 flex h-8 w-8 items-center justify-center rounded-md border border-violet-300/35 bg-violet-500/20 text-violet-100 shadow-sm backdrop-blur transition-colors hover:bg-violet-500/30"
+            className="absolute right-4 top-4 z-40 flex h-8 w-8 items-center justify-center rounded-md border border-teal-300/35 bg-teal-500/20 text-teal-100 shadow-sm backdrop-blur transition-colors hover:bg-teal-500/30"
             aria-label={t('pbl.v2.workspace.exitNativeFullscreen')}
             title={t('pbl.v2.workspace.exitNativeFullscreen')}
           >

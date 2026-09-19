@@ -98,7 +98,7 @@ function AddQuestionButton() {
         <button
           type="button"
           data-testid="quiz-add-question"
-          className="mt-1 flex w-full items-center justify-center gap-2 rounded-xl border border-dashed border-zinc-300 bg-white/70 py-3 text-sm font-medium text-zinc-500 transition-colors hover:border-violet-300 hover:bg-violet-50/70 hover:text-violet-600 dark:border-zinc-700 dark:bg-zinc-900/60 dark:text-zinc-400 dark:hover:border-violet-500/50 dark:hover:bg-violet-500/10 dark:hover:text-violet-300"
+          className="mt-1 flex w-full items-center justify-center gap-2 rounded-xl border border-dashed border-zinc-300 bg-white/70 py-3 text-sm font-medium text-zinc-500 transition-colors hover:border-teal-300 hover:bg-teal-50/70 hover:text-teal-600 dark:border-zinc-700 dark:bg-zinc-900/60 dark:text-zinc-400 dark:hover:border-teal-500/50 dark:hover:bg-teal-500/10 dark:hover:text-teal-300"
         >
           <Plus className="h-4 w-4" strokeWidth={2} />
           {t('edit.quiz.addQuestion')}
@@ -115,7 +115,7 @@ function EmptyState() {
   const { t } = useI18n();
   return (
     <div className="mt-20 flex flex-col items-center gap-3 text-center" data-testid="quiz-empty">
-      <div className="relative flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-100 to-violet-50 text-violet-500 shadow-[0_8px_24px_-12px_rgba(114,46,209,0.5)] dark:from-violet-500/20 dark:to-violet-500/5 dark:text-violet-300">
+      <div className="relative flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-teal-100 to-teal-50 text-teal-500 shadow-[0_8px_24px_-12px_rgba(114,46,209,0.5)] dark:from-teal-500/20 dark:to-teal-500/5 dark:text-teal-300">
         <ListChecks className="h-7 w-7" strokeWidth={1.75} />
       </div>
       <p className="text-sm font-semibold text-zinc-600 dark:text-zinc-300">

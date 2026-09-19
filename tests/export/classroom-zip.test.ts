@@ -249,7 +249,7 @@ describe('manifest round-trip', () => {
       name: 'Narrator',
       role: 'teacher',
       persona: 'Explains carefully',
-      avatar: '/avatars/teacher.png',
+      avatar: '/avatars/amiya.png',
       color: '#3b82f6',
       priority: 10,
       voiceConfig: { providerId: 'some-tts', modelId: 'model-1', voiceId: 'voice-1' },
@@ -268,7 +268,7 @@ describe('manifest round-trip', () => {
       name: 'Student',
       role: 'student',
       persona: 'Curious',
-      avatar: '/avatars/curious.png',
+      avatar: '/avatars/rosmontis.png',
       color: '#ec4899',
       priority: 5,
     };

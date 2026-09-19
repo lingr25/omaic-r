@@ -10,7 +10,7 @@
     "close": "閉じる"
   },
   "home": {
-    "slogan": "マルチエージェント対話型教室で生成的に学ぶ",
+    "slogan": "ロドス・アイランド教室 · マルチエージェント生成学習",
     "greetingWithName": "こんにちは、{{name}}さん"
   },
   "toolbar": {
@@ -126,7 +126,7 @@
   },
   "chat": {
     "lecture": "講義",
-    "noConversations": "会話はありません",
+    "noConversations": "会話はまだありません——ドクター、話しかけてみてください",
     "startConversation": "下にメッセージを入力して会話を始めましょう",
     "noMessages": "メッセージはまだありません",
     "ended": "終了",
@@ -1003,7 +1003,7 @@
     "folderDeleteFailed": "フォルダの削除に失敗しました",
     "moveFailed": "コースの移動に失敗しました",
     "emptyFolderHint": "このフォルダは空です",
-    "emptyLibraryHint": "まだコースがありません。上で作成するか、コースをインポートしてください。",
+    "emptyLibraryHint": "アーカイブは空です——ドクター、上でコースを作成するか、インポートしてください。",
     "folderNameEmpty": "フォルダ名は空にできません",
     "deleteFolderOnly": "フォルダのみ削除",
     "deleteFolderAndCourses": "フォルダと {{count}} 件のコースを削除",
@@ -1017,7 +1017,7 @@
     "pdfSizeLimit": "50MBまでのPDFファイルに対応しています",
     "courseMaterialSizeLimit": "ドキュメント、スライド、表計算、画像、テキスト — 最大50MB（対応形式は選択したエクストラクタに依存）",
     "generateFailed": "教室の生成に失敗しました。もう一度お試しください",
-    "requirementPlaceholder": "学びたいことを自由に入力してください。例えば：\n「Pythonをゼロから30分で教えて」\n「フーリエ変換をホワイトボードで解説して」\n「ボードゲーム『アバロン』の遊び方」",
+    "requirementPlaceholder": "ドクター、今日は何を学びたいですか？例えば：\n「Pythonをゼロから30分で教えて」\n「フーリエ変換をホワイトボードで解説して」\n「ボードゲーム『アバロン』の遊び方」",
     "requirementRequired": "コースの要件を入力してください",
     "fileTooLarge": "ファイルが大きすぎます。50MB以下のファイルを選択してください",
     "courseMaterialCountLimit": "教材ファイルは最大5件までアップロードできます",
@@ -1033,7 +1033,7 @@
     "courseMaterialParseFailed": "教材の解析に失敗しました",
     "streamNotReadable": "生成ストリームを読み取れません",
     "generatingOutlines": "コースアウトラインを作成中",
-    "generatingOutlinesDesc": "学習パスを構成しています...",
+    "generatingOutlinesDesc": "PRTS が学習パスを構築しています…",
     "generatingSlideContent": "ページコンテンツを生成中",
     "generatingSlideContentDesc": "スライド、クイズ、インタラクティブコンテンツを作成しています...",
     "generatingActions": "ティーチングアクションを生成中",
@@ -1048,7 +1048,7 @@
     "sessionNotFoundDesc": "コースの要件を入力して生成プロセスを開始してください。",
     "goBackAndRetry": "戻ってやり直す",
     "classroomReady": "パーソナライズされたAI学習環境が正常に生成されました。",
-    "aiWorking": "AIエージェントが作業中...",
+    "aiWorking": "ロドス端末に接続中、PRTS 演算中…",
     "textTruncated": "ドキュメントのテキストが長いため、最初の{{n}}文字を使用して生成します",
     "imageTruncated": "{{total}}枚の画像が見つかりましたが、上限の{{max}}枚を超えています。超過分はテキスト説明のみ使用されます",
     "agentGeneration": "教室の役割を生成中",
@@ -1188,12 +1188,10 @@
     "selectedAgents": "選択中のエージェント",
     "required": "必須",
     "agentNames": {
-      "default-1": "AI教師",
-      "default-2": "AIアシスタント",
-      "default-3": "ムードメーカー",
-      "default-4": "好奇心旺盛くん",
-      "default-5": "ノートの達人",
-      "default-6": "深く考える人"
+      "default-1": "ミュルジス",
+      "default-2": "アーミヤ",
+      "default-3": "ロスモンティス",
+      "default-4": "アンジェリーナ"
     },
     "agentRoles": {
       "teacher": "教師",
@@ -1201,12 +1199,10 @@
       "student": "生徒"
     },
     "agentDescriptions": {
-      "default-1": "明確で体系的な説明を行うメイン教師",
-      "default-2": "学習をサポートし、重要なポイントを明確にします",
-      "default-3": "ユーモアと活気を教室にもたらします",
-      "default-4": "いつも好奇心いっぱいで、理由や仕組みを聞きたがります",
-      "default-5": "授業のノートを丁寧に記録・整理します",
-      "default-6": "じっくり考え、物事の本質を探求します"
+      "default-1": "ライン生命生態科主任。生き生きとしたたとえで知識をわかりやすく楽しく説明する",
+      "default-2": "ロドス・アイランドの公開リーダー。優しく根気強くみんなの理解を助ける",
+      "default-3": "物静かで集中力の高いフェリーンオペレーター。時折、無邪気だが深い質問を投げかける",
+      "default-4": "明るく好奇心旺盛な伝令の少女。いつも楽しい話題を持ってくる"
     },
     "close": "閉じる",
     "save": "保存",
@@ -1399,7 +1395,8 @@
     "providerElevenLabsTTS": "ElevenLabs TTS",
     "providerMiniMaxTTS": "MiniMax TTS",
     "providerLemonadeTTS": "Lemonade TTS（ローカル）",
-    "providerGenieTTS": "Genie TTS (Local)",
+    "providerMimoTTS": "MiMo TTS (Xiaomi Voice Clone)",
+    "providerStepfunTTS": "StepFun TTS (Voice Clone)",
     "providerBrowserNativeTTS": "ブラウザネイティブTTS",
     "voxcpmBackend": "バックエンド",
     "voxcpmBaseUrlPending": "Base URL を入力するとリクエスト URL が生成されます",
@@ -1867,7 +1864,7 @@
       "download": "ダウンロード",
       "detailFailed": "スキル詳細を読み込めませんでした",
       "contentLabel": "内容",
-      "builtinDetailNote": "このスキルは OpenMAIC に同梱されています。他のエージェントワークスペースにインポートするにはダウンロードしてください。",
+      "builtinDetailNote": "このスキルは OMAIC-R に同梱されています。他のエージェントワークスペースにインポートするにはダウンロードしてください。",
       "upload": "アップロード",
       "uploading": "アップロード中…",
       "uploadFailed": "スキルをアップロードできませんでした。ファイルを確認して再試行してください。",
@@ -1979,7 +1976,7 @@
   },
   "profile": {
     "title": "プロフィール",
-    "defaultNickname": "学習者",
+    "defaultNickname": "ドクター",
     "chooseAvatar": "アバターを選択",
     "uploadAvatar": "アップロード",
     "bioPlaceholder": "自己紹介を入力してください。AI教師があなたに合わせた授業を行います...",

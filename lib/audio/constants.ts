@@ -1068,23 +1068,42 @@ export const TTS_PROVIDERS: Record<BuiltInTTSProviderId, TTSProviderConfig> = {
     speedRange: { min: 0.25, max: 4.0, default: 1.0 },
   },
 
-  'genie-tts': {
-    id: 'genie-tts',
-    name: 'Genie TTS',
-    requiresApiKey: false,
-    defaultBaseUrl: 'http://127.0.0.1:8001',
-    // Voice cloning via reference audio. The voice ids below MUST stay in sync
-    // with tools/genie-tts/voices.json, which maps each id to its reference
-    // audio file + transcript read by the genie server process.
-    models: [],
-    defaultModelId: '',
+  'mimo-tts': {
+    id: 'mimo-tts',
+    name: 'MiMo TTS',
+    requiresApiKey: true,
+    defaultBaseUrl: 'https://api.xiaomimimo.com/v1',
+    // Zero-shot clone of classroom refs in tools/classroom-voices/. Each request
+    // re-sends the wav; there is no persistent vendor voice_id.
+    models: [{ id: 'mimo-v2.5-tts-voiceclone', name: 'MiMo V2.5 Voice Clone' }],
+    defaultModelId: 'mimo-v2.5-tts-voiceclone',
     voices: [
       { id: 'amiya', name: '阿米娅', language: 'zh-CN', gender: 'female' },
       { id: 'rosmontis', name: '迷迭香', language: 'zh-CN', gender: 'female' },
       { id: 'angelina', name: '安洁莉娜', language: 'zh-CN', gender: 'female' },
-      { id: 'muelsyse', name: '缪尔赛斯', language: 'zh-CN', gender: 'female' },
+      { id: 'muelsyse', name: '缪尔赛思', language: 'zh-CN', gender: 'female' },
     ],
     supportedFormats: ['wav'],
+  },
+
+  'stepfun-tts': {
+    id: 'stepfun-tts',
+    name: 'StepFun TTS',
+    requiresApiKey: true,
+    defaultBaseUrl: 'https://api.stepfun.com/step_plan/v1',
+    icon: '/logos/stepfun.svg',
+    // Persistent clone of classroom refs (5–10s official enrollment, not 3s
+    // zero-shot). Synthesis uses the registered voice-tone- id only.
+    models: [{ id: 'stepaudio-2.5-tts', name: 'StepAudio 2.5 TTS' }],
+    defaultModelId: 'stepaudio-2.5-tts',
+    voices: [
+      { id: 'amiya', name: '阿米娅', language: 'zh-CN', gender: 'female' },
+      { id: 'rosmontis', name: '迷迭香', language: 'zh-CN', gender: 'female' },
+      { id: 'angelina', name: '安洁莉娜', language: 'zh-CN', gender: 'female' },
+      { id: 'muelsyse', name: '缪尔赛思', language: 'zh-CN', gender: 'female' },
+    ],
+    supportedFormats: ['wav', 'mp3'],
+    speedRange: { min: 0.5, max: 2.0, default: 1.0 },
   },
 };
 
@@ -1362,7 +1381,8 @@ export const DEFAULT_TTS_VOICES: Record<BuiltInTTSProviderId, string> = {
   'elevenlabs-tts': 'EXAVITQu4vr4xnSDxMaL',
   'minimax-tts': 'female-yujie',
   'lemonade-tts': 'af_heart',
-  'genie-tts': 'amiya',
+  'mimo-tts': 'amiya',
+  'stepfun-tts': 'amiya',
   'browser-native-tts': 'default',
 };
 
@@ -1376,7 +1396,8 @@ export const DEFAULT_TTS_MODELS: Record<BuiltInTTSProviderId, string> = {
   'elevenlabs-tts': 'eleven_multilingual_v2',
   'minimax-tts': 'speech-2.8-hd',
   'lemonade-tts': 'kokoro-v1',
-  'genie-tts': '',
+  'mimo-tts': 'mimo-v2.5-tts-voiceclone',
+  'stepfun-tts': 'stepaudio-2.5-tts',
   'browser-native-tts': '',
 };
 

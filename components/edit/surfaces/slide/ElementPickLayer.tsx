@@ -454,7 +454,7 @@ export function ElementPickLayer() {
         {/* hovered element — the one ring on the canvas */}
         {hover && hover.box.width > 0 && (
           <div
-            className="pointer-events-none absolute rounded-md bg-violet-500/[0.06] ring-2 ring-violet-500"
+            className="pointer-events-none absolute rounded-md bg-teal-500/[0.06] ring-2 ring-teal-500"
             style={{
               left: hover.box.left - 2,
               top: hover.box.top - 2,
@@ -465,8 +465,8 @@ export function ElementPickLayer() {
         )}
 
         {/* instruction banner */}
-        <div className="pointer-events-none absolute left-1/2 top-3 -translate-x-1/2 rounded-full border border-violet-300/60 bg-popover/95 px-3.5 py-1.5 text-[12px] font-medium text-foreground shadow-lg shadow-black/10 backdrop-blur">
-          <span className="text-violet-600 dark:text-violet-400">{banner.lead}</span> ·{' '}
+        <div className="pointer-events-none absolute left-1/2 top-3 -translate-x-1/2 rounded-full border border-teal-300/60 bg-popover/95 px-3.5 py-1.5 text-[12px] font-medium text-foreground shadow-lg shadow-black/10 backdrop-blur">
+          <span className="text-teal-600 dark:text-teal-400">{banner.lead}</span> ·{' '}
           {banner.hint}
         </div>
 
@@ -525,7 +525,7 @@ export function ElementPickLayer() {
                       disabled={isRefMode && atCap && ordinal === 0}
                       className={`flex w-full items-center gap-2 rounded-lg px-2 py-1.5 text-left text-[12px] transition-colors hover:bg-muted disabled:opacity-40 disabled:hover:bg-transparent ${
                         marked
-                          ? 'bg-violet-50 ring-1 ring-violet-200 dark:bg-violet-500/10 dark:ring-violet-500/30'
+                          ? 'bg-teal-50 ring-1 ring-teal-200 dark:bg-teal-500/10 dark:ring-teal-500/30'
                           : ''
                       }`}
                     >
@@ -533,11 +533,11 @@ export function ElementPickLayer() {
                         {elementRefLabel(el, t)}
                       </span>
                       {ordinal > 0 ? (
-                        <span className="grid size-4 shrink-0 place-items-center rounded-full bg-violet-500 text-[9px] font-semibold tabular-nums text-white">
+                        <span className="grid size-4 shrink-0 place-items-center rounded-full bg-teal-500 text-[9px] font-semibold tabular-nums text-white">
                           {ordinal}
                         </span>
                       ) : marked ? (
-                        <Check className="size-3 shrink-0 text-violet-500" />
+                        <Check className="size-3 shrink-0 text-teal-500" />
                       ) : (
                         <span className="shrink-0 font-mono text-[9px] text-muted-foreground/45">
                           {el.id.slice(0, 6)}

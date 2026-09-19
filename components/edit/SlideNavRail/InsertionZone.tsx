@@ -48,9 +48,9 @@ export function InsertionZone({ label, slideLabel, quizLabel, onInsert }: Insert
                 'inline-flex h-5 w-5 items-center justify-center rounded-full',
                 // Solid background + ring + shadow gives it real visual
                 // elevation against the neighbouring violet ring zones.
-                'bg-white text-violet-600 ring-1 ring-violet-200',
-                'dark:bg-zinc-900 dark:text-violet-300 dark:ring-violet-400/40',
-                'shadow-md shadow-violet-500/15 dark:shadow-violet-500/20',
+                'bg-white text-teal-600 ring-1 ring-teal-200',
+                'dark:bg-zinc-900 dark:text-teal-300 dark:ring-teal-400/40',
+                'shadow-md shadow-teal-500/15 dark:shadow-teal-500/20',
                 // Popup motion: start tiny + transparent, end full size with a
                 // small overshoot. The custom cubic-bezier is a classic
                 // "back-ease-out" giving it a quick, springy reveal.
@@ -104,13 +104,13 @@ function SceneTypeChoice({
         data-testid={`scene-type-${type}`}
         className={cn(
           'flex w-full items-center gap-2 rounded-md px-2.5 py-2 text-left text-sm',
-          'text-zinc-700 outline-none transition-colors hover:bg-violet-50 hover:text-violet-700',
-          'focus-visible:bg-violet-50 focus-visible:text-violet-700',
-          'dark:text-zinc-200 dark:hover:bg-violet-500/10 dark:hover:text-violet-300',
-          'dark:focus-visible:bg-violet-500/10 dark:focus-visible:text-violet-300',
+          'text-zinc-700 outline-none transition-colors hover:bg-teal-50 hover:text-teal-700',
+          'focus-visible:bg-teal-50 focus-visible:text-teal-700',
+          'dark:text-zinc-200 dark:hover:bg-teal-500/10 dark:hover:text-teal-300',
+          'dark:focus-visible:bg-teal-500/10 dark:focus-visible:text-teal-300',
         )}
       >
-        <Icon className="h-4 w-4 text-violet-500" strokeWidth={1.8} aria-hidden="true" />
+        <Icon className="h-4 w-4 text-teal-500" strokeWidth={1.8} aria-hidden="true" />
         <span>{label}</span>
       </button>
     </PopoverClose>

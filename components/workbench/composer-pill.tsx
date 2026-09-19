@@ -34,7 +34,7 @@ export type ComposerPillTone = 'neutral' | 'accent' | 'ref' | 'pending' | 'dange
 const TONE: Record<ComposerPillTone, string> = {
   neutral: 'border-border bg-muted/50 text-foreground/85',
   accent: 'border-primary/30 bg-primary/[0.08] text-primary',
-  ref: 'border-violet-400/45 bg-violet-500/[0.08] text-violet-700 dark:border-violet-400/40 dark:text-violet-300',
+  ref: 'border-teal-400/45 bg-teal-500/[0.08] text-teal-700 dark:border-teal-400/40 dark:text-teal-300',
   pending: 'border-border/70 bg-transparent text-muted-foreground',
   danger: 'border-destructive/40 bg-destructive/10 text-destructive',
 };
@@ -42,7 +42,7 @@ const TONE: Record<ComposerPillTone, string> = {
 const REMOVE_TONE: Record<ComposerPillTone, string> = {
   neutral: 'hover:bg-foreground/10',
   accent: 'hover:bg-primary/15',
-  ref: 'hover:bg-violet-500/15',
+  ref: 'hover:bg-teal-500/15',
   pending: 'hover:bg-foreground/10',
   danger: 'hover:bg-destructive/15',
 };
@@ -51,7 +51,7 @@ const REMOVE_TONE: Record<ComposerPillTone, string> = {
 const ORDINAL_TONE: Record<ComposerPillTone, string> = {
   neutral: 'bg-foreground/10',
   accent: 'bg-primary/15',
-  ref: 'bg-violet-500/18',
+  ref: 'bg-teal-500/18',
   pending: 'bg-foreground/10',
   danger: 'bg-destructive/15',
 };

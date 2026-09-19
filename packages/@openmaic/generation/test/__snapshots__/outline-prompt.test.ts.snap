@@ -613,6 +613,7 @@ Use image generation only for slide scenes that need a static visual and have no
 - Each image request specifies: \`prompt\` (description for the generation model), \`elementId\` (unique placeholder), and optionally \`aspectRatio\` (default "16:9") and \`style\`
 - **Image IDs**: use \`"gen_img_1"\`, \`"gen_img_2"\`, etc. IDs are globally unique across the entire course, not reset per scene
 - The prompt should describe the desired image clearly and specifically
+- **Historical people**: When the image depicts a specific historical or scientific figure, name them and state sex, era, and period-accurate clothing. Never leave sex unspecified and never invent a different identity. Example: "Robert Hooke, a 17th-century English man in period clothing, observing cork through a compound microscope in a wood-paneled study"
 - **Language in images**: If the image contains text, labels, or annotations, the prompt must explicitly specify that all text in the image should be in the course language (for example, "all labels in Chinese" for zh-CN courses, "all labels in English" for en-US courses). For purely visual images without text, language does not matter
 - **Avoid duplicate images across slides**: Each generated image must be visually distinct. Do not request near-identical images for different slides. If multiple slides cover the same topic, vary the visual angle, scope, or style
 - **Cross-scene reuse**: To reuse a generated image in a different scene, reference the same \`elementId\` in the later scene's content without adding a new \`mediaGenerations\` entry. Only the scene that first defines the \`elementId\` in its \`mediaGenerations\` should include the generation request
@@ -664,14 +665,19 @@ Video example:
 
 ### Content Safety Guidelines for Generation Prompts
 
-To avoid blocked requests from the generation model:
+Keep prompts academic so providers are less likely to refuse them.
 
-- Do not describe specific human facial features, body details, or physical appearance; use abstract or iconographic representations such as "a silhouette of a person"
 - Do not include violence, weapons, blood, or gore
-- Do not reference politically sensitive content: national flags, military imagery, or real political figures
-- Do not depict real public figures or celebrities by name or likeness
-- Prefer abstract, diagrammatic, infographic, or icon-based styles for educational illustrations
+- Do not include nudity, sexualized body details, or erotic posing
+- Do not depict living politicians, current celebrities, national flags, or military imagery
 - Keep all prompts academic and education-oriented in tone
+
+Historical and scientific figures may be shown when they are the subject of the lesson:
+
+- Name the person and specify sex, era, and period-accurate appearance (clothing, setting, tools)
+- Do not invent a different sex, age range, or ethnicity for a known person
+- Prefer a textbook-illustration or documentary style over fashion or glamour photography
+- If the person is not the teaching point, prefer a diagram, infographic, or close-up of the instrument or specimen
 
 
 ### Interactive Scene Guidelines
@@ -1169,6 +1175,7 @@ Use image generation only for slide scenes that need a static visual and have no
 - Each image request specifies: \`prompt\` (description for the generation model), \`elementId\` (unique placeholder), and optionally \`aspectRatio\` (default "16:9") and \`style\`
 - **Image IDs**: use \`"gen_img_1"\`, \`"gen_img_2"\`, etc. IDs are globally unique across the entire course, not reset per scene
 - The prompt should describe the desired image clearly and specifically
+- **Historical people**: When the image depicts a specific historical or scientific figure, name them and state sex, era, and period-accurate clothing. Never leave sex unspecified and never invent a different identity. Example: "Robert Hooke, a 17th-century English man in period clothing, observing cork through a compound microscope in a wood-paneled study"
 - **Language in images**: If the image contains text, labels, or annotations, the prompt must explicitly specify that all text in the image should be in the course language (for example, "all labels in Chinese" for zh-CN courses, "all labels in English" for en-US courses). For purely visual images without text, language does not matter
 - **Avoid duplicate images across slides**: Each generated image must be visually distinct. Do not request near-identical images for different slides. If multiple slides cover the same topic, vary the visual angle, scope, or style
 - **Cross-scene reuse**: To reuse a generated image in a different scene, reference the same \`elementId\` in the later scene's content without adding a new \`mediaGenerations\` entry. Only the scene that first defines the \`elementId\` in its \`mediaGenerations\` should include the generation request
@@ -1193,14 +1200,19 @@ Image example:
 
 ### Content Safety Guidelines for Generation Prompts
 
-To avoid blocked requests from the generation model:
+Keep prompts academic so providers are less likely to refuse them.
 
-- Do not describe specific human facial features, body details, or physical appearance; use abstract or iconographic representations such as "a silhouette of a person"
 - Do not include violence, weapons, blood, or gore
-- Do not reference politically sensitive content: national flags, military imagery, or real political figures
-- Do not depict real public figures or celebrities by name or likeness
-- Prefer abstract, diagrammatic, infographic, or icon-based styles for educational illustrations
+- Do not include nudity, sexualized body details, or erotic posing
+- Do not depict living politicians, current celebrities, national flags, or military imagery
 - Keep all prompts academic and education-oriented in tone
+
+Historical and scientific figures may be shown when they are the subject of the lesson:
+
+- Name the person and specify sex, era, and period-accurate appearance (clothing, setting, tools)
+- Do not invent a different sex, age range, or ethnicity for a known person
+- Prefer a textbook-illustration or documentary style over fashion or glamour photography
+- If the person is not the teaching point, prefer a diagram, infographic, or close-up of the instrument or specimen
 
 
 ### Interactive Scene Guidelines

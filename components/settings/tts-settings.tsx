@@ -1546,13 +1546,13 @@ function VoiceProfileRow({
 }) {
   const iconClassName =
     kind === 'auto'
-      ? 'bg-violet-50 text-violet-700 dark:bg-violet-950/40 dark:text-violet-300'
+      ? 'bg-teal-50 text-teal-700 dark:bg-teal-950/40 dark:text-teal-300'
       : kind === 'clone'
         ? 'bg-sky-50 text-sky-700 dark:bg-sky-950/40 dark:text-sky-300'
         : 'bg-muted text-muted-foreground';
   const badgeClassName =
     badgeTone === 'default'
-      ? 'border-violet-200 bg-violet-50 text-violet-700 dark:border-violet-800/70 dark:bg-violet-950/40 dark:text-violet-300'
+      ? 'border-teal-200 bg-teal-50 text-teal-700 dark:border-teal-800/70 dark:bg-teal-950/40 dark:text-teal-300'
       : badgeTone === 'warning'
         ? 'border-amber-200 bg-amber-50 text-amber-700 dark:border-amber-800/70 dark:bg-amber-950/40 dark:text-amber-300'
         : 'border-border/70 bg-background text-muted-foreground';

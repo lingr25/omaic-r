@@ -1,0 +1,200 @@
+{
+  "book": "陈阅增《普通生物学》第5版",
+  "sourceDir": "books/陈阅增普通生物学",
+  "sections": [
+    { "id": "1.1", "chapter": 1, "chapterTitle": "绪论：生物界与生物学", "title": "生物的特征" },
+    { "id": "1.2", "chapter": 1, "chapterTitle": "绪论：生物界与生物学", "title": "生物界是一个多层次的组构系统" },
+    { "id": "1.3", "chapter": 1, "chapterTitle": "绪论：生物界与生物学", "title": "生物界的多级分类系统" },
+    { "id": "1.4", "chapter": 1, "chapterTitle": "绪论：生物界与生物学", "title": "生物和它的环境形成相互联结的网络" },
+    { "id": "1.5", "chapter": 1, "chapterTitle": "绪论：生物界与生物学", "title": "在生物界巨大的多样性中存在着高度的统一性" },
+    { "id": "1.6", "chapter": 1, "chapterTitle": "绪论：生物界与生物学", "title": "研究生物学的方法" },
+    { "id": "1.7", "chapter": 1, "chapterTitle": "绪论：生物界与生物学", "title": "生物学与现代社会生活的关系" },
+
+    { "id": "2.1", "chapter": 2, "chapterTitle": "生命的化学基础", "title": "原子和分子" },
+    { "id": "2.2", "chapter": 2, "chapterTitle": "生命的化学基础", "title": "生物大分子" },
+    { "id": "2.3", "chapter": 2, "chapterTitle": "生命的化学基础", "title": "糖类" },
+    { "id": "2.4", "chapter": 2, "chapterTitle": "生命的化学基础", "title": "脂质" },
+    { "id": "2.5", "chapter": 2, "chapterTitle": "生命的化学基础", "title": "蛋白质" },
+    { "id": "2.6", "chapter": 2, "chapterTitle": "生命的化学基础", "title": "核酸" },
+
+    { "id": "3.1", "chapter": 3, "chapterTitle": "细胞结构与物质交换和信息传递", "title": "细胞概述" },
+    { "id": "3.2", "chapter": 3, "chapterTitle": "细胞结构与物质交换和信息传递", "title": "真核细胞的结构" },
+    { "id": "3.3", "chapter": 3, "chapterTitle": "细胞结构与物质交换和信息传递", "title": "生物膜及其流动镶嵌模型" },
+    { "id": "3.4", "chapter": 3, "chapterTitle": "细胞结构与物质交换和信息传递", "title": "细胞外基质和细胞连接" },
+    { "id": "3.5", "chapter": 3, "chapterTitle": "细胞结构与物质交换和信息传递", "title": "物质的跨膜转运" },
+    { "id": "3.6", "chapter": 3, "chapterTitle": "细胞结构与物质交换和信息传递", "title": "细胞通信" },
+
+    { "id": "4.1", "chapter": 4, "chapterTitle": "细胞代谢", "title": "能量与细胞" },
+    { "id": "4.2", "chapter": 4, "chapterTitle": "细胞代谢", "title": "酶" },
+    { "id": "4.3", "chapter": 4, "chapterTitle": "细胞代谢", "title": "细胞呼吸" },
+    { "id": "4.4", "chapter": 4, "chapterTitle": "细胞代谢", "title": "光合作用" },
+
+    { "id": "5.1", "chapter": 5, "chapterTitle": "细胞分裂和细胞分化", "title": "细胞周期与有丝分裂" },
+    { "id": "5.2", "chapter": 5, "chapterTitle": "细胞分裂和细胞分化", "title": "减数分裂" },
+    { "id": "5.3", "chapter": 5, "chapterTitle": "细胞分裂和细胞分化", "title": "发育与细胞分化" },
+
+    { "id": "6.1", "chapter": 6, "chapterTitle": "性状传递的基本规律", "title": "性状的孟德尔式遗传" },
+    { "id": "6.2", "chapter": 6, "chapterTitle": "性状传递的基本规律", "title": "遗传的染色体学说与遗传第三定律" },
+
+    { "id": "7.1", "chapter": 7, "chapterTitle": "基因与基因组", "title": "DNA是遗传物质" },
+    { "id": "7.2", "chapter": 7, "chapterTitle": "基因与基因组", "title": "DNA复制" },
+    { "id": "7.3", "chapter": 7, "chapterTitle": "基因与基因组", "title": "基因的概念与演变" },
+    { "id": "7.4", "chapter": 7, "chapterTitle": "基因与基因组", "title": "基因组" },
+    { "id": "7.5", "chapter": 7, "chapterTitle": "基因与基因组", "title": "非孟德尔式遗传" },
+
+    { "id": "8.1", "chapter": 8, "chapterTitle": "遗传物质的突变", "title": "基因突变" },
+    { "id": "8.2", "chapter": 8, "chapterTitle": "遗传物质的突变", "title": "染色体畸变" },
+
+    { "id": "9.1", "chapter": 9, "chapterTitle": "性状的决定与形成——从基因型到表型", "title": "遗传信息解读的中心法则——从基因到蛋白质" },
+    { "id": "9.2", "chapter": 9, "chapterTitle": "性状的决定与形成——从基因型到表型", "title": "基因表达的调控" },
+
+    { "id": "10.1", "chapter": 10, "chapterTitle": "DNA技术及生物信息学分析简介", "title": "DNA技术" },
+    { "id": "10.2", "chapter": 10, "chapterTitle": "DNA技术及生物信息学分析简介", "title": "生物信息学分析" },
+    { "id": "10.3", "chapter": 10, "chapterTitle": "DNA技术及生物信息学分析简介", "title": "基因克隆技术" },
+    { "id": "10.4", "chapter": 10, "chapterTitle": "DNA技术及生物信息学分析简介", "title": "遗传工程的应用" },
+    { "id": "10.5", "chapter": 10, "chapterTitle": "DNA技术及生物信息学分析简介", "title": "遗传工程的风险和伦理学问题" },
+
+    { "id": "11.1", "chapter": 11, "chapterTitle": "演化理论与微演化", "title": "演化理论的创立：历史和证据" },
+    { "id": "11.2", "chapter": 11, "chapterTitle": "演化理论与微演化", "title": "自然选择和人工选择" },
+    { "id": "11.3", "chapter": 11, "chapterTitle": "演化理论与微演化", "title": "微演化与中性理论" },
+
+    { "id": "12.1", "chapter": 12, "chapterTitle": "物种形成和灭绝", "title": "物种概念" },
+    { "id": "12.2", "chapter": 12, "chapterTitle": "物种形成和灭绝", "title": "物种形成的方式" },
+    { "id": "12.3", "chapter": 12, "chapterTitle": "物种形成和灭绝", "title": "物种的灭绝" },
+
+    { "id": "13.1", "chapter": 13, "chapterTitle": "生命起源与宏演化", "title": "生命的起源" },
+    { "id": "13.2", "chapter": 13, "chapterTitle": "生命起源与宏演化", "title": "研究宏演化依据的科学材料" },
+    { "id": "13.3", "chapter": 13, "chapterTitle": "生命起源与宏演化", "title": "生物的宏演化" },
+    { "id": "13.4", "chapter": 13, "chapterTitle": "生命起源与宏演化", "title": "演化与发育" },
+
+    { "id": "14.1", "chapter": 14, "chapterTitle": "重构生命之树", "title": "演化理论赋予分类学新的目标" },
+    { "id": "14.2", "chapter": 14, "chapterTitle": "重构生命之树", "title": "系统发生树的构建" },
+    { "id": "14.3", "chapter": 14, "chapterTitle": "重构生命之树", "title": "单系类群、并系类群和多系类群" },
+    { "id": "14.4", "chapter": 14, "chapterTitle": "重构生命之树", "title": "重建系统发生面临的挑战" },
+
+    { "id": "15.1", "chapter": 15, "chapterTitle": "原核生物多样性", "title": "细菌的细胞结构、功能和多样性" },
+    { "id": "15.2", "chapter": 15, "chapterTitle": "原核生物多样性", "title": "古菌的细胞结构、功能和多样性" },
+    { "id": "15.3", "chapter": 15, "chapterTitle": "原核生物多样性", "title": "生命的三域学说" },
+    { "id": "15.4", "chapter": 15, "chapterTitle": "原核生物多样性", "title": "原核生物的重要性" },
+
+    { "id": "16.1", "chapter": 16, "chapterTitle": "病毒", "title": "病毒的基本特征" },
+    { "id": "16.2", "chapter": 16, "chapterTitle": "病毒", "title": "病毒的复制增殖" },
+    { "id": "16.3", "chapter": 16, "chapterTitle": "病毒", "title": "病原病毒和朊粒" },
+    { "id": "16.4", "chapter": 16, "chapterTitle": "病毒", "title": "病毒起源" },
+    { "id": "16.5", "chapter": 16, "chapterTitle": "病毒", "title": "病毒生态学" },
+
+    { "id": "17.1", "chapter": 17, "chapterTitle": "真核生物起源与原生生物多样性", "title": "真核细胞起源" },
+    { "id": "17.2", "chapter": 17, "chapterTitle": "真核生物起源与原生生物多样性", "title": "真核生物系统发生与分类" },
+    { "id": "17.3", "chapter": 17, "chapterTitle": "真核生物起源与原生生物多样性", "title": "原生生物的特征" },
+    { "id": "17.4", "chapter": 17, "chapterTitle": "真核生物起源与原生生物多样性", "title": "原生生物的多样性" },
+    { "id": "17.5", "chapter": 17, "chapterTitle": "真核生物起源与原生生物多样性", "title": "多细胞真核生物的起源及演化" },
+
+    { "id": "18.1", "chapter": 18, "chapterTitle": "绿色植物多样性", "title": "原质体藻类——原始绿色植物" },
+    { "id": "18.2", "chapter": 18, "chapterTitle": "绿色植物多样性", "title": "陆地的征服者——有胚植物" },
+    { "id": "18.3", "chapter": 18, "chapterTitle": "绿色植物多样性", "title": "有胚植物多样性的演化趋势" },
+    { "id": "18.4", "chapter": 18, "chapterTitle": "绿色植物多样性", "title": "种子植物的系统发生" },
+
+    { "id": "19.1", "chapter": 19, "chapterTitle": "真菌多样性", "title": "真菌的主要特征" },
+    { "id": "19.2", "chapter": 19, "chapterTitle": "真菌多样性", "title": "真菌的起源与系统发生" },
+    { "id": "19.3", "chapter": 19, "chapterTitle": "真菌多样性", "title": "真菌的重要性" },
+
+    { "id": "20.1", "chapter": 20, "chapterTitle": "动物多样性", "title": "动物早期胚胎发育的一般模式" },
+    { "id": "20.2", "chapter": 20, "chapterTitle": "动物多样性", "title": "动物种系的发生" },
+    { "id": "20.3", "chapter": 20, "chapterTitle": "动物多样性", "title": "无脊椎动物多样性的演化" },
+    { "id": "20.4", "chapter": 20, "chapterTitle": "动物多样性", "title": "脊索动物多样性的演化" },
+
+    { "id": "21.1", "chapter": 21, "chapterTitle": "人类的演化", "title": "人类与灵长目" },
+    { "id": "21.2", "chapter": 21, "chapterTitle": "人类的演化", "title": "人类的演化过程" },
+
+    { "id": "22.1", "chapter": 22, "chapterTitle": "植物的结构和生殖", "title": "植物的结构和功能" },
+    { "id": "22.2", "chapter": 22, "chapterTitle": "植物的结构和生殖", "title": "植物的生长" },
+    { "id": "22.3", "chapter": 22, "chapterTitle": "植物的结构和生殖", "title": "植物的生殖和发育" },
+
+    { "id": "23.1", "chapter": 23, "chapterTitle": "植物营养", "title": "植物对养分的吸收" },
+    { "id": "23.2", "chapter": 23, "chapterTitle": "植物营养", "title": "植物对养分的运输" },
+    { "id": "23.3", "chapter": 23, "chapterTitle": "植物营养", "title": "植物营养与农业" },
+
+    { "id": "24.1", "chapter": 24, "chapterTitle": "植物的调控系统", "title": "植物激素" },
+    { "id": "24.2", "chapter": 24, "chapterTitle": "植物的调控系统", "title": "植物对光的响应和生物节律" },
+    { "id": "24.3", "chapter": 24, "chapterTitle": "植物的调控系统", "title": "植物对物理刺激的响应" },
+    { "id": "24.4", "chapter": 24, "chapterTitle": "植物的调控系统", "title": "植物对食植动物和病菌的防御" },
+
+    { "id": "25.1", "chapter": 25, "chapterTitle": "脊椎动物的结构与功能", "title": "动物由多层次的结构组成" },
+    { "id": "25.2", "chapter": 25, "chapterTitle": "脊椎动物的结构与功能", "title": "动物的内环境稳态" },
+    { "id": "25.3", "chapter": 25, "chapterTitle": "脊椎动物的结构与功能", "title": "动物的体温调节" },
+
+    { "id": "26.1", "chapter": 26, "chapterTitle": "营养与消化", "title": "动物的营养" },
+    { "id": "26.2", "chapter": 26, "chapterTitle": "营养与消化", "title": "动物处理食物的过程" },
+    { "id": "26.3", "chapter": 26, "chapterTitle": "营养与消化", "title": "哺乳动物的消化系统及其功能" },
+    { "id": "26.4", "chapter": 26, "chapterTitle": "营养与消化", "title": "脊椎动物消化系统的结构与功能对食物的适应" },
+
+    { "id": "27.1", "chapter": 27, "chapterTitle": "血液与循环", "title": "动物循环系统的结构" },
+    { "id": "27.2", "chapter": 27, "chapterTitle": "血液与循环", "title": "哺乳动物的心血管系统" },
+    { "id": "27.3", "chapter": 27, "chapterTitle": "血液与循环", "title": "血液的结构和功能" },
+
+    { "id": "28.1", "chapter": 28, "chapterTitle": "气体交换与呼吸", "title": "呼吸系统的结构与功能" },
+    { "id": "28.2", "chapter": 28, "chapterTitle": "气体交换与呼吸", "title": "哺乳动物的呼吸和调节" },
+
+    { "id": "29.1", "chapter": 29, "chapterTitle": "渗透调节与排泄", "title": "渗透调节" },
+    { "id": "29.2", "chapter": 29, "chapterTitle": "渗透调节与排泄", "title": "含氮废物的形式与演化适应" },
+    { "id": "29.3", "chapter": 29, "chapterTitle": "渗透调节与排泄", "title": "排泄系统的结构与功能" },
+
+    { "id": "30.1", "chapter": 30, "chapterTitle": "免疫系统与免疫功能", "title": "对抗病原体的固有免疫" },
+    { "id": "30.2", "chapter": 30, "chapterTitle": "免疫系统与免疫功能", "title": "脊椎动物的适应性免疫" },
+    { "id": "30.3", "chapter": 30, "chapterTitle": "免疫系统与免疫功能", "title": "抗体介导和细胞介导的免疫应答" },
+    { "id": "30.4", "chapter": 30, "chapterTitle": "免疫系统与免疫功能", "title": "免疫系统功能异常导致的疾病" },
+
+    { "id": "31.1", "chapter": 31, "chapterTitle": "激素与内分泌系统", "title": "激素及其作用机制" },
+    { "id": "31.2", "chapter": 31, "chapterTitle": "激素与内分泌系统", "title": "脊椎动物的内分泌系统" },
+    { "id": "31.3", "chapter": 31, "chapterTitle": "激素与内分泌系统", "title": "激素与内环境稳态" },
+
+    { "id": "32.1", "chapter": 32, "chapterTitle": "生殖与胚胎发育", "title": "有性生殖与无性生殖" },
+    { "id": "32.2", "chapter": 32, "chapterTitle": "生殖与胚胎发育", "title": "人类的生殖" },
+    { "id": "32.3", "chapter": 32, "chapterTitle": "生殖与胚胎发育", "title": "人类的胚胎发育" },
+
+    { "id": "33.1", "chapter": 33, "chapterTitle": "神经系统与神经调节", "title": "神经元的结构与功能" },
+    { "id": "33.2", "chapter": 33, "chapterTitle": "神经系统与神经调节", "title": "神经系统的结构" },
+    { "id": "33.3", "chapter": 33, "chapterTitle": "神经系统与神经调节", "title": "脊椎动物神经系统的功能" },
+    { "id": "33.4", "chapter": 33, "chapterTitle": "神经系统与神经调节", "title": "人脑的结构和功能" },
+
+    { "id": "34.1", "chapter": 34, "chapterTitle": "感觉器官与感觉", "title": "感觉的一般特性" },
+    { "id": "34.2", "chapter": 34, "chapterTitle": "感觉器官与感觉", "title": "视觉" },
+    { "id": "34.3", "chapter": 34, "chapterTitle": "感觉器官与感觉", "title": "听觉与平衡感受" },
+    { "id": "34.4", "chapter": 34, "chapterTitle": "感觉器官与感觉", "title": "化学感觉：味觉与嗅觉" },
+    { "id": "34.5", "chapter": 34, "chapterTitle": "感觉器官与感觉", "title": "皮肤感觉" },
+
+    { "id": "35.1", "chapter": 35, "chapterTitle": "动物的运动", "title": "动物的骨骼" },
+    { "id": "35.2", "chapter": 35, "chapterTitle": "动物的运动", "title": "人类的骨骼" },
+    { "id": "35.3", "chapter": 35, "chapterTitle": "动物的运动", "title": "肌肉与肌肉收缩" },
+    { "id": "35.4", "chapter": 35, "chapterTitle": "动物的运动", "title": "骨骼与肌肉在运动中的相互作用" },
+
+    { "id": "36.1", "chapter": 36, "chapterTitle": "动物的行为", "title": "本能行为和学习行为" },
+    { "id": "36.2", "chapter": 36, "chapterTitle": "动物的行为", "title": "动物行为的生理和遗传基础" },
+    { "id": "36.3", "chapter": 36, "chapterTitle": "动物的行为", "title": "动物的防御行为、生殖行为和行为节律" },
+    { "id": "36.4", "chapter": 36, "chapterTitle": "动物的行为", "title": "动物的社群生活与通信" },
+    { "id": "36.5", "chapter": 36, "chapterTitle": "动物的行为", "title": "利他行为" },
+
+    { "id": "37.1", "chapter": 37, "chapterTitle": "生物与环境", "title": "环境与生态因子" },
+    { "id": "37.2", "chapter": 37, "chapterTitle": "生物与环境", "title": "生物与非生物环境之间的关系" },
+    { "id": "37.3", "chapter": 37, "chapterTitle": "生物与环境", "title": "生物与生物之间的相互关系" },
+
+    { "id": "38.1", "chapter": 38, "chapterTitle": "种群的结构、动态与数量调节", "title": "种群的概念与特征" },
+    { "id": "38.2", "chapter": 38, "chapterTitle": "种群的结构、动态与数量调节", "title": "种群数量动态" },
+    { "id": "38.3", "chapter": 38, "chapterTitle": "种群的结构、动态与数量调节", "title": "种群数量调节" },
+
+    { "id": "39.1", "chapter": 39, "chapterTitle": "群落的结构、类型及演替", "title": "生物群落的结构和主要类型" },
+    { "id": "39.2", "chapter": 39, "chapterTitle": "群落的结构、类型及演替", "title": "物种在群落中的生态位" },
+    { "id": "39.3", "chapter": 39, "chapterTitle": "群落的结构、类型及演替", "title": "群落的演替及其实例" },
+
+    { "id": "40.1", "chapter": 40, "chapterTitle": "生态系统及其功能", "title": "生态系统的基本结构" },
+    { "id": "40.2", "chapter": 40, "chapterTitle": "生态系统及其功能", "title": "生态系统中的生物生产量" },
+    { "id": "40.3", "chapter": 40, "chapterTitle": "生态系统及其功能", "title": "生态系统中的能量流动和物质循环" },
+    { "id": "40.4", "chapter": 40, "chapterTitle": "生态系统及其功能", "title": "人类活动对全球生物圈的影响" },
+    { "id": "40.5", "chapter": 40, "chapterTitle": "生态系统及其功能", "title": "生态系统的恢复" },
+
+    { "id": "41.1", "chapter": 41, "chapterTitle": "生物多样性与保护生物学", "title": "生物多样性的三个层次" },
+    { "id": "41.2", "chapter": 41, "chapterTitle": "生物多样性与保护生物学", "title": "保护生物多样性的意义" },
+    { "id": "41.3", "chapter": 41, "chapterTitle": "生物多样性与保护生物学", "title": "生物多样性下降的原因" },
+    { "id": "41.4", "chapter": 41, "chapterTitle": "生物多样性与保护生物学", "title": "生物多样性保护的策略" }
+  ]
+}

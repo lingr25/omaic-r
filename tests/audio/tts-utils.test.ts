@@ -3,10 +3,14 @@ import { describe, expect, it } from 'vitest';
 import {
   splitLongSpeechText,
   splitLongSpeechActions,
+  mergeConsecutiveSpeechActions,
+  prepareSpeechActionsForTts,
   TTS_MAX_TEXT_LENGTH,
-  ensureGenieSentenceTerminator,
 } from '@/lib/audio/tts-utils';
 import type { Action, SpeechAction } from '@/lib/types/action';
+
+const speech = (id: string, text: string): SpeechAction =>
+  ({ id, type: 'speech', text }) as SpeechAction;
 
 describe('splitLongSpeechText', () => {
   it('returns the trimmed text unchanged when within the limit', () => {
@@ -54,9 +58,6 @@ describe('splitLongSpeechText', () => {
 });
 
 describe('splitLongSpeechActions', () => {
-  const speech = (id: string, text: string): SpeechAction =>
-    ({ id, type: 'speech', text }) as SpeechAction;
-
   it('returns actions untouched for a provider with no length limit', () => {
     const actions: Action[] = [speech('a', 'x'.repeat(5000))];
     expect(splitLongSpeechActions(actions, 'openai-tts')).toBe(actions);
@@ -82,35 +83,55 @@ describe('splitLongSpeechActions', () => {
     expect(out.map((a) => a.text).join('')).toBe(long);
   });
 
-  it('splits genie-tts lecture lines at the tight ~24-char cap', () => {
-    const max = TTS_MAX_TEXT_LENGTH['genie-tts']!;
-    expect(max).toBe(24);
+  it('keeps a typical lecture paragraph as one mimo-tts request', () => {
+    const max = TTS_MAX_TEXT_LENGTH['mimo-tts']!;
+    expect(max).toBe(800);
     const lecture =
       '同学们，我们先来回顾一下上节课的内容。生态系统由生物群落和非生物环境两部分组成，它们之间通过能量流动和物质循环紧密联系在一起。';
-    const out = splitLongSpeechActions([speech('a', lecture)], 'genie-tts') as SpeechAction[];
-    expect(out.length).toBeGreaterThan(1);
-    expect(out.every((a) => a.text.length <= max)).toBe(true);
-    expect(out.map((a) => a.text).join('')).toBe(lecture);
+    const out = splitLongSpeechActions([speech('a', lecture)], 'mimo-tts') as SpeechAction[];
+    expect(out).toHaveLength(1);
+    expect(out[0]!.text).toBe(lecture);
   });
 });
 
-describe('ensureGenieSentenceTerminator', () => {
-  it('leaves a sentence that already ends with a terminator unchanged', () => {
-    expect(ensureGenieSentenceTerminator('今天要重点讨论分解者的作用。')).toBe(
-      '今天要重点讨论分解者的作用。',
-    );
-    expect(ensureGenieSentenceTerminator('真的吗？')).toBe('真的吗？');
+describe('mergeConsecutiveSpeechActions', () => {
+  it('joins adjacent speech lines up to the cap', () => {
+    const out = mergeConsecutiveSpeechActions(
+      [speech('a', '第一句。'), speech('b', '第二句。'), speech('c', '第三句。')],
+      20,
+    ) as SpeechAction[];
+    expect(out).toHaveLength(1);
+    expect(out[0]!.id).toBe('a');
+    expect(out[0]!.text).toBe('第一句。第二句。第三句。');
   });
 
-  it('appends a period when the line has no terminator', () => {
-    expect(ensureGenieSentenceTerminator('今天要重点讨论分解者的作用')).toBe(
-      '今天要重点讨论分解者的作用。',
+  it('stops at a visual action so spotlight timing stays intact', () => {
+    const spotlight = { id: 'sp', type: 'spotlight' } as Action;
+    const out = mergeConsecutiveSpeechActions(
+      [speech('a', '先看这里。'), spotlight, speech('b', '再看那里。')],
+      100,
     );
+    expect(out.map((action) => action.id)).toEqual(['a', 'sp', 'b']);
   });
 
-  it('promotes a trailing clause mark to a period', () => {
-    expect(ensureGenieSentenceTerminator('今天要重点讨论分解者的作用，')).toBe(
-      '今天要重点讨论分解者的作用。',
-    );
+  it('does not merge when the combined text would exceed the cap', () => {
+    const out = mergeConsecutiveSpeechActions(
+      [speech('a', '12345'), speech('b', '67890')],
+      8,
+    ) as SpeechAction[];
+    expect(out).toHaveLength(2);
+  });
+});
+
+describe('prepareSpeechActionsForTts', () => {
+  it('coalesces short mimo-tts lines that other providers keep split', () => {
+    const actions = [speech('a', '第一句。'), speech('b', '第二句。')];
+    const mimo = prepareSpeechActionsForTts(actions, 'mimo-tts') as SpeechAction[];
+    const openai = prepareSpeechActionsForTts(actions, 'openai-tts') as SpeechAction[];
+    expect(mimo).toHaveLength(1);
+    expect(mimo[0]!.text).toBe('第一句。第二句。');
+    expect(openai).toHaveLength(2);
+    const stepfun = prepareSpeechActionsForTts(actions, 'stepfun-tts') as SpeechAction[];
+    expect(stepfun).toHaveLength(2);
   });
 });

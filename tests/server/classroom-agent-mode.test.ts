@@ -60,8 +60,6 @@ describe('#353: generatedAgentConfigs conditional on agentMode', () => {
       'default-2',
       'default-3',
       'default-4',
-      'default-5',
-      'default-6',
     ]);
 
     // Should NOT have generatedAgentConfigs
@@ -108,8 +106,6 @@ describe('#353: generatedAgentConfigs conditional on agentMode', () => {
       'default-2',
       'default-3',
       'default-4',
-      'default-5',
-      'default-6',
     ]);
   });
 });

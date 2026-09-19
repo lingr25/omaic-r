@@ -20,13 +20,11 @@ const recovery: { rehydrate?: () => void | Promise<void> } = {};
 
 /** Predefined avatar options */
 export const AVATAR_OPTIONS = [
-  '/avatars/user.png',
-  '/avatars/teacher-2.png',
-  '/avatars/assist-2.png',
-  '/avatars/clown-2.png',
-  '/avatars/curious-2.png',
-  '/avatars/note-taker-2.png',
-  '/avatars/thinker-2.png',
+  '/avatars/doctor.png',
+  '/avatars/amiya.png',
+  '/avatars/muelsyse.png',
+  '/avatars/rosmontis.png',
+  '/avatars/angelina.png',
 ] as const;
 
 export interface UserProfileState {

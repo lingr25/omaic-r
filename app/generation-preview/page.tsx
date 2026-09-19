@@ -748,52 +748,20 @@ function GenerationPreviewContent() {
         try {
           const allAvatars = [
             {
-              path: '/avatars/teacher.png',
-              desc: 'Male teacher with glasses, holding a book, green background',
+              path: '/avatars/muelsyse.png',
+              desc: 'Muelsyse from Arknights, Rhine Lab ecology director, elf-like woman with light green hair',
             },
             {
-              path: '/avatars/teacher-2.png',
-              desc: 'Female teacher with long dark hair, blue traditional outfit, gentle expression',
+              path: '/avatars/amiya.png',
+              desc: 'Amiya from Arknights, gentle rabbit-eared girl with brown hair, kind leader',
             },
             {
-              path: '/avatars/assist.png',
-              desc: 'Young female assistant with glasses, pink background, friendly smile',
+              path: '/avatars/rosmontis.png',
+              desc: 'Rosmontis from Arknights, quiet silver-haired feline operator, calm and focused',
             },
             {
-              path: '/avatars/assist-2.png',
-              desc: 'Young female in orange top and purple overalls, cheerful and approachable',
-            },
-            {
-              path: '/avatars/clown.png',
-              desc: 'Energetic girl with glasses pointing up, green shirt, lively and fun',
-            },
-            {
-              path: '/avatars/clown-2.png',
-              desc: 'Playful girl with curly hair doing rock gesture, blue shirt, humorous vibe',
-            },
-            {
-              path: '/avatars/curious.png',
-              desc: 'Surprised boy with glasses, hand on cheek, curious expression',
-            },
-            {
-              path: '/avatars/curious-2.png',
-              desc: 'Boy with backpack holding a book and question mark bubble, inquisitive',
-            },
-            {
-              path: '/avatars/note-taker.png',
-              desc: 'Studious boy with glasses, blue shirt, calm and organized',
-            },
-            {
-              path: '/avatars/note-taker-2.png',
-              desc: 'Active boy with yellow backpack waving, blue outfit, enthusiastic learner',
-            },
-            {
-              path: '/avatars/thinker.png',
-              desc: 'Thoughtful girl with hand on chin, purple background, contemplative',
-            },
-            {
-              path: '/avatars/thinker-2.png',
-              desc: 'Girl reading a book intently, long dark hair, intellectual and focused',
+              path: '/avatars/angelina.png',
+              desc: 'Angelina from Arknights, lively fox-eared messenger girl with twin tails, cheerful',
             },
           ];
 
@@ -1311,7 +1279,7 @@ function GenerationPreviewContent() {
           style={{ animationDuration: '4s' }}
         />
         <div
-          className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"
+          className="absolute bottom-0 right-1/4 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl animate-pulse"
           style={{ animationDuration: '6s' }}
         />
       </div>
@@ -1510,7 +1478,7 @@ function GenerationPreviewContent() {
                 {generatedAgents.length > 0 && !showAgentReveal && (
                   <button
                     onClick={() => setShowAgentReveal(true)}
-                    className="ml-2 flex items-center gap-1.5 rounded-full border border-purple-300/30 bg-purple-500/10 px-3 py-1 text-xs font-medium normal-case tracking-normal text-purple-400 transition-colors hover:bg-purple-500/20 hover:text-purple-300"
+                    className="ml-2 flex items-center gap-1.5 rounded-full border border-teal-300/30 bg-teal-500/10 px-3 py-1 text-xs font-medium normal-case tracking-normal text-teal-400 transition-colors hover:bg-teal-500/20 hover:text-teal-300"
                   >
                     <Bot className="size-3" />
                     {t('generation.viewAgents')}

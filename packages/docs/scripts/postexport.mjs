@@ -8,9 +8,10 @@
 import { existsSync } from 'node:fs';
 import { mkdir, writeFile, stat, readdir } from 'node:fs/promises';
 import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { DEFAULT_LANGUAGE, LANGUAGES, DOCS_BASE_PATH } from '../lib/locales.mjs';
 
-const OUT = new URL('../out/', import.meta.url).pathname;
+const OUT = fileURLToPath(new URL('../out/', import.meta.url));
 const INDEX_SLUG = 'getting-started';
 const DEFAULT_LANG = DEFAULT_LANGUAGE;
 const LANGS = LANGUAGES;

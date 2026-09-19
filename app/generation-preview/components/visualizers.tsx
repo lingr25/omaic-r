@@ -390,7 +390,7 @@ function AgentGenerationVisualizer() {
         {[0, 1, 2].map((i) => (
           <motion.div
             key={i}
-            className="w-14 h-20 rounded-lg bg-gradient-to-br from-purple-400 to-blue-500 dark:from-purple-600 dark:to-blue-700 shadow-lg"
+            className="w-14 h-20 rounded-lg bg-gradient-to-br from-teal-400 to-blue-500 dark:from-teal-600 dark:to-blue-700 shadow-lg"
             animate={{ y: [0, -8, 0], rotateZ: [0, 3, -3, 0] }}
             transition={{
               duration: 1.5,
@@ -445,7 +445,7 @@ function ContentVisualizer() {
           color: 'purple',
           label: 'QUIZ',
           badge:
-            'bg-purple-100 text-purple-600 border-purple-200 dark:bg-purple-900/40 dark:text-purple-300 dark:border-purple-800',
+            'bg-teal-100 text-teal-600 border-teal-200 dark:bg-teal-900/40 dark:text-teal-300 dark:border-teal-800',
         };
       case 2:
         return {
@@ -476,7 +476,7 @@ function ContentVisualizer() {
         className={cn(
           'absolute inset-0 blur-3xl rounded-full transition-colors duration-1000',
           theme.color === 'blue' && 'bg-blue-500/10',
-          theme.color === 'purple' && 'bg-purple-500/10',
+          theme.color === 'purple' && 'bg-teal-500/10',
           theme.color === 'amber' && 'bg-amber-500/10',
           theme.color === 'emerald' && 'bg-emerald-500/10',
         )}
@@ -491,7 +491,7 @@ function ContentVisualizer() {
           className={cn(
             'absolute border rounded-full transition-colors duration-1000',
             theme.color === 'blue' && 'border-blue-500/10',
-            theme.color === 'purple' && 'border-purple-500/10',
+            theme.color === 'purple' && 'border-teal-500/10',
             theme.color === 'amber' && 'border-amber-500/10',
             theme.color === 'emerald' && 'border-emerald-500/10',
           )}
@@ -523,7 +523,7 @@ function ContentVisualizer() {
             className={cn(
               'absolute inset-0 bg-white dark:bg-slate-800 rounded-xl border shadow-xl overflow-hidden flex flex-col p-3 origin-center',
               theme.color === 'blue' && 'border-blue-200 dark:border-blue-900/30',
-              theme.color === 'purple' && 'border-purple-200 dark:border-purple-900/30',
+              theme.color === 'purple' && 'border-teal-200 dark:border-teal-900/30',
               theme.color === 'amber' && 'border-amber-200 dark:border-amber-900/30',
               theme.color === 'emerald' && 'border-emerald-200 dark:border-emerald-900/30',
             )}
@@ -583,7 +583,7 @@ function ContentVisualizer() {
                   transition={{ delay: 0.2 }}
                   className="flex justify-center mb-1"
                 >
-                  <div className="h-2 w-3/4 bg-purple-500/20 rounded-full" />
+                  <div className="h-2 w-3/4 bg-teal-500/20 rounded-full" />
                 </motion.div>
 
                 <div className="grid grid-cols-2 gap-2">
@@ -596,7 +596,7 @@ function ContentVisualizer() {
                       className={cn(
                         'h-6 rounded border flex items-center px-2',
                         i === 1
-                          ? 'bg-purple-500 text-white border-purple-500'
+                          ? 'bg-teal-500 text-white border-teal-500'
                           : 'bg-slate-50 dark:bg-slate-700/50 border-slate-100 dark:border-slate-700',
                       )}
                     >
@@ -719,9 +719,9 @@ function ActionsVisualizer() {
     {
       icon: MessageSquare,
       label: 'Speech',
-      color: 'text-violet-500',
-      activeBg: 'bg-violet-500/10',
-      activeBorder: 'border-violet-200 dark:border-violet-800',
+      color: 'text-teal-500',
+      activeBg: 'bg-teal-500/10',
+      activeBorder: 'border-teal-200 dark:border-teal-800',
     },
     {
       icon: Focus,
@@ -733,9 +733,9 @@ function ActionsVisualizer() {
     {
       icon: MessageSquare,
       label: 'Speech',
-      color: 'text-violet-500',
-      activeBg: 'bg-violet-500/10',
-      activeBorder: 'border-violet-200 dark:border-violet-800',
+      color: 'text-teal-500',
+      activeBg: 'bg-teal-500/10',
+      activeBorder: 'border-teal-200 dark:border-teal-800',
     },
     {
       icon: Play,
@@ -747,9 +747,9 @@ function ActionsVisualizer() {
     {
       icon: MessageSquare,
       label: 'Speech',
-      color: 'text-violet-500',
-      activeBg: 'bg-violet-500/10',
-      activeBorder: 'border-violet-200 dark:border-violet-800',
+      color: 'text-teal-500',
+      activeBg: 'bg-teal-500/10',
+      activeBorder: 'border-teal-200 dark:border-teal-800',
     },
   ];
 
@@ -768,7 +768,7 @@ function ActionsVisualizer() {
     <div className="size-56 relative flex items-center justify-center">
       {/* Background pulse */}
       <motion.div
-        className="absolute inset-0 blur-3xl rounded-full bg-violet-500/8"
+        className="absolute inset-0 blur-3xl rounded-full bg-teal-500/8"
         animate={{ scale: [1, 1.15, 1], opacity: [0.3, 0.5, 0.3] }}
         transition={{ duration: 3.5, repeat: Infinity }}
       />
@@ -777,12 +777,12 @@ function ActionsVisualizer() {
       <div className="w-44 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xl overflow-hidden relative">
         {/* Header */}
         <div className="px-3 py-2 border-b border-slate-100 dark:border-slate-700 flex items-center gap-2">
-          <Clapperboard className="size-3 text-violet-500" />
+          <Clapperboard className="size-3 text-teal-500" />
           <motion.div
             initial={{ width: 0 }}
             animate={{ width: '50%' }}
             transition={{ delay: 0.2 }}
-            className="h-1.5 bg-violet-500/20 rounded-full"
+            className="h-1.5 bg-teal-500/20 rounded-full"
           />
         </div>
 
@@ -790,7 +790,7 @@ function ActionsVisualizer() {
         <div className="p-2 space-y-1.5 relative">
           {/* Sliding highlight — absolute, animates via y transform, no layout impact */}
           <motion.div
-            className="absolute left-2 right-2 rounded-lg bg-violet-500/[0.06] dark:bg-violet-400/[0.08]"
+            className="absolute left-2 right-2 rounded-lg bg-teal-500/[0.06] dark:bg-teal-400/[0.08]"
             style={{ height: ROW_H - 6 }}
             animate={{ y: activeIdx * ROW_H }}
             transition={{ type: 'spring', stiffness: 300, damping: 28 }}
@@ -834,7 +834,7 @@ function ActionsVisualizer() {
                 </div>
                 {/* Pulsing dot — always rendered, opacity-controlled, no layout shift */}
                 <motion.div
-                  className="size-1.5 rounded-full bg-violet-500"
+                  className="size-1.5 rounded-full bg-teal-500"
                   animate={{ opacity: isActive ? [1, 0.3, 1] : 0 }}
                   transition={isActive ? { duration: 0.8, repeat: Infinity } : { duration: 0.2 }}
                 />

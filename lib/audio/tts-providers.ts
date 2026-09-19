@@ -12,7 +12,8 @@
  * - MiniMax TTS: https://platform.minimaxi.com/docs/api-reference/speech-t2a-http
  * - Doubao TTS: https://www.volcengine.com/docs/6561/1257543
  * - ElevenLabs TTS: https://elevenlabs.io/docs/api-reference/text-to-speech/convert
- * - Genie TTS: local GPT-SoVITS ONNX server (start-genie-tts.cmd, see tools/genie-tts/)
+ * - MiMo TTS: Xiaomi mimo-v2.5-tts-voiceclone using classroom reference wavs
+ * - StepFun TTS: stepaudio-2.5-tts with persistent classroom clones (voice-tone- ids)
  * - Browser Native: Web Speech API (client-side only)
  *
  * HOW TO ADD A NEW PROVIDER:
@@ -96,12 +97,19 @@
 import type { TTSModelConfig } from './types';
 import { isCustomTTSProvider } from './types';
 import { isQwenCloneVoice, resolveTTSModelForVoice, TTS_PROVIDERS } from './constants';
-import { ensureGenieSentenceTerminator } from './tts-utils';
 import { downloadAudio, QwenVoiceCloneError, synthesizeQwenVoiceClone } from './qwen-voice-clone';
 import { evictQwenVoiceRegistrationMemo } from './qwen-voice-clone-registration';
 import { splitConcatenatedJsonObjects } from './json-stream';
 import fs from 'fs';
 import path from 'path';
+import { loadClassroomVoices } from '@/lib/audio/classroom-voices';
+import {
+  STEPFUN_CLASSROOM_INSTRUCTION,
+  STEPFUN_DEFAULT_BASE_URL,
+  STEPFUN_TTS_MODEL,
+  resolveStepfunVendorVoiceId,
+  stripTrailingSlash,
+} from '@/lib/audio/stepfun-voice-ids';
 import {
   VOXCPM_VLLM_MODEL_ID,
   VOXCPM_AUTO_VOICE_ID,
@@ -178,10 +186,12 @@ export class TTSInvalidResponseError extends Error {
  */
 const DEFAULT_TTS_REQUEST_TIMEOUT_MS = 30_000;
 
-function ttsRequestTimeoutMs(): number {
+function ttsRequestTimeoutMs(providerId?: string): number {
   const raw = process.env.TTS_REQUEST_TIMEOUT_MS?.trim();
   const parsed = raw ? Number(raw) : NaN;
-  return Number.isFinite(parsed) && parsed > 0 ? parsed : DEFAULT_TTS_REQUEST_TIMEOUT_MS;
+  if (Number.isFinite(parsed) && parsed > 0) return parsed;
+  if (providerId === 'mimo-tts') return 120_000;
+  return DEFAULT_TTS_REQUEST_TIMEOUT_MS;
 }
 
 /**
@@ -200,8 +210,8 @@ export class TTSRequestTimeoutError extends Error {
 }
 
 /** Combine the caller's cancel signal with the per-request timeout. */
-function ttsRequestSignal(callerSignal?: AbortSignal): AbortSignal {
-  const timeout = AbortSignal.timeout(ttsRequestTimeoutMs());
+function ttsRequestSignal(callerSignal?: AbortSignal, providerId?: string): AbortSignal {
+  const timeout = AbortSignal.timeout(ttsRequestTimeoutMs(providerId));
   return callerSignal ? AbortSignal.any([callerSignal, timeout]) : timeout;
 }
 
@@ -242,7 +252,7 @@ export async function generateTTS(
     throw new Error(`API key required for TTS provider: ${config.providerId}`);
   }
 
-  const signal = ttsRequestSignal(config.signal);
+  const signal = ttsRequestSignal(config.signal, config.providerId);
   try {
     switch (config.providerId) {
       case 'openai-tts':
@@ -270,8 +280,11 @@ export async function generateTTS(
       case 'lemonade-tts':
         return await generateLemonadeTTS(config, text, signal);
 
-      case 'genie-tts':
-        return await generateGenieTTS(config, text, signal);
+      case 'mimo-tts':
+        return await generateMimoTTS(config, text, signal);
+
+      case 'stepfun-tts':
+        return await generateStepfunTTS(config, text, signal);
 
       case 'browser-native-tts':
         throw new Error(
@@ -1010,149 +1023,185 @@ async function generateMiniMaxTTS(
 }
 
 // ---------------------------------------------------------------------------
-// Genie TTS implementation (local GPT-SoVITS V2ProPlus ONNX server)
+// Classroom reference voices (MiMo clone samples)
 // ---------------------------------------------------------------------------
 
-/** One entry of tools/genie-tts/voices.json. */
-interface GenieVoiceEntry {
-  name?: string;
-  language?: string;
-  /** Absolute path of the reference wav, readable by the genie server process. */
-  audio_path: string;
-  /** Transcript of the reference audio (drives zero-shot cloning quality). */
-  audio_text: string;
+const mimoVoiceDataUriCache = new Map<string, string>();
+
+function mimoVoiceDataUri(voiceId: string, audioPath: string): string {
+  const cached = mimoVoiceDataUriCache.get(voiceId);
+  if (cached) return cached;
+  const abs = path.isAbsolute(audioPath) ? audioPath : path.resolve(process.cwd(), audioPath);
+  const raw = fs.readFileSync(abs);
+  const ext = path.extname(abs).toLowerCase();
+  const mime = ext === '.mp3' ? 'audio/mpeg' : 'audio/wav';
+  const uri = `data:${mime};base64,${raw.toString('base64')}`;
+  mimoVoiceDataUriCache.set(voiceId, uri);
+  return uri;
 }
 
-const GENIE_CHARACTER_NAME = 'maic';
-const GENIE_SAMPLE_RATE = 32000;
-
-function resolveGenieServerPath(envValue: string | undefined, fallback: string): string {
-  const value = envValue?.trim();
-  return path.isAbsolute(value ? value : fallback)
-    ? value || fallback
-    : path.resolve(process.cwd(), value || fallback);
-}
-
-function loadGenieVoices(): Record<string, GenieVoiceEntry> {
-  const file = resolveGenieServerPath(
-    process.env.TTS_GENIE_VOICES_FILE,
-    'tools/genie-tts/voices.json',
-  );
-  const parsed = JSON.parse(fs.readFileSync(file, 'utf-8')) as {
-    voices?: Record<string, GenieVoiceEntry>;
-  };
-  if (!parsed.voices || typeof parsed.voices !== 'object') {
-    throw new Error(`Genie TTS voice registry has no "voices" object: ${file}`);
-  }
-  return parsed.voices;
+function decodeMimoAudioData(data: string): Uint8Array {
+  const payload = data.includes(',') ? data.slice(data.indexOf(',') + 1) : data;
+  return new Uint8Array(Buffer.from(payload, 'base64'));
 }
 
 /**
- * Wrap the headerless s16le mono PCM stream that genie's /tts returns into a
- * WAV container so downstream persistence treats it as regular wav audio.
- */
-function pcm16MonoToWav(pcm: Uint8Array, sampleRate: number): Uint8Array {
-  const header = Buffer.alloc(44);
-  header.write('RIFF', 0);
-  header.writeUInt32LE(36 + pcm.length, 4);
-  header.write('WAVE', 8);
-  header.write('fmt ', 12);
-  header.writeUInt32LE(16, 16); // fmt chunk size (PCM)
-  header.writeUInt16LE(1, 20); // audio format: PCM
-  header.writeUInt16LE(1, 22); // mono
-  header.writeUInt32LE(sampleRate, 24);
-  header.writeUInt32LE(sampleRate * 2, 28); // byte rate (s16le)
-  header.writeUInt16LE(2, 32); // block align
-  header.writeUInt16LE(16, 34); // bits per sample
-  header.write('data', 36);
-  header.writeUInt32LE(pcm.length, 40);
-  return new Uint8Array(Buffer.concat([header, Buffer.from(pcm)]));
-}
-
-async function geniePost(
-  baseUrl: string,
-  route: string,
-  body: unknown,
-  signal: AbortSignal,
-): Promise<Response> {
-  return fetch(`${baseUrl}${route}`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json; charset=utf-8' },
-    body: JSON.stringify(body),
-    signal,
-  });
-}
-
-/**
- * Genie TTS (local GPT-SoVITS server, CPU inference, zero-shot voice cloning).
+ * Xiaomi MiMo TTS (mimo-v2.5-tts-voiceclone).
  *
- * A single shared base character serves every voice: each request re-points it
- * at the selected voice's reference audio (genie's LRU cache keeps repeat
- * voices cheap — see the memory notes in tools/genie-tts/), then streams
- * synthesis. Requires the server from start-genie-tts.cmd to be running.
+ * Reuses the classroom reference wavs in tools/classroom-voices/. The clone
+ * model has no persistent voice_id, so each request re-attaches the sample as a
+ * data URI on `audio.voice`.
  */
-async function generateGenieTTS(
+async function generateMimoTTS(
   config: TTSModelConfig,
   text: string,
   signal: AbortSignal,
 ): Promise<TTSGenerationResult> {
-  const baseUrl = (config.baseUrl || TTS_PROVIDERS['genie-tts'].defaultBaseUrl || '').replace(
-    /\/$/,
-    '',
-  );
+  const apiKey =
+    config.apiKey ||
+    process.env.TTS_MIMO_API_KEY ||
+    process.env.XIAOMI_API_KEY ||
+    process.env.MIMO_API_KEY ||
+    '';
+  if (!apiKey) {
+    throw new Error('API key required for TTS provider: mimo-tts');
+  }
 
-  const voiceEntry = loadGenieVoices()[config.voice];
+  const baseUrl = (
+    config.baseUrl ||
+    process.env.TTS_MIMO_BASE_URL ||
+    process.env.XIAOMI_BASE_URL ||
+    TTS_PROVIDERS['mimo-tts'].defaultBaseUrl ||
+    ''
+  ).replace(/\/$/, '');
+
+  const voiceEntry = loadClassroomVoices()[config.voice];
   if (!voiceEntry) {
     throw new Error(
-      `Genie TTS: unknown voice "${config.voice}". Register it in tools/genie-tts/voices.json.`,
+      `MiMo TTS: unknown voice "${config.voice}". Register it in tools/classroom-voices/voices.json.`,
     );
   }
 
-  const loaded = await geniePost(baseUrl, '/load_character', {
-    character_name: GENIE_CHARACTER_NAME,
-    onnx_model_dir: resolveGenieServerPath(
-      process.env.TTS_GENIE_MODEL_DIR,
-      'tools/genie-tts/models/base_v2proplus_onnx',
-    ),
-    language: 'zh',
-  }, signal);
-  if (!loaded.ok) {
-    throw new Error(
-      `Genie TTS: load_character failed: ${await loaded.text().catch(() => loaded.statusText)}`,
-    );
+  const spoken = text.trim();
+  if (!spoken) {
+    throw new Error('MiMo TTS: empty text');
   }
 
-  const ref = await geniePost(baseUrl, '/set_reference_audio', {
-    character_name: GENIE_CHARACTER_NAME,
-    audio_path: voiceEntry.audio_path,
-    audio_text: voiceEntry.audio_text,
-    language: voiceEntry.language || 'zh',
-  }, signal);
-  if (!ref.ok) {
-    throw new Error(
-      `Genie TTS: set_reference_audio failed: ${await ref.text().catch(() => ref.statusText)}`,
-    );
-  }
+  const response = await fetch(`${baseUrl}/chat/completions`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      'Content-Type': 'application/json; charset=utf-8',
+    },
+    body: JSON.stringify({
+      model: config.modelId || 'mimo-v2.5-tts-voiceclone',
+      messages: [
+        { role: 'user', content: '用自然、清晰的课堂口吻朗读。希腊字母和科学符号要读出来，不要跳过。' },
+        { role: 'assistant', content: spoken },
+      ],
+      audio: {
+        format: 'wav',
+        voice: mimoVoiceDataUri(config.voice, voiceEntry.audio_path),
+      },
+    }),
+    signal,
+  });
 
-  const spokenText = ensureGenieSentenceTerminator(text);
-  const response = await geniePost(baseUrl, '/tts', {
-    character_name: GENIE_CHARACTER_NAME,
-    text: spokenText,
-    // Genie's TextSplitter soft-caps at ~20 hanzi; always on so a bypassed
-    // long request still splits instead of dropping the tail at EOS.
-    split_sentence: true,
-  }, signal);
   if (!response.ok) {
-    throwIfTtsRateLimited('Genie', response.status);
+    throwIfTtsRateLimited('MiMo', response.status);
     const errorText = await response.text().catch(() => response.statusText);
-    throw new Error(`Genie TTS API error: ${errorText}`);
+    throw new Error(`MiMo TTS API error: ${errorText}`);
   }
 
-  const pcm = new Uint8Array(await response.arrayBuffer());
-  if (pcm.length === 0) {
-    throw new Error('Genie TTS error: empty audio stream');
+  const data = (await response.json()) as {
+    choices?: Array<{ message?: { audio?: { data?: string } } }>;
+    error?: { message?: string };
+  };
+  const encoded = data.choices?.[0]?.message?.audio?.data;
+  if (!encoded) {
+    throw new Error(
+      `MiMo TTS error: No audio returned. ${data.error?.message || JSON.stringify(data).slice(0, 500)}`,
+    );
   }
-  return { audio: pcm16MonoToWav(pcm, GENIE_SAMPLE_RATE), format: 'wav' };
+  const audio = decodeMimoAudioData(encoded);
+  if (audio.length === 0) {
+    throw new Error('MiMo TTS error: empty audio payload');
+  }
+  return { audio, format: 'wav' };
+}
+
+/**
+ * StepFun TTS (stepaudio-2.5-tts).
+ *
+ * Classroom voices enroll once (5–10s official clone, POST /audio/voices) and
+ * every later request synthesizes by the returned `voice-tone-` id. The wav is
+ * never re-attached, which is what keeps timbre stable across batches.
+ */
+async function generateStepfunTTS(
+  config: TTSModelConfig,
+  text: string,
+  signal: AbortSignal,
+): Promise<TTSGenerationResult> {
+  const apiKey =
+    config.apiKey ||
+    process.env.TTS_STEPFUN_API_KEY ||
+    process.env.STEPFUN_API_KEY ||
+    process.env.STEP_API_KEY ||
+    '';
+  if (!apiKey) {
+    throw new Error('API key required for TTS provider: stepfun-tts');
+  }
+
+  const speechBase = stripTrailingSlash(
+    config.baseUrl ||
+      process.env.TTS_STEPFUN_BASE_URL ||
+      process.env.STEPFUN_BASE_URL ||
+      TTS_PROVIDERS['stepfun-tts'].defaultBaseUrl ||
+      STEPFUN_DEFAULT_BASE_URL,
+  );
+
+  const spoken = text.trim();
+  if (!spoken) {
+    throw new Error('StepFun TTS: empty text');
+  }
+
+  const model = config.modelId || STEPFUN_TTS_MODEL;
+  const vendorVoice = await resolveStepfunVendorVoiceId({
+    voice: config.voice || 'amiya',
+    apiKey,
+    speechBase,
+    model,
+    signal,
+  });
+
+  const speed = config.speed ?? 1.0;
+  const clampedSpeed = Math.min(2, Math.max(0.5, speed));
+  const format = config.format || 'wav';
+
+  const response = await fetch(`${speechBase}/audio/speech`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      'Content-Type': 'application/json; charset=utf-8',
+    },
+    body: JSON.stringify({
+      model,
+      input: spoken,
+      voice: vendorVoice,
+      instruction: STEPFUN_CLASSROOM_INSTRUCTION,
+      response_format: format,
+      speed: clampedSpeed,
+      language: 'zh',
+    }),
+    signal,
+  });
+
+  if (!response.ok) {
+    throwIfTtsRateLimited('StepFun', response.status);
+    throw new Error(`StepFun TTS API error: ${await readTTSApiError(response)}`);
+  }
+
+  return await validateTTSAudioResponse(response, 'StepFun', format);
 }
 
 /**

@@ -94,7 +94,8 @@ const TTS_ENV_MAP: Record<string, string> = {
   TTS_ELEVENLABS: 'elevenlabs-tts',
   TTS_MINIMAX: 'minimax-tts',
   TTS_LEMONADE: 'lemonade-tts',
-  TTS_GENIE: 'genie-tts',
+  TTS_MIMO: 'mimo-tts',
+  TTS_STEPFUN: 'stepfun-tts',
 };
 
 const ASR_ENV_MAP: Record<string, string> = {
@@ -514,7 +515,7 @@ function buildConfig(yamlData: YamlData): ServerConfig {
   return {
     providers,
     tts: loadEnvSection(TTS_ENV_MAP, yamlData.tts, {
-      keylessProviders: new Set(['voxcpm-tts', 'lemonade-tts', 'genie-tts']),
+      keylessProviders: new Set(['voxcpm-tts', 'lemonade-tts']),
     }),
     asr: loadEnvSection(ASR_ENV_MAP, yamlData.asr, {
       keylessProviders: new Set(['funasr-asr', 'lemonade-asr']),
@@ -685,7 +686,25 @@ export function enabledServerTTSProviderIds(): string[] {
 }
 
 export function resolveTTSApiKey(providerId: string, clientKey?: string): string {
-  return resolveSectionApiKey('tts', providerId, clientKey);
+  const resolved = resolveSectionApiKey('tts', providerId, clientKey);
+  if (resolved) return resolved;
+  if (providerId === 'mimo-tts') {
+    return (
+      process.env.TTS_MIMO_API_KEY ||
+      process.env.XIAOMI_API_KEY ||
+      process.env.MIMO_API_KEY ||
+      ''
+    ).trim();
+  }
+  if (providerId === 'stepfun-tts') {
+    return (
+      process.env.TTS_STEPFUN_API_KEY ||
+      process.env.STEPFUN_API_KEY ||
+      process.env.STEP_API_KEY ||
+      ''
+    ).trim();
+  }
+  return resolved;
 }
 
 /** Whether the operator force-disabled this TTS provider (server precedence, #665). */

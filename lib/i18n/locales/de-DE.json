@@ -10,7 +10,7 @@
     "close": "Schließen"
   },
   "home": {
-    "slogan": "Generatives Lernen im interaktiven Lernraum mit mehreren KI-Agenten",
+    "slogan": "Rhodes-Island-Klassenzimmer · Generatives Lernen mit Multi-Agenten",
     "greetingWithName": "Hallo, {{name}}"
   },
   "toolbar": {
@@ -126,7 +126,7 @@
   },
   "chat": {
     "lecture": "Vortrag",
-    "noConversations": "Keine Chats",
+    "noConversations": "Noch keine Chats — Doktor, du bist dran",
     "startConversation": "Gib unten eine Nachricht ein, um den Chat zu beginnen",
     "noMessages": "Noch keine Nachrichten",
     "ended": "beendet",
@@ -1003,7 +1003,7 @@
     "folderDeleteFailed": "Ordner konnte nicht gelöscht werden",
     "moveFailed": "Kurs konnte nicht verschoben werden",
     "emptyFolderHint": "Dieser Ordner ist leer",
-    "emptyLibraryHint": "Noch keine Kurse — erstelle oben einen oder importiere einen Kurs.",
+    "emptyLibraryHint": "Das Archiv ist leer — Doktor, erstelle oben einen Kurs oder importiere einen.",
     "folderNameEmpty": "Der Ordnername darf nicht leer sein",
     "deleteFolderOnly": "Nur Ordner löschen",
     "deleteFolderAndCourses": "Ordner und {{count}} Kurs löschen",
@@ -1017,7 +1017,7 @@
     "pdfSizeLimit": "Unterstützt PDF-Dateien bis zu 50 MB",
     "courseMaterialSizeLimit": "Dokumente, Präsentationen, Tabellendateien, Bilder und Klartext – bis zu 50 MB (unterstützte Formate hängen vom gewählten Extraktor ab)",
     "generateFailed": "Kurs konnte nicht erstellt werden. Bitte versuche es erneut.",
-    "requirementPlaceholder": "Beschreibe, was du lernen möchtest, z. B.\n\"Bring mir Python in 30 Minuten von Grund auf bei\"\n\"Erkläre die Fourier-Transformation am Whiteboard\"\n\"Wie spielt man das Brettspiel Avalon?\"",
+    "requirementPlaceholder": "Doktor, was möchtest du heute lernen? Z. B.\n\"Bring mir Python in 30 Minuten von Grund auf bei\"\n\"Erkläre die Fourier-Transformation am Whiteboard\"\n\"Wie spielt man das Brettspiel Avalon?\"",
     "requirementRequired": "Bitte gib die Kursanforderungen ein",
     "fileTooLarge": "Die Datei ist zu groß. Wähle bitte eine Datei unter 50 MB aus.",
     "courseMaterialCountLimit": "Du kannst bis zu 5 Dateien als Kursmaterial hochladen",
@@ -1033,7 +1033,7 @@
     "courseMaterialParseFailed": "Kursmaterial konnte nicht verarbeitet werden",
     "streamNotReadable": "Generierungsstream konnte nicht gelesen werden",
     "generatingOutlines": "Kursgliederung wird erstellt",
-    "generatingOutlinesDesc": "Der Lernpfad wird strukturiert…",
+    "generatingOutlinesDesc": "PRTS strukturiert den Lernpfad…",
     "generatingSlideContent": "Seiteninhalte werden erstellt",
     "generatingSlideContentDesc": "Folien, Quizfragen und interaktive Inhalte werden erstellt…",
     "generatingActions": "Unterrichtsaktionen werden erstellt",
@@ -1048,7 +1048,7 @@
     "sessionNotFoundDesc": "Gib die Kursanforderungen ein, um die Generierung zu starten.",
     "goBackAndRetry": "Zurück und erneut versuchen",
     "classroomReady": "Dein Kurs ist fertig.",
-    "aiWorking": "KI-Agenten arbeiten…",
+    "aiWorking": "Verbinde mit Rhodes-Island-Terminal — PRTS berechnet…",
     "textTruncated": "Der Text des Dokuments ist zu lang. Für die Generierung werden nur die ersten {{n}} Zeichen verwendet.",
     "imageTruncated": "{{total}} Bilder gefunden; das Limit liegt bei {{max}}. Für die übrigen Bilder werden nur Textbeschreibungen verwendet.",
     "agentGeneration": "Kursrollen werden erstellt",
@@ -1188,12 +1188,10 @@
     "selectedAgents": "Ausgewählte Agenten",
     "required": "Erforderlich",
     "agentNames": {
-      "default-1": "KI-Lehrkraft",
-      "default-2": "KI-Assistent",
-      "default-3": "Klassenclown",
-      "default-4": "Neugieriger Geist",
-      "default-5": "Mitschreiber",
-      "default-6": "Denker"
+      "default-1": "Muelsyse",
+      "default-2": "Amiya",
+      "default-3": "Rosmontis",
+      "default-4": "Angelina"
     },
     "agentRoles": {
       "teacher": "Lehrkraft",
@@ -1201,12 +1199,10 @@
       "student": "Lernender"
     },
     "agentDescriptions": {
-      "default-1": "Leitet den Unterricht mit klaren und strukturierten Erklärungen",
-      "default-2": "Unterstützt beim Lernen und verdeutlicht wichtige Punkte",
-      "default-3": "Bringt Humor und Schwung in den Kurs",
-      "default-4": "Ist stets neugierig und fragt gern, warum und wie etwas funktioniert",
-      "default-5": "Hält Unterrichtsnotizen gewissenhaft fest und ordnet sie",
-      "default-6": "Denkt gründlich nach und ergründet den Kern der Themen"
+      "default-1": "Leiterin der Ökologie-Abteilung von Rhine Lab, erklärt Wissen mit lebendigen Analogien klar und unterhaltsam",
+      "default-2": "Die öffentliche Anführerin von Rhodes Island, hilft allen sanft und geduldig, die Kernpunkte zu verstehen",
+      "default-3": "Eine ruhige, fokussierte Feline-Operatorin, die gelegentlich naive, aber tiefgründige Fragen stellt",
+      "default-4": "Ein lebhaftes, neugieriges Botenmädchen, das immer für unterhaltsame Themen sorgt"
     },
     "close": "Schließen",
     "save": "Speichern",
@@ -1399,7 +1395,8 @@
     "providerElevenLabsTTS": "ElevenLabs TTS",
     "providerMiniMaxTTS": "MiniMax TTS",
     "providerLemonadeTTS": "Lemonade TTS (Lokal)",
-    "providerGenieTTS": "Genie TTS (Local)",
+    "providerMimoTTS": "MiMo TTS (Xiaomi Voice Clone)",
+    "providerStepfunTTS": "StepFun TTS (Voice Clone)",
     "providerBrowserNativeTTS": "Browserintegrierte TTS",
     "voxcpmBackend": "Backend",
     "voxcpmBaseUrlPending": "Gib eine Basis-URL ein, um die Anfrage-URL zu erzeugen",
@@ -1867,7 +1864,7 @@
       "download": "Herunterladen",
       "detailFailed": "Die Skill-Details konnten nicht geladen werden",
       "contentLabel": "Inhalt",
-      "builtinDetailNote": "Dieser Skill ist in OpenMAIC enthalten. Lade ihn herunter, um ihn in einen anderen Agenten-Arbeitsbereich zu importieren.",
+      "builtinDetailNote": "Dieser Skill ist in OMAIC-R enthalten. Lade ihn herunter, um ihn in einen anderen Agenten-Arbeitsbereich zu importieren.",
       "upload": "Hochladen",
       "uploading": "Wird hochgeladen…",
       "uploadFailed": "Der Skill konnte nicht hochgeladen werden. Prüfe die Datei und versuche es erneut.",
@@ -1979,7 +1976,7 @@
   },
   "profile": {
     "title": "Profil",
-    "defaultNickname": "Lerntalent",
+    "defaultNickname": "Doktor",
     "chooseAvatar": "Avatar auswählen",
     "uploadAvatar": "Hochladen",
     "bioPlaceholder": "Erzähl etwas über dich – so kann die KI-Lehrkraft den Unterricht auf dich zuschneiden…",

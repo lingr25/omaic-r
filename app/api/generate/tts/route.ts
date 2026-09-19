@@ -34,7 +34,7 @@ import { isQwenCloneVoice } from '@/lib/audio/constants';
 
 const log = createLogger('TTS API');
 
-export const maxDuration = 30;
+export const maxDuration = 120;
 
 export async function POST(req: NextRequest) {
   let ttsProviderId: string | undefined;

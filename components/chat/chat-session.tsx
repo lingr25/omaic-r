@@ -31,8 +31,8 @@ interface ChatSessionProps {
 }
 
 const AVATARS = {
-  teacher: '/avatars/teacher.png',
-  user: '/avatars/user.png',
+  teacher: '/avatars/muelsyse.png',
+  user: '/avatars/doctor.png',
 };
 
 /**
@@ -74,7 +74,7 @@ const MessageBubble = memo(function MessageBubble({
           className={cn(
             'w-1.5 h-1.5 rounded-full animate-pulse',
             isTeacher
-              ? 'bg-purple-400/70 dark:bg-purple-500/70'
+              ? 'bg-teal-400/70 dark:bg-teal-500/70'
               : 'bg-indigo-400/70 dark:bg-indigo-500/70',
           )}
         />
@@ -82,7 +82,7 @@ const MessageBubble = memo(function MessageBubble({
           className={cn(
             'w-1.5 h-1.5 rounded-full animate-pulse',
             isTeacher
-              ? 'bg-purple-400/70 dark:bg-purple-500/70'
+              ? 'bg-teal-400/70 dark:bg-teal-500/70'
               : 'bg-indigo-400/70 dark:bg-indigo-500/70',
           )}
           style={{ animationDelay: '200ms' }}
@@ -91,7 +91,7 @@ const MessageBubble = memo(function MessageBubble({
           className={cn(
             'w-1.5 h-1.5 rounded-full animate-pulse',
             isTeacher
-              ? 'bg-purple-400/70 dark:bg-purple-500/70'
+              ? 'bg-teal-400/70 dark:bg-teal-500/70'
               : 'bg-indigo-400/70 dark:bg-indigo-500/70',
           )}
           style={{ animationDelay: '400ms' }}
@@ -112,7 +112,7 @@ const MessageBubble = memo(function MessageBubble({
       className={cn(
         'inline-block px-2.5 py-1.5 rounded-xl text-[12px] leading-relaxed max-w-full text-left transition-shadow duration-300',
         isUser
-          ? 'bg-gradient-to-br from-purple-600 to-purple-700 dark:from-purple-500 dark:to-purple-600 text-white rounded-tr-sm shadow-sm shadow-purple-300/30 dark:shadow-purple-900/50 ring-1 ring-purple-500/20'
+          ? 'bg-gradient-to-br from-teal-600 to-teal-700 dark:from-teal-500 dark:to-teal-600 text-white rounded-tr-sm shadow-sm shadow-teal-300/30 dark:shadow-teal-900/50 ring-1 ring-teal-500/20'
           : isTeacher
             ? 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 border border-gray-100 dark:border-gray-700 rounded-tl-sm shadow-sm'
             : 'bg-indigo-50 dark:bg-indigo-900/20 text-indigo-900 dark:text-indigo-200 border border-indigo-100/50 dark:border-indigo-800/50 rounded-tl-sm',
@@ -283,7 +283,7 @@ export function ChatSessionComponent({
                 'flex gap-2 px-1.5 py-1 rounded-lg border-l-[3px] border-l-transparent transition-[background-color,border-color] duration-300',
                 isUser && 'flex-row-reverse',
                 isActiveBubble &&
-                  'border-l-violet-500 dark:border-l-violet-400 bg-violet-50/50 dark:bg-violet-900/20',
+                  'border-l-teal-500 dark:border-l-teal-400 bg-teal-50/50 dark:bg-teal-900/20',
               )}
             >
               {/* Mini Avatar */}
@@ -297,9 +297,9 @@ export function ChatSessionComponent({
                   className={cn(
                     'text-[9px] font-bold uppercase tracking-wider block mb-0.5',
                     isUser
-                      ? 'text-purple-500 dark:text-purple-400'
+                      ? 'text-teal-500 dark:text-teal-400'
                       : isTeacher
-                        ? 'text-purple-400 dark:text-purple-300'
+                        ? 'text-teal-400 dark:text-teal-300'
                         : 'text-indigo-400 dark:text-indigo-300',
                   )}
                 >
@@ -368,7 +368,7 @@ export function ChatSessionComponent({
             {isSoftClosing && onContinueSession && (
               <button
                 onClick={() => onContinueSession(session.id)}
-                className="h-7 bg-white dark:bg-gray-800 text-purple-600 dark:text-purple-300 border border-purple-200 dark:border-purple-700 px-2.5 rounded-md text-[11px] font-semibold flex items-center gap-1.5 transition-colors hover:bg-purple-50 dark:hover:bg-purple-900/25"
+                className="h-7 bg-white dark:bg-gray-800 text-teal-600 dark:text-teal-300 border border-teal-200 dark:border-teal-700 px-2.5 rounded-md text-[11px] font-semibold flex items-center gap-1.5 transition-colors hover:bg-teal-50 dark:hover:bg-teal-900/25"
               >
                 <MessageCircleMore className="size-3" />
                 {t('chat.softClosing')}

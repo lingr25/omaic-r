@@ -10,7 +10,7 @@
     "close": "Đóng"
   },
   "home": {
-    "slogan": "Học tập sinh tạo trong lớp học tương tác đa tác nhân",
+    "slogan": "Lớp học Rhodes Island · Học tập tạo sinh đa tác tử",
     "greetingWithName": "Chào {{name}}"
   },
   "toolbar": {
@@ -126,7 +126,7 @@
   },
   "chat": {
     "lecture": "Bài giảng",
-    "noConversations": "Chưa có cuộc trò chuyện",
+    "noConversations": "Chưa có cuộc trò chuyện — Tiến sĩ, mời bạn lên tiếng",
     "startConversation": "Nhập tin nhắn bên dưới để bắt đầu",
     "noMessages": "Chưa có tin nhắn",
     "ended": "đã kết thúc",
@@ -1003,7 +1003,7 @@
     "folderDeleteFailed": "Không xóa được thư mục",
     "moveFailed": "Không chuyển được bài học",
     "emptyFolderHint": "Thư mục này đang trống",
-    "emptyLibraryHint": "Chưa có bài học nào — tạo mới ở trên hoặc nhập một bài học vào.",
+    "emptyLibraryHint": "Thư viện trống — Tiến sĩ, hãy tạo khóa học ở trên hoặc nhập một khóa học.",
     "folderNameEmpty": "Tên thư mục không được để trống",
     "deleteFolderOnly": "Chỉ xóa thư mục",
     "deleteFolderAndCourses": "Xóa thư mục và {{count}} bài học",
@@ -1017,7 +1017,7 @@
     "pdfSizeLimit": "Nhận tệp PDF tối đa 50MB",
     "courseMaterialSizeLimit": "Tài liệu, slide, bảng tính, ảnh và văn bản thuần — tối đa 50MB (định dạng được nhận tùy vào bộ bóc tách đang chọn)",
     "generateFailed": "Không tạo được lớp học, vui lòng thử lại",
-    "requirementPlaceholder": "Hãy nói bạn muốn học gì, ví dụ\n\"Dạy tôi Python từ đầu trong 30 phút\"\n\"Giảng phép biến đổi Fourier trên bảng\"\n\"Cách chơi board game Avalon\"",
+    "requirementPlaceholder": "Tiến sĩ, hôm nay bạn muốn học gì? Ví dụ:\n\"Dạy tôi Python từ đầu trong 30 phút\"\n\"Giảng phép biến đổi Fourier trên bảng\"\n\"Cách chơi board game Avalon\"",
     "requirementRequired": "Vui lòng nhập yêu cầu về bài học",
     "fileTooLarge": "Tệp quá lớn. Vui lòng chọn tệp nhỏ hơn 50MB",
     "courseMaterialCountLimit": "Bạn chỉ tải lên được tối đa 5 tệp tài liệu",
@@ -1033,7 +1033,7 @@
     "courseMaterialParseFailed": "Đọc tài liệu bài học không thành công",
     "streamNotReadable": "Không đọc được luồng dữ liệu tạo bài",
     "generatingOutlines": "Đang dựng đề cương bài học",
-    "generatingOutlinesDesc": "Đang sắp xếp lộ trình học…",
+    "generatingOutlinesDesc": "PRTS đang xây dựng lộ trình học…",
     "generatingSlideContent": "Đang tạo nội dung từng trang",
     "generatingSlideContentDesc": "Đang tạo slide, câu đố và phần tương tác…",
     "generatingActions": "Đang tạo hoạt động giảng dạy",
@@ -1048,7 +1048,7 @@
     "sessionNotFoundDesc": "Vui lòng nhập yêu cầu bài học để bắt đầu tạo.",
     "goBackAndRetry": "Quay lại và thử lại",
     "classroomReady": "Môi trường học tập AI riêng của bạn đã được tạo xong.",
-    "aiWorking": "Các tác nhân AI đang làm việc…",
+    "aiWorking": "Đang kết nối thiết bị đầu cuối Rhodes Island — PRTS đang tính toán…",
     "textTruncated": "Tài liệu khá dài, chỉ dùng {{n}} ký tự đầu để tạo bài",
     "imageTruncated": "Tìm thấy {{total}} ảnh, vượt giới hạn {{max}} ảnh. Số ảnh dư sẽ chỉ dùng mô tả bằng chữ",
     "agentGeneration": "Đang tạo vai trò trong lớp",
@@ -1188,12 +1188,10 @@
     "selectedAgents": "Các tác nhân đã chọn",
     "required": "Bắt buộc",
     "agentNames": {
-      "default-1": "Giảng viên AI",
-      "default-2": "Trợ giảng AI",
-      "default-3": "Cây hài của lớp",
-      "default-4": "Bạn tò mò",
-      "default-5": "Bạn ghi chép",
-      "default-6": "Bạn suy tư"
+      "default-1": "Muelsyse",
+      "default-2": "Amiya",
+      "default-3": "Rosmontis",
+      "default-4": "Angelina"
     },
     "agentRoles": {
       "teacher": "Giảng viên",
@@ -1201,12 +1199,10 @@
       "student": "Sinh viên"
     },
     "agentDescriptions": {
-      "default-1": "Giảng viên chính, giảng rõ ràng và có hệ thống",
-      "default-2": "Hỗ trợ học tập và làm rõ các ý quan trọng",
-      "default-3": "Mang lại tiếng cười và không khí sôi nổi cho lớp",
-      "default-4": "Luôn tò mò, thích hỏi tại sao và như thế nào",
-      "default-5": "Chăm chỉ ghi chép và sắp xếp bài học",
-      "default-6": "Suy nghĩ sâu và tìm hiểu bản chất vấn đề"
+      "default-1": "Trưởng khoa sinh thái của Rhine Lab, giảng giải kiến thức rõ ràng và thú vị qua những phép so sánh sinh động",
+      "default-2": "Nhà lãnh đạo công khai của Rhodes Island, kiên nhẫn và dịu dàng giúp mọi người nắm được trọng điểm",
+      "default-3": "Một toán viên tộc Feline trầm lặng và tập trung, thỉnh thoảng đặt ra những câu hỏi ngây thơ nhưng sâu sắc",
+      "default-4": "Cô nàng đưa tin hoạt bát và tò mò, luôn mang đến những chủ đề nhẹ nhàng, thú vị"
     },
     "close": "Đóng",
     "save": "Lưu",
@@ -1399,7 +1395,8 @@
     "providerElevenLabsTTS": "ElevenLabs TTS",
     "providerMiniMaxTTS": "MiniMax TTS",
     "providerLemonadeTTS": "Lemonade TTS (Cục bộ)",
-    "providerGenieTTS": "Genie TTS (Local)",
+    "providerMimoTTS": "MiMo TTS (Xiaomi Voice Clone)",
+    "providerStepfunTTS": "StepFun TTS (Voice Clone)",
     "providerBrowserNativeTTS": "Giọng đọc sẵn có của trình duyệt",
     "voxcpmBackend": "Máy chủ xử lý",
     "voxcpmBaseUrlPending": "Nhập địa chỉ gốc để sinh ra địa chỉ yêu cầu",
@@ -1867,7 +1864,7 @@
       "download": "Tải xuống",
       "detailFailed": "Không thể tải chi tiết skill",
       "contentLabel": "Nội dung",
-      "builtinDetailNote": "Skill này đi kèm với OpenMAIC. Tải xuống để nhập vào không gian làm việc của agent khác.",
+      "builtinDetailNote": "Skill này đi kèm với OMAIC-R. Tải xuống để nhập vào không gian làm việc của agent khác.",
       "upload": "Tải lên",
       "uploading": "Đang tải lên…",
       "uploadFailed": "Không thể tải skill lên. Hãy kiểm tra tệp và thử lại.",
@@ -1979,7 +1976,7 @@
   },
   "profile": {
     "title": "Trang cá nhân",
-    "defaultNickname": "Bạn học",
+    "defaultNickname": "Doctor",
     "chooseAvatar": "Chọn ảnh đại diện",
     "uploadAvatar": "Tải lên",
     "bioPlaceholder": "Giới thiệu một chút về bạn — giảng viên AI sẽ dựa vào đó để soạn bài phù hợp với bạn…",

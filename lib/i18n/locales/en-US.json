@@ -10,7 +10,7 @@
     "close": "Close"
   },
   "home": {
-    "slogan": "Generative Learning in Multi-Agent Interactive Classroom",
+    "slogan": "Rhodes Island Classroom · Generative Learning with Multi-Agents",
     "greetingWithName": "Hi, {{name}}"
   },
   "toolbar": {
@@ -126,7 +126,7 @@
   },
   "chat": {
     "lecture": "Lecture",
-    "noConversations": "No conversations",
+    "noConversations": "No conversations yet — the floor is yours, Doctor",
     "startConversation": "Type a message below to begin chatting",
     "noMessages": "No messages yet",
     "ended": "ended",
@@ -1003,7 +1003,7 @@
     "folderDeleteFailed": "Failed to delete folder",
     "moveFailed": "Failed to move course",
     "emptyFolderHint": "This folder is empty",
-    "emptyLibraryHint": "No courses yet — create one above, or import a course.",
+    "emptyLibraryHint": "The archive is empty — Doctor, create a course above or import one.",
     "folderNameEmpty": "Folder name cannot be empty",
     "deleteFolderOnly": "Delete folder only",
     "deleteFolderAndCourses": "Delete folder and {{count}} course",
@@ -1017,7 +1017,7 @@
     "pdfSizeLimit": "Supports PDF files up to 50MB",
     "courseMaterialSizeLimit": "Documents, slides, spreadsheets, images, and plain text — up to 50MB (accepted formats depend on the selected extractor)",
     "generateFailed": "Failed to generate classroom, please try again",
-    "requirementPlaceholder": "Tell me anything you want to learn, e.g.\n\"Teach me Python from scratch in 30 minutes\"\n\"Explain Fourier Transform on the whiteboard\"\n\"How to play the board game Avalon\"",
+    "requirementPlaceholder": "Doctor, what would you like to learn today? e.g.\n\"Teach me Python from scratch in 30 minutes\"\n\"Explain Fourier Transform on the whiteboard\"\n\"How to play the board game Avalon\"",
     "requirementRequired": "Please enter course requirements",
     "fileTooLarge": "File too large. Please select a file smaller than 50MB",
     "courseMaterialCountLimit": "You can upload up to 5 course material files",
@@ -1033,7 +1033,7 @@
     "courseMaterialParseFailed": "Course material parsing failed",
     "streamNotReadable": "Unable to read generation stream",
     "generatingOutlines": "Drafting Course Outline",
-    "generatingOutlinesDesc": "Structuring the learning path...",
+    "generatingOutlinesDesc": "PRTS is structuring the learning path…",
     "generatingSlideContent": "Generating Page Content",
     "generatingSlideContentDesc": "Creating slides, quizzes, and interactive content...",
     "generatingActions": "Generating Teaching Actions",
@@ -1048,7 +1048,7 @@
     "sessionNotFoundDesc": "Please fill in course requirements to start the generation process.",
     "goBackAndRetry": "Go Back and Retry",
     "classroomReady": "Your personalized AI learning environment has been generated successfully.",
-    "aiWorking": "AI Agents Working...",
+    "aiWorking": "Connecting to Rhodes Island terminal — PRTS computing…",
     "textTruncated": "Document text is long, using first {{n}} characters for generation",
     "imageTruncated": "{{total}} images found, exceeding the {{max}} image limit. Extra images will use text descriptions only",
     "agentGeneration": "Generating Classroom Roles",
@@ -1188,12 +1188,10 @@
     "selectedAgents": "Selected Agents",
     "required": "Required",
     "agentNames": {
-      "default-1": "AI Teacher",
-      "default-2": "AI Assistant",
-      "default-3": "Class Clown",
-      "default-4": "Curious Mind",
-      "default-5": "Note Taker",
-      "default-6": "Deep Thinker"
+      "default-1": "Muelsyse",
+      "default-2": "Amiya",
+      "default-3": "Rosmontis",
+      "default-4": "Angelina"
     },
     "agentRoles": {
       "teacher": "Teacher",
@@ -1201,12 +1199,10 @@
       "student": "Student"
     },
     "agentDescriptions": {
-      "default-1": "Lead teacher with clear and structured explanations",
-      "default-2": "Supports learning and helps clarify key points",
-      "default-3": "Brings humor and energy to the classroom",
-      "default-4": "Always curious, loves asking why and how",
-      "default-5": "Diligently records and organizes class notes",
-      "default-6": "Thinks deeply and explores the essence of topics"
+      "default-1": "Rhine Lab's ecology director, explaining knowledge clearly and engagingly with vivid analogies",
+      "default-2": "Rhodes Island's public leader, gently and patiently helping everyone grasp key points",
+      "default-3": "A quiet, focused feline operator who occasionally asks innocent yet profound questions",
+      "default-4": "A lively, curious messenger girl who always brings fun and lighthearted topics"
     },
     "close": "Close",
     "save": "Save",
@@ -1399,7 +1395,8 @@
     "providerElevenLabsTTS": "ElevenLabs TTS",
     "providerMiniMaxTTS": "MiniMax TTS",
     "providerLemonadeTTS": "Lemonade TTS (Local)",
-    "providerGenieTTS": "Genie TTS (Local)",
+    "providerMimoTTS": "MiMo TTS (Xiaomi Voice Clone)",
+    "providerStepfunTTS": "StepFun TTS (Voice Clone)",
     "providerBrowserNativeTTS": "Browser Native TTS",
     "voxcpmBackend": "Backend",
     "voxcpmBaseUrlPending": "Enter a Base URL to generate the request URL",
@@ -1867,7 +1864,7 @@
       "download": "Download",
       "detailFailed": "Could not load the skill details",
       "contentLabel": "Content",
-      "builtinDetailNote": "This skill ships with OpenMAIC. Download it to import into another agent workspace.",
+      "builtinDetailNote": "This skill ships with OMAIC-R. Download it to import into another agent workspace.",
       "upload": "Upload",
       "uploading": "Uploading…",
       "uploadFailed": "Could not upload the skill. Check the file and try again.",
@@ -1979,7 +1976,7 @@
   },
   "profile": {
     "title": "Profile",
-    "defaultNickname": "Learner",
+    "defaultNickname": "Doctor",
     "chooseAvatar": "Choose Avatar",
     "uploadAvatar": "Upload",
     "bioPlaceholder": "Tell us about yourself — the AI teacher will personalize lessons for you...",

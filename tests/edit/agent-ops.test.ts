@@ -17,7 +17,7 @@ const T = (id: string, role = 'teacher'): GeneratedAgentConfig => ({
   name: id,
   role,
   persona: '',
-  avatar: '/avatars/teacher.png',
+  avatar: '/avatars/amiya.png',
   color: '#000',
   priority: priorityForRole(role),
 });
@@ -36,8 +36,8 @@ describe('createAgentConfig', () => {
     expect(a.id).toBe('gen-x');
     expect(a.role).toBe('student');
     expect(a.priority).toBe(5);
-    // 13 % 10 === 3 -> AGENT_DEFAULT_AVATARS[3] = '/avatars/thinker.png'
-    expect(a.avatar).toBe('/avatars/thinker.png');
+    // 13 % 4 === 1 -> AGENT_DEFAULT_AVATARS[1] = '/avatars/amiya.png'
+    expect(a.avatar).toBe('/avatars/amiya.png');
   });
 });
 

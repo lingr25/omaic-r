@@ -108,12 +108,20 @@ function foldersResponse() {
   });
 }
 
+function classroomsResponse(classrooms: unknown[] = []) {
+  return new Response(JSON.stringify({ success: true, classrooms }), {
+    status: 200,
+    headers: { 'Content-Type': 'application/json' },
+  });
+}
+
 /** Route the mounted hook's owner-scoped listings: stages + folders. */
 function ownerListingsFetch() {
   const fetchMock = vi.fn(async (input: RequestInfo | URL) => {
     const url = String(input);
     if (url === '/api/stages') return stagesResponse();
     if (url === '/api/folders') return foldersResponse();
+    if (url === '/api/classroom') return classroomsResponse();
     throw new Error(`unexpected fetch: ${url}`);
   });
   vi.stubGlobal('fetch', fetchMock);
@@ -142,7 +150,12 @@ describe('PG-mode home listing', () => {
 
   it('lists the owner’s stages through /api/stages and never asks for the generic listing', async () => {
     const fetchMock = vi.mocked(fetch);
-    fetchMock.mockResolvedValue(stagesResponse());
+    fetchMock.mockImplementation(async (input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url === '/api/stages') return stagesResponse();
+      if (url === '/api/classroom') return classroomsResponse();
+      throw new Error(`unexpected fetch: ${url}`);
+    });
 
     const { listStages } = await import('@/lib/utils/stage-storage');
     const stages = await listStages();
@@ -152,10 +165,11 @@ describe('PG-mode home listing', () => {
       expect.objectContaining({ id: 'stage-2', name: '二次函数', sceneCount: 0 }),
       expect.objectContaining({ id: 'stage-1', name: '光的折射', sceneCount: 12 }),
     ]);
-    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(fetchMock).toHaveBeenCalledTimes(2);
     const [url, init] = fetchMock.mock.calls[0]!;
     expect(String(url)).toBe('/api/stages');
     expect(init).toMatchObject({ credentials: 'include' });
+    expect(String(fetchMock.mock.calls[1]![0])).toBe('/api/classroom');
     expect(String(url)).not.toContain('/api/persistence/documents');
     // The local document seams are not consulted in PG mode.
     expect(mocks.listDocuments).not.toHaveBeenCalled();
@@ -209,6 +223,7 @@ describe('PG-mode home listing', () => {
     const stages = await listStages();
 
     expect(stages).toEqual([expect.objectContaining({ id: 'local-1', name: 'Local course' })]);
-    expect(fetch).not.toHaveBeenCalled();
+    expect(fetch).toHaveBeenCalledWith('/api/classroom');
+    expect(fetch).not.toHaveBeenCalledWith('/api/stages', expect.anything());
   });
 });

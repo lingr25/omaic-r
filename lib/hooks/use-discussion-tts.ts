@@ -436,8 +436,7 @@ export function useDiscussionTTS({ enabled, agents, onAudioStateChange }: Discus
             )
           : undefined;
       // Long lines must be pre-split per provider limit (same contract as the
-      // scene flow): a >100-char single request on genie's CPU path can exceed
-      // the request timeout or truncate. Each chunk becomes its own clip.
+      // scene flow). Each chunk becomes its own clip.
       const textChunks = splitLongSpeechText(
         fullText,
         TTS_MAX_TEXT_LENGTH[providerId] ?? Number.POSITIVE_INFINITY,

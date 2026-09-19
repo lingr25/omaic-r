@@ -10,7 +10,7 @@ function makeConfig(id: string, role = 'teacher'): GeneratedAgentConfig {
     name: id,
     role,
     persona: '',
-    avatar: '/avatars/teacher.png',
+    avatar: '/avatars/amiya.png',
     color: '#000',
     priority: role === 'teacher' ? 10 : role === 'assistant' ? 7 : 5,
   };

@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 const { listDocuments, listLegacyStages, readLegacyStage } = vi.hoisted(() => ({
   listDocuments: vi.fn(),
@@ -38,6 +38,14 @@ describe('legacy stage listing', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     listDocuments.mockResolvedValue([]);
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async () => new Response(JSON.stringify({ classrooms: [] }), { status: 200 })),
+    );
+  });
+
+  afterEach(() => {
+    vi.unstubAllGlobals();
   });
 
   it('drops a legacy stage concurrently deleted before its snapshot read', async () => {
@@ -56,5 +64,51 @@ describe('legacy stage listing', () => {
 
     await expect(listStages()).rejects.toBe(unavailable);
     expect(listLegacyStages).not.toHaveBeenCalled();
+  });
+
+  it('merges shareable disk classrooms that are not already in the local list', async () => {
+    listDocuments.mockResolvedValue([
+      { id: 'local-1', name: 'Local', sceneCount: 1, createdAt: 1, updatedAt: 10 },
+    ]);
+    listLegacyStages.mockResolvedValue([]);
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (input: RequestInfo | URL) => {
+        expect(String(input)).toBe('/api/classroom');
+        return new Response(
+          JSON.stringify({
+            success: true,
+            classrooms: [
+              {
+                id: 'local-1',
+                name: 'Should not duplicate',
+                sceneCount: 9,
+                createdAt: 1,
+                updatedAt: 99,
+              },
+              {
+                id: 'XO8XbxdHPw',
+                name: '1.1 生物的特征',
+                sceneCount: 12,
+                createdAt: 2,
+                updatedAt: 20,
+                firstSlide: { id: 'slide-1', elements: [] },
+              },
+            ],
+          }),
+          { status: 200, headers: { 'Content-Type': 'application/json' } },
+        );
+      }),
+    );
+
+    await expect(listStages()).resolves.toEqual([
+      expect.objectContaining({
+        id: 'XO8XbxdHPw',
+        name: '1.1 生物的特征',
+        sceneCount: 12,
+        previewSlide: { id: 'slide-1', elements: [] },
+      }),
+      expect.objectContaining({ id: 'local-1', name: 'Local', sceneCount: 1 }),
+    ]);
   });
 });

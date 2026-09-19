@@ -1,6 +1,8 @@
-# Contributing to OpenMAIC
+# Contributing to Oh my AI class-R
 
-Thank you for your interest in contributing to OpenMAIC! This guide will help you get started and ensure a smooth collaboration.
+This repository is an unofficial Arknights-themed fork of [OpenMAIC](https://github.com/THU-MAIC/OpenMAIC). Theme and fork-specific changes can land here. For core OpenMAIC features, please contribute upstream.
+
+Thank you for your interest! This guide will help you get started.
 
 ## How to Contribute
 
@@ -32,8 +34,8 @@ To avoid duplicate effort, please **comment on an issue** to claim it before you
 
 ```bash
 # Clone the repository
-git clone https://github.com/THU-MAIC/OpenMAIC.git
-cd OpenMAIC
+git clone https://github.com/lingr25/omaic-r.git
+cd omaic-r
 
 # Install dependencies
 pnpm install

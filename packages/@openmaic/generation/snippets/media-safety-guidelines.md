@@ -1,10 +1,15 @@
 ### Content Safety Guidelines for Generation Prompts
 
-To avoid blocked requests from the generation model:
+Keep prompts academic so providers are less likely to refuse them.
 
-- Do not describe specific human facial features, body details, or physical appearance; use abstract or iconographic representations such as "a silhouette of a person"
 - Do not include violence, weapons, blood, or gore
-- Do not reference politically sensitive content: national flags, military imagery, or real political figures
-- Do not depict real public figures or celebrities by name or likeness
-- Prefer abstract, diagrammatic, infographic, or icon-based styles for educational illustrations
+- Do not include nudity, sexualized body details, or erotic posing
+- Do not depict living politicians, current celebrities, national flags, or military imagery
 - Keep all prompts academic and education-oriented in tone
+
+Historical and scientific figures may be shown when they are the subject of the lesson:
+
+- Name the person and specify sex, era, and period-accurate appearance (clothing, setting, tools)
+- Do not invent a different sex, age range, or ethnicity for a known person
+- Prefer a textbook-illustration or documentary style over fashion or glamour photography
+- If the person is not the teaching point, prefer a diagram, infographic, or close-up of the instrument or specimen

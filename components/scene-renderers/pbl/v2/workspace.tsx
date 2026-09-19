@@ -438,15 +438,15 @@ function WorkspaceTopBar({
         gridTemplateColumns: `${panelWidths.sidebar}fr 6px ${panelWidths.chat}fr 6px ${panelWidths.submission}fr`,
       }}
     >
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(157,140,255,0.20),transparent_30%),radial-gradient(circle_at_78%_0%,rgba(34,211,238,0.13),transparent_26%),linear-gradient(90deg,rgba(255,255,255,0.05),transparent_34%,rgba(255,255,255,0.035))]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(20,184,166,0.20),transparent_30%),radial-gradient(circle_at_78%_0%,rgba(34,211,238,0.13),transparent_26%),linear-gradient(90deg,rgba(255,255,255,0.05),transparent_34%,rgba(255,255,255,0.035))]" />
       <div className="relative flex min-w-0 flex-1 items-center gap-3">
-        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-violet-200/25 bg-violet-100/[0.08] shadow-[0_0_24px_rgba(157,140,255,0.18)]">
+        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-teal-200/25 bg-teal-100/[0.08] shadow-[0_0_24px_rgba(20,184,166,0.18)]">
           <Image
-            src="/openmaic-mark.png"
-            alt="OpenMAIC"
+            src="/rhodes-island-mark.png"
+            alt="OMAIC-R"
             width={28}
             height={28}
-            className="h-6 w-6"
+            className="h-6 w-6 invert"
           />
         </div>
         <div className="min-w-0">
@@ -467,7 +467,7 @@ function WorkspaceTopBar({
               type="button"
               onClick={onReturnToHero}
               title={t('pbl.v2.workspace.returnToHero')}
-              className="rounded bg-gradient-to-r from-violet-200 via-cyan-200 to-sky-200 bg-clip-text text-transparent transition-opacity hover:opacity-80 focus-visible:underline focus-visible:outline-none"
+              className="rounded bg-gradient-to-r from-teal-200 via-cyan-200 to-sky-200 bg-clip-text text-transparent transition-opacity hover:opacity-80 focus-visible:underline focus-visible:outline-none"
             >
               {t('pbl.v2.workspace.breadcrumbOverview')}
             </button>
@@ -481,7 +481,7 @@ function WorkspaceTopBar({
 
       <div className="relative col-start-3 hidden min-w-0 items-center gap-2 lg:flex">
         <div className="flex h-8 shrink-0 items-center gap-1.5 rounded-full border border-indigo-100/[0.14] bg-white/[0.045] px-2.5 text-[11px] font-medium text-indigo-100/82">
-          <Workflow className="h-3.5 w-3.5 text-violet-200/90" />
+          <Workflow className="h-3.5 w-3.5 text-teal-200/90" />
           {t('pbl.v2.workspace.progressLabel')}
         </div>
         <div className="flex min-w-0 flex-1 items-center gap-1.5">
@@ -498,13 +498,13 @@ function WorkspaceTopBar({
                   className={cn(
                     'h-1.5 min-w-4 flex-1 rounded-full transition-colors',
                     completed && 'bg-cyan-300/70 shadow-[0_0_12px_rgba(103,232,249,0.30)]',
-                    active && 'bg-violet-300 shadow-[0_0_16px_rgba(167,139,250,0.42)]',
+                    active && 'bg-teal-300 shadow-[0_0_16px_rgba(167,139,250,0.42)]',
                     !active && !completed && 'bg-slate-500/35',
                   )}
                 />
                 {active && (
                   <div
-                    className="absolute top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/50 bg-violet-300 shadow-[0_0_18px_rgba(167,139,250,0.58)] transition-[left] duration-500 ease-out"
+                    className="absolute top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/50 bg-teal-300 shadow-[0_0_18px_rgba(167,139,250,0.58)] transition-[left] duration-500 ease-out"
                     style={{ left: `${milestoneProgressFraction(milestone) * 100}%` }}
                   />
                 )}
@@ -591,7 +591,7 @@ function WorkspaceResizeHandle({
       />
       <div
         className={cn(
-          'absolute left-1/2 top-1/2 h-10 w-px -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/60 opacity-0 shadow-[0_0_14px_rgba(157,140,255,0.28)] transition-all',
+          'absolute left-1/2 top-1/2 h-10 w-px -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/60 opacity-0 shadow-[0_0_14px_rgba(20,184,166,0.28)] transition-all',
           'group-hover:h-14 group-hover:opacity-100',
           active && 'h-16 opacity-100',
         )}

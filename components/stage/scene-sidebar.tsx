@@ -117,9 +117,9 @@ export function SceneSidebar({
       {!collapsed && (
         <div
           onMouseDown={handleDragStart}
-          className="absolute right-0 top-0 bottom-0 w-1.5 cursor-col-resize z-50 group hover:bg-purple-400/30 dark:hover:bg-purple-600/30 active:bg-purple-500/40 dark:active:bg-purple-500/40 transition-colors"
+          className="absolute right-0 top-0 bottom-0 w-1.5 cursor-col-resize z-50 group hover:bg-teal-400/30 dark:hover:bg-teal-600/30 active:bg-teal-500/40 dark:active:bg-teal-500/40 transition-colors"
         >
-          <div className="absolute right-0.5 top-1/2 -translate-y-1/2 w-0.5 h-8 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-purple-400 dark:group-hover:bg-purple-500 transition-colors" />
+          <div className="absolute right-0.5 top-1/2 -translate-y-1/2 w-0.5 h-8 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-teal-400 dark:group-hover:bg-teal-500 transition-colors" />
         </div>
       )}
 
@@ -131,7 +131,12 @@ export function SceneSidebar({
             className="flex items-center gap-2 cursor-pointer rounded-lg px-1.5 -mx-1.5 py-1 -my-1 hover:bg-gray-100/80 dark:hover:bg-gray-800/60 active:scale-[0.97] transition-all duration-150"
             title={t('generation.backToHome')}
           >
-            <img src="/logo-horizontal.png" alt="OpenMAIC" className="h-6" />
+            <img src="/logos/rhodes-island-horizontal.svg" alt="OMAIC-R" className="h-6 dark:hidden" />
+            <img
+              src="/logos/rhodes-island-horizontal-dark.svg"
+              alt="OMAIC-R"
+              className="hidden dark:block h-6"
+            />
           </button>
           <button
             onClick={() => onCollapseChange(true)}
@@ -168,7 +173,7 @@ export function SceneSidebar({
                 className={cn(
                   'group relative rounded-lg transition-all duration-200 cursor-pointer flex flex-col gap-1 p-1.5',
                   isActive
-                    ? 'bg-purple-50 dark:bg-purple-900/20 ring-1 ring-purple-200 dark:ring-purple-700'
+                    ? 'bg-teal-50 dark:bg-teal-900/20 ring-1 ring-teal-200 dark:ring-teal-700'
                     : 'hover:bg-gray-50/80 dark:hover:bg-gray-800/50',
                 )}
               >
@@ -179,7 +184,7 @@ export function SceneSidebar({
                       className={cn(
                         'text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center shrink-0',
                         isActive
-                          ? 'bg-purple-600 dark:bg-purple-500 text-white shadow-sm shadow-purple-500/30'
+                          ? 'bg-teal-600 dark:bg-teal-500 text-white shadow-sm shadow-teal-500/30'
                           : 'bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400',
                       )}
                     >
@@ -190,7 +195,7 @@ export function SceneSidebar({
                       className={cn(
                         'text-xs font-bold truncate transition-colors',
                         isActive
-                          ? 'text-purple-700 dark:text-purple-300'
+                          ? 'text-teal-700 dark:text-teal-300'
                           : 'text-gray-600 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-gray-100',
                       )}
                     >
@@ -324,9 +329,9 @@ export function SceneSidebar({
                     {isSlide && (
                       <div
                         className={cn(
-                          'absolute inset-0 bg-purple-500/0 transition-colors',
+                          'absolute inset-0 bg-teal-500/0 transition-colors',
                           isActive
-                            ? 'bg-purple-500/0'
+                            ? 'bg-teal-500/0'
                             : 'group-hover:bg-black/5 dark:group-hover:bg-white/5',
                         )}
                       />
@@ -365,7 +370,7 @@ export function SceneSidebar({
                     !isFailed && !isActive && 'opacity-60',
                     isActive &&
                       !isFailed &&
-                      'bg-purple-50 dark:bg-purple-900/20 ring-1 ring-purple-200 dark:ring-purple-700 opacity-100',
+                      'bg-teal-50 dark:bg-teal-900/20 ring-1 ring-teal-200 dark:ring-teal-700 opacity-100',
                   )}
                 >
                   {/* Scene Header */}
@@ -375,7 +380,7 @@ export function SceneSidebar({
                         className={cn(
                           'text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center shrink-0',
                           isActive && !isFailed
-                            ? 'bg-purple-600 dark:bg-purple-500 text-white shadow-sm shadow-purple-500/30'
+                            ? 'bg-teal-600 dark:bg-teal-500 text-white shadow-sm shadow-teal-500/30'
                             : 'bg-gray-100 dark:bg-gray-700 text-gray-400 dark:text-gray-500',
                         )}
                       >
@@ -385,7 +390,7 @@ export function SceneSidebar({
                         className={cn(
                           'text-xs font-bold truncate transition-colors',
                           isActive && !isFailed
-                            ? 'text-purple-700 dark:text-purple-300'
+                            ? 'text-teal-700 dark:text-teal-300'
                             : isFailed
                               ? 'text-gray-700 dark:text-gray-200'
                               : 'text-gray-400 dark:text-gray-500',

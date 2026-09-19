@@ -81,7 +81,7 @@ function PlaybackVideoContent({
 
   if (showSkeleton) {
     return (
-      <div className="flex h-full w-full items-center justify-center rounded bg-gradient-to-br from-indigo-50 via-violet-50/60 to-blue-50 dark:from-indigo-950/40 dark:via-violet-950/30 dark:to-blue-950/20">
+      <div className="flex h-full w-full items-center justify-center rounded bg-gradient-to-br from-indigo-50 via-teal-50/60 to-blue-50 dark:from-indigo-950/40 dark:via-teal-950/30 dark:to-blue-950/20">
         <div className="relative h-14 w-14">
           <div className="absolute inset-0 animate-pulse rounded-full border-2 border-indigo-300/40 dark:border-indigo-500/30" />
           <Film

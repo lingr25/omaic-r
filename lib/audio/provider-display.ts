@@ -32,7 +32,8 @@ const TTS_PROVIDER_NAME_KEYS: Record<string, string> = {
   'elevenlabs-tts': 'settings.providerElevenLabsTTS',
   'minimax-tts': 'settings.providerMiniMaxTTS',
   'lemonade-tts': 'settings.providerLemonadeTTS',
-  'genie-tts': 'settings.providerGenieTTS',
+  'mimo-tts': 'settings.providerMimoTTS',
+  'stepfun-tts': 'settings.providerStepfunTTS',
   'browser-native-tts': 'settings.providerBrowserNativeTTS',
 };
 

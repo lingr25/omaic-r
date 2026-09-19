@@ -1,4 +1,4 @@
-export const USER_AVATAR = '/avatars/user.png';
+export const USER_AVATAR = '/avatars/doctor.png';
 
 export type ParticipantRole = 'teacher' | 'student' | 'user';
 

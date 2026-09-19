@@ -27,14 +27,8 @@ export const AGENT_COLOR_PALETTE = [
  * Every entry MUST correspond to a file that exists under `public/avatars/`.
  */
 export const AGENT_DEFAULT_AVATARS = [
-  '/avatars/teacher.png',
-  '/avatars/assist.png',
-  '/avatars/curious.png',
-  '/avatars/thinker.png',
-  '/avatars/note-taker.png',
-  '/avatars/teacher-2.png',
-  '/avatars/assist-2.png',
-  '/avatars/curious-2.png',
-  '/avatars/thinker-2.png',
-  '/avatars/note-taker-2.png',
+  '/avatars/muelsyse.png',
+  '/avatars/amiya.png',
+  '/avatars/rosmontis.png',
+  '/avatars/angelina.png',
 ] as const;

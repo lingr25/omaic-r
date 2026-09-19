@@ -10,7 +10,7 @@
     "close": "닫기"
   },
   "home": {
-    "slogan": "멀티 에이전트 인터랙티브 교실에서 펼치는 생성형 학습",
+    "slogan": "로도스 아일랜드 클래스룸 · 멀티 에이전트 생성형 학습",
     "greetingWithName": "안녕하세요, {{name}}!"
   },
   "toolbar": {
@@ -126,7 +126,7 @@
   },
   "chat": {
     "lecture": "강의",
-    "noConversations": "대화 없음",
+    "noConversations": "대화가 없습니다——박사님, 먼저 말을 걸어 보세요",
     "startConversation": "아래에 메시지를 입력하여 채팅을 시작하세요",
     "noMessages": "아직 메시지가 없습니다",
     "ended": "종료됨",
@@ -1003,7 +1003,7 @@
     "folderDeleteFailed": "폴더 삭제에 실패했습니다",
     "moveFailed": "강의 이동에 실패했습니다",
     "emptyFolderHint": "이 폴더가 비어 있습니다",
-    "emptyLibraryHint": "아직 강의가 없습니다. 위에서 만들거나 강의를 가져오세요.",
+    "emptyLibraryHint": "라이브러리가 비어 있습니다——박사님, 위에서 강의를 만들거나 가져와 보세요.",
     "folderNameEmpty": "폴더 이름은 비워둘 수 없습니다",
     "deleteFolderOnly": "폴더만 삭제",
     "deleteFolderAndCourses": "폴더와 강의 {{count}}개 삭제",
@@ -1017,7 +1017,7 @@
     "pdfSizeLimit": "최대 50MB PDF 파일을 지원합니다",
     "courseMaterialSizeLimit": "문서, 슬라이드, 스프레드시트, 이미지, 텍스트 — 최대 50MB (지원 형식은 선택한 파서에 따라 다름)",
     "generateFailed": "교실 생성에 실패했습니다. 다시 시도해주세요",
-    "requirementPlaceholder": "학습하고 싶은 내용을 자유롭게 입력하세요, 예:\n\"파이썬을 30분 만에 처음부터 가르쳐주세요\"\n\"칠판에 푸리에 변환을 설명해주세요\"\n\"보드게임 Avalon 하는 방법\"",
+    "requirementPlaceholder": "박사님, 오늘은 무엇을 배우고 싶으신가요? 예:\n\"파이썬을 30분 만에 처음부터 가르쳐주세요\"\n\"칠판에 푸리에 변환을 설명해주세요\"\n\"보드게임 Avalon 하는 방법\"",
     "requirementRequired": "강좌 요구사항을 입력해주세요",
     "fileTooLarge": "파일이 너무 큽니다. 50MB 미만의 파일을 선택해주세요",
     "courseMaterialCountLimit": "강의 자료 파일은 최대 5개까지 업로드할 수 있습니다",
@@ -1033,7 +1033,7 @@
     "courseMaterialParseFailed": "강의 자료 파싱에 실패했습니다",
     "streamNotReadable": "생성 스트림을 읽을 수 없습니다",
     "generatingOutlines": "강좌 개요 작성 중",
-    "generatingOutlinesDesc": "학습 경로를 구성하고 있어요...",
+    "generatingOutlinesDesc": "PRTS가 학습 경로를 구성하는 중…",
     "generatingSlideContent": "페이지 내용 생성 중",
     "generatingSlideContentDesc": "슬라이드, 퀴즈, 인터랙티브 콘텐츠를 만들고 있어요...",
     "generatingActions": "수업 액션 생성 중",
@@ -1048,7 +1048,7 @@
     "sessionNotFoundDesc": "생성 프로세스를 시작하려면 강좌 요구사항을 입력해주세요.",
     "goBackAndRetry": "돌아가서 다시 시도",
     "classroomReady": "맞춤형 AI 학습 환경이 성공적으로 생성되었습니다.",
-    "aiWorking": "AI 에이전트 작동 중...",
+    "aiWorking": "로도스 아일랜드 단말기 접속 중, PRTS 연산 중…",
     "textTruncated": "문서 텍스트가 길어 처음 {{n}}자만 사용하여 생성합니다",
     "imageTruncated": "{{total}}개의 이미지가 발견되었으나 {{max}}개 제한을 초과했습니다. 초과 이미지는 텍스트 설명으로 대체됩니다",
     "agentGeneration": "교실 역할 생성 중",
@@ -1188,12 +1188,10 @@
     "selectedAgents": "선택된 에이전트",
     "required": "필수",
     "agentNames": {
-      "default-1": "AI 선생님",
-      "default-2": "AI 보조 선생님",
-      "default-3": "분위기 메이커",
-      "default-4": "호기심 왕",
-      "default-5": "노트 필기왕",
-      "default-6": "깊은 생각가"
+      "default-1": "뮤엘시스",
+      "default-2": "아미야",
+      "default-3": "로즈몬티스",
+      "default-4": "안젤리나"
     },
     "agentRoles": {
       "teacher": "선생님",
@@ -1201,12 +1199,10 @@
       "student": "학생"
     },
     "agentDescriptions": {
-      "default-1": "명확하고 체계적인 설명으로 수업을 이끄는 주 선생님",
-      "default-2": "학습을 돕고 핵심 내용을 명확히 정리해 드립니다",
-      "default-3": "교실에 유머와 활기를 불어넣습니다",
-      "default-4": "항상 왜, 어떻게를 묻는 호기심 가득한 학생",
-      "default-5": "수업 내용을 성실하게 기록하고 정리합니다",
-      "default-6": "주제의 본질을 깊이 탐구하고 사고합니다"
+      "default-1": "라인랩 생태학과 과장. 생생한 비유로 지식을 명확하고 재미있게 설명한다",
+      "default-2": "로도스 아일랜드의 공개 리더. 부드럽고 끈기 있게 모두가 핵심을 이해하도록 돕는다",
+      "default-3": "조용하고 집중력 있는 펠린 오퍼레이터. 가끔 순진하지만 깊이 있는 질문을 던진다",
+      "default-4": "활발하고 호기심 많은 메신저 소녀. 언제나 즐겁고 재미있는 화제를 가져온다"
     },
     "close": "닫기",
     "save": "저장",
@@ -1399,7 +1395,8 @@
     "providerElevenLabsTTS": "ElevenLabs TTS",
     "providerMiniMaxTTS": "MiniMax TTS",
     "providerLemonadeTTS": "Lemonade TTS (로컬)",
-    "providerGenieTTS": "Genie TTS (Local)",
+    "providerMimoTTS": "MiMo TTS (Xiaomi Voice Clone)",
+    "providerStepfunTTS": "StepFun TTS (Voice Clone)",
     "providerBrowserNativeTTS": "브라우저 기본 TTS",
     "voxcpmBackend": "백엔드",
     "voxcpmBaseUrlPending": "요청 URL을 생성하려면 Base URL을 입력하세요",
@@ -1867,7 +1864,7 @@
       "download": "다운로드",
       "detailFailed": "스킬 상세를 불러오지 못했습니다",
       "contentLabel": "내용",
-      "builtinDetailNote": "이 스킬은 OpenMAIC에 포함되어 있습니다. 다른 에이전트 작업공간으로 가져오려면 다운로드하세요.",
+      "builtinDetailNote": "이 스킬은 OMAIC-R에 포함되어 있습니다. 다른 에이전트 작업공간으로 가져오려면 다운로드하세요.",
       "upload": "업로드",
       "uploading": "업로드 중…",
       "uploadFailed": "스킬을 업로드하지 못했습니다. 파일을 확인하고 다시 시도하세요.",
@@ -1979,7 +1976,7 @@
   },
   "profile": {
     "title": "프로필",
-    "defaultNickname": "학습자",
+    "defaultNickname": "박사",
     "chooseAvatar": "아바타 선택",
     "uploadAvatar": "업로드",
     "bioPlaceholder": "자신에 대해 알려주세요 — AI 선생님이 맞춤 수업을 준비해 드립니다...",

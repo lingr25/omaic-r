@@ -10,7 +10,7 @@
     "close": "关闭"
   },
   "home": {
-    "slogan": "Generative Learning in Multi-Agent Interactive Classroom",
+    "slogan": "罗德岛课堂 · 多智能体生成式学习",
     "greetingWithName": "嗨，{{name}}"
   },
   "toolbar": {
@@ -126,7 +126,7 @@
   },
   "chat": {
     "lecture": "授课",
-    "noConversations": "暂无对话",
+    "noConversations": "暂无对话——博士，等你发言",
     "startConversation": "输入消息开始对话",
     "noMessages": "暂无消息",
     "ended": "已结束",
@@ -1003,7 +1003,7 @@
     "folderDeleteFailed": "删除文件夹失败",
     "moveFailed": "移动课程失败",
     "emptyFolderHint": "这个文件夹还是空的",
-    "emptyLibraryHint": "还没有课程——在上方创建，或导入一个课程。",
+    "emptyLibraryHint": "资料库空空如也——博士，在上方创建一门课程，或导入一份课件。",
     "folderNameEmpty": "文件夹名不能为空",
     "deleteFolderOnly": "仅删除文件夹",
     "deleteFolderAndCourses": "删除文件夹和 {{count}} 门课程",
@@ -1017,7 +1017,7 @@
     "pdfSizeLimit": "支持最大50MB的PDF文件",
     "courseMaterialSizeLimit": "支持文档、演示、表格、图像、纯文本，最大 50MB（具体支持格式随所选解析器而定）",
     "generateFailed": "生成课堂失败，请重试",
-    "requirementPlaceholder": "输入你想学的任何内容，例如：\n「从零学 Python，30 分钟写出第一个程序」\n「用白板给我讲解傅里叶变换」\n「阿瓦隆桌游怎么玩」",
+    "requirementPlaceholder": "博士，今天想学什么？例如：\n「从零学 Python，30 分钟写出第一个程序」\n「用白板给我讲解傅里叶变换」\n「阿瓦隆桌游怎么玩」",
     "requirementRequired": "请输入课程需求",
     "fileTooLarge": "文件过大，请选择小于 50MB 的文件",
     "courseMaterialCountLimit": "最多可上传 5 个课程材料文件",
@@ -1033,7 +1033,7 @@
     "courseMaterialParseFailed": "课程材料解析失败",
     "streamNotReadable": "无法读取生成数据流",
     "generatingOutlines": "生成课程大纲",
-    "generatingOutlinesDesc": "正在构建学习路径...",
+    "generatingOutlinesDesc": "PRTS 正在构建学习路径…",
     "generatingSlideContent": "生成页面内容",
     "generatingSlideContentDesc": "正在创建幻灯片、测验和互动内容...",
     "generatingActions": "生成教学动作",
@@ -1048,7 +1048,7 @@
     "sessionNotFoundDesc": "请先填写课程需求开始生成流程。",
     "goBackAndRetry": "返回重试",
     "classroomReady": "你的个性化AI学习环境已成功生成。",
-    "aiWorking": "AI智能体工作中...",
+    "aiWorking": "正在接入罗德岛终端，PRTS 演算中…",
     "textTruncated": "文档文本较长，已截取前 {{n}} 字符用于生成",
     "imageTruncated": "文档含 {{total}} 张图片，超出上限 {{max}} 张，多余图片将仅以文字描述传递",
     "agentGeneration": "生成课堂角色",
@@ -1188,12 +1188,10 @@
     "selectedAgents": "选中的智能体",
     "required": "必选",
     "agentNames": {
-      "default-1": "AI教师",
-      "default-2": "AI助教",
-      "default-3": "显眼包",
-      "default-4": "好奇宝宝",
-      "default-5": "笔记员",
-      "default-6": "思考者"
+      "default-1": "缪尔赛思",
+      "default-2": "阿米娅",
+      "default-3": "迷迭香",
+      "default-4": "安洁莉娜"
     },
     "agentRoles": {
       "teacher": "教师",
@@ -1201,12 +1199,10 @@
       "student": "学生"
     },
     "agentDescriptions": {
-      "default-1": "主讲教师，清晰有条理地讲解知识",
-      "default-2": "辅助讲解，帮助同学理解重点",
-      "default-3": "活跃气氛，用幽默让课堂更有趣",
-      "default-4": "充满好奇心，总爱追问为什么",
-      "default-5": "认真记录，整理课堂重点笔记",
-      "default-6": "深入思考，喜欢探讨问题本质"
+      "default-1": "莱茵生命生态科主任，用生动的类比把知识讲得清晰有趣",
+      "default-2": "罗德岛的公开领袖，温柔耐心地帮助大家理解要点",
+      "default-3": "安静专注的菲林干员，偶尔会冒出天真却深刻的问题",
+      "default-4": "活泼好奇的信使少女，总能带来轻松有趣的话题"
     },
     "close": "关闭",
     "save": "保存",
@@ -1399,7 +1395,8 @@
     "providerElevenLabsTTS": "ElevenLabs TTS",
     "providerMiniMaxTTS": "MiniMax TTS",
     "providerLemonadeTTS": "Lemonade TTS（本地）",
-    "providerGenieTTS": "Genie TTS（本地）",
+    "providerMimoTTS": "MiMo TTS（小米音色复刻）",
+    "providerStepfunTTS": "阶跃星辰 TTS（音色复刻）",
     "providerBrowserNativeTTS": "浏览器原生 TTS",
     "voxcpmBackend": "Backend",
     "voxcpmBaseUrlPending": "填写 Base URL 后生成",
@@ -1867,7 +1864,7 @@
       "download": "下载",
       "detailFailed": "技能详情加载失败",
       "contentLabel": "正文",
-      "builtinDetailNote": "该技能随 OpenMAIC 提供。下载后可导入其他智能体工作台。",
+      "builtinDetailNote": "该技能随 OMAIC-R 提供。下载后可导入其他智能体工作台。",
       "upload": "上传",
       "uploading": "正在上传…",
       "uploadFailed": "技能上传失败。请检查文件后重试。",
@@ -1979,7 +1976,7 @@
   },
   "profile": {
     "title": "个人资料",
-    "defaultNickname": "同学",
+    "defaultNickname": "博士",
     "chooseAvatar": "选择头像",
     "uploadAvatar": "上传",
     "bioPlaceholder": "介绍一下自己，AI老师会根据你的背景个性化教学...",

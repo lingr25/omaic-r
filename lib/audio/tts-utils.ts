@@ -8,29 +8,27 @@ import { createLogger } from '@/lib/logger';
 
 const log = createLogger('TTS');
 
-/** Provider-specific max text length limits. */
+/**
+ * Provider-specific max text length limits.
+ *
+ * MiMo's published limit is an 8K context/output window, not a character
+ * cap. In practice a clone call also re-sends ~1MB of reference audio and
+ * sits in a shared queue, so the bound is a timeout budget: ~90 CJK chars
+ * synthesized in ~7s when warm → 800 chars stays inside the 120s request
+ * timeout even with a sluggish queue.
+ */
 export const TTS_MAX_TEXT_LENGTH: Partial<Record<TTSProviderId, number>> = {
   'glm-tts': 1024,
-  // Genie's own TextSplitter soft-caps at effective width 40 (CJK counts as 2,
-  // ~20 hanzi). Longer single-pass T2S hits EOS early and drops the tail.
-  'genie-tts': 24,
+  'mimo-tts': 800,
+  'stepfun-tts': 1000,
 };
 
-const GENIE_TERMINATORS = /[。！？!?…]$/;
-const GENIE_CLAUSE_MARKS = /[，,、；;：:]$/;
-
 /**
- * GPT-SoVITS / Genie drop the last few characters when a line has no
- * terminator (the decoder emits EOS a token early). Mirror the official
- * webui: guarantee a sentence-ending mark.
+ * Providers whose per-request overhead (queue + re-sending a clone sample)
+ * dominates inference. Consecutive speech actions with no visual in between
+ * are merged up to {@link TTS_MAX_TEXT_LENGTH} so we fire fewer requests.
  */
-export function ensureGenieSentenceTerminator(text: string): string {
-  const trimmed = text.trim();
-  if (!trimmed) return trimmed;
-  if (GENIE_TERMINATORS.test(trimmed)) return trimmed;
-  if (GENIE_CLAUSE_MARKS.test(trimmed)) return `${trimmed.slice(0, -1)}。`;
-  return `${trimmed}。`;
-}
+export const TTS_COALESCE_SPEECH_PROVIDERS = new Set<TTSProviderId>(['mimo-tts']);
 
 /**
  * Split long text into chunks that respect sentence boundaries.
@@ -98,6 +96,57 @@ export function splitLongSpeechText(text: string, maxLength: number): string[] {
  * within the TTS provider's text length limit. Each sub-action gets its
  * own independent audio file — no byte concatenation needed.
  */
+function canCoalesceSpeech(
+  previous: SpeechAction,
+  next: SpeechAction,
+  maxLength: number,
+): boolean {
+  if (!previous.text || !next.text) return false;
+  if (previous.voice && next.voice && previous.voice !== next.voice) return false;
+  if (previous.speed != null && next.speed != null && previous.speed !== next.speed) return false;
+  return previous.text.length + next.text.length <= maxLength;
+}
+
+/**
+ * Fold adjacent speech actions (no spotlight/laser/whiteboard in between) into
+ * one line, up to `maxLength`. Visual actions remain hard boundaries so stage
+ * timing stays aligned.
+ */
+export function mergeConsecutiveSpeechActions(actions: Action[], maxLength: number): Action[] {
+  if (!Number.isFinite(maxLength) || maxLength <= 0 || actions.length < 2) return actions;
+
+  const merged: Action[] = [];
+  for (const action of actions) {
+    const previous = merged.at(-1);
+    if (
+      previous?.type === 'speech' &&
+      action.type === 'speech' &&
+      canCoalesceSpeech(previous, action, maxLength)
+    ) {
+      previous.text += action.text;
+      continue;
+    }
+    merged.push(action.type === 'speech' ? { ...action } : action);
+  }
+  return merged;
+}
+
+/**
+ * Provider-aware prep: merge short consecutive lines where queue cost dominates,
+ * then split anything still over the provider cap.
+ */
+export function prepareSpeechActionsForTts(
+  actions: Action[],
+  providerId: TTSProviderId,
+): Action[] {
+  const maxLength = TTS_MAX_TEXT_LENGTH[providerId];
+  const coalesced =
+    TTS_COALESCE_SPEECH_PROVIDERS.has(providerId) && maxLength
+      ? mergeConsecutiveSpeechActions(actions, maxLength)
+      : actions;
+  return splitLongSpeechActions(coalesced, providerId);
+}
+
 export function splitLongSpeechActions(actions: Action[], providerId: TTSProviderId): Action[] {
   const maxLength = TTS_MAX_TEXT_LENGTH[providerId];
   if (!maxLength) return actions;

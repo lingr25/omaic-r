@@ -104,7 +104,7 @@ function llmAgent(extra: Record<string, unknown>): Record<string, unknown> {
     name: 'Prof. Lin',
     role: 'teacher',
     persona: 'A patient mentor who builds from what students know.',
-    avatar: '/avatars/teacher.png',
+    avatar: '/avatars/amiya.png',
     color: '#111111',
     priority: 10,
     ...extra,

@@ -523,9 +523,18 @@ const getDefaultAudioConfig = () => ({
       modelId: 'kokoro-v1',
       enabled: true,
     },
-    // Genie TTS is a local CPU server (start-genie-tts.cmd); enabled by default
-    // but only usable while that server is up.
-    'genie-tts': { apiKey: '', baseUrl: '', enabled: true },
+    'mimo-tts': {
+      apiKey: '',
+      baseUrl: '',
+      modelId: 'mimo-v2.5-tts-voiceclone',
+      enabled: true,
+    },
+    'stepfun-tts': {
+      apiKey: '',
+      baseUrl: '',
+      modelId: 'stepaudio-2.5-tts',
+      enabled: true,
+    },
     // Browser-native is OFF by default — fully opt-in. Native voice quality is
     // poor; it must never be a silent default (#665).
     'browser-native-tts': { apiKey: '', baseUrl: '', enabled: false },

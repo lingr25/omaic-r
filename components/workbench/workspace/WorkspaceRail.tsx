@@ -849,7 +849,13 @@ export function WorkspaceRail({
             src={brand.logoSrc}
             alt=""
             aria-hidden="true"
-            className="h-[21px] w-auto max-w-[110px] shrink-0"
+            className="h-[21px] w-auto max-w-[110px] shrink-0 dark:hidden"
+          />
+          <img
+            src="/logos/rhodes-island-horizontal-dark.svg"
+            alt=""
+            aria-hidden="true"
+            className="hidden h-[21px] w-auto max-w-[110px] shrink-0 dark:block"
           />
         </HomeLink>
         <ProBadge active onToggle={onExitPro} />

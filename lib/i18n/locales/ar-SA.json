@@ -10,7 +10,7 @@
     "close": "إغلاق"
   },
   "home": {
-    "slogan": "التعلّم التوليدي في فصل تفاعلي متعدد الوكلاء",
+    "slogan": "فصل رودز آيلاند · تعلّم توليدي متعدد الوكلاء",
     "greetingWithName": "مرحبًا، {{name}}"
   },
   "toolbar": {
@@ -126,7 +126,7 @@
   },
   "chat": {
     "lecture": "المحاضرة",
-    "noConversations": "لا توجد محادثات",
+    "noConversations": "لا توجد محادثات — يا دوكتور، الكلمة لك",
     "startConversation": "اكتب رسالة أدناه لبدء المحادثة",
     "noMessages": "لا توجد رسائل بعد",
     "ended": "انتهت",
@@ -1003,7 +1003,7 @@
     "folderDeleteFailed": "فشل حذف المجلد",
     "moveFailed": "فشل نقل الدورة",
     "emptyFolderHint": "هذا المجلد فارغ",
-    "emptyLibraryHint": "لا توجد دورات بعد — أنشئ واحدة بالأعلى أو استورد دورة.",
+    "emptyLibraryHint": "الأرشيف فارغ — يا دوكتور، أنشئ دورة من الأعلى أو استورد واحدة.",
     "folderNameEmpty": "لا يمكن أن يكون اسم المجلد فارغًا",
     "deleteFolderOnly": "حذف المجلد فقط",
     "deleteFolderAndCourses": "حذف المجلد و {{count}} دورة",
@@ -1017,7 +1017,7 @@
     "pdfSizeLimit": "يدعم ملفات PDF حتى 50 ميغابايت",
     "courseMaterialSizeLimit": "المستندات والعروض التقديمية وجداول البيانات والصور والنصوص العادية — حتى 50 ميغابايت (تعتمد الصيغ المقبولة على المستخرج المحدد)",
     "generateFailed": "فشل توليد الفصل، يرجى المحاولة مرة أخرى",
-    "requirementPlaceholder": "أخبرني بأي شيء تريد تعلمه، مثلاً:\n\"علمني بايثون من الصفر في 30 دقيقة\"\n\"اشرح تحويل فورييه على السبورة\"\n\"كيف تلعب لعبة أفالون\"",
+    "requirementPlaceholder": "يا دوكتور، ماذا تريد أن تتعلم اليوم؟ مثلاً:\n\"علمني بايثون من الصفر في 30 دقيقة\"\n\"اشرح تحويل فورييه على السبورة\"\n\"كيف تلعب لعبة أفالون\"",
     "requirementRequired": "يرجى إدخال متطلبات المقرر",
     "fileTooLarge": "الملف كبير جدًا. يرجى اختيار ملف أصغر من 50 ميغابايت",
     "courseMaterialCountLimit": "يمكنك رفع ما يصل إلى 5 ملفات لمواد المقرر",
@@ -1033,7 +1033,7 @@
     "courseMaterialParseFailed": "فشل تحليل مادة المقرر",
     "streamNotReadable": "تعذرت قراءة تدفق التوليد",
     "generatingOutlines": "صياغة مخطط المقرر",
-    "generatingOutlinesDesc": "جارٍ هيكلة مسار التعلم...",
+    "generatingOutlinesDesc": "PRTS يبني مسار التعلّم…",
     "generatingSlideContent": "توليد محتوى الصفحة",
     "generatingSlideContentDesc": "جارٍ إنشاء الشرائح والاختبارات والمحتوى التفاعلي...",
     "generatingActions": "توليد إجراءات التدريس",
@@ -1048,7 +1048,7 @@
     "sessionNotFoundDesc": "يرجى ملء متطلبات المقرر لبدء عملية التوليد.",
     "goBackAndRetry": "العودة وإعادة المحاولة",
     "classroomReady": "تم توليد بيئة التعلم الذكية المخصصة لك بنجاح.",
-    "aiWorking": "وكلاء الذكاء الاصطناعي يعملون...",
+    "aiWorking": "جارٍ الاتصال بطرفية رودز آيلاند — PRTS يحسب…",
     "textTruncated": "نص المستند طويل، سيتم استخدام أول {{n}} حرف للتوليد",
     "imageTruncated": "تم العثور على {{total}} صورة، متجاوزة الحد الأقصى البالغ {{max}} صورة. الصور الإضافية ستستخدم الأوصاف النصية فقط",
     "agentGeneration": "توليد أدوار الفصل",
@@ -1188,12 +1188,10 @@
     "selectedAgents": "الوكلاء المختارون",
     "required": "مطلوب",
     "agentNames": {
-      "default-1": "المعلم الذكي",
-      "default-2": "المساعد الذكي",
-      "default-3": "مُحيي الفصل",
-      "default-4": "العقل الفضولي",
-      "default-5": "مُدوّن الملاحظات",
-      "default-6": "المفكر العميق"
+      "default-1": "ميويلسيس",
+      "default-2": "أميا",
+      "default-3": "روسمونتيس",
+      "default-4": "أنجيلينا"
     },
     "agentRoles": {
       "teacher": "معلم",
@@ -1201,12 +1199,10 @@
       "student": "طالب"
     },
     "agentDescriptions": {
-      "default-1": "المعلم الرئيسي بشروحات واضحة ومنظمة",
-      "default-2": "يدعم التعلم ويساعد في توضيح النقاط الرئيسية",
-      "default-3": "يضفي الفكاهة والحيوية على الفصل",
-      "default-4": "فضولي دائمًا، يحب السؤال عن الأسباب والكيفية",
-      "default-5": "يسجّل ملاحظات الدرس وينظمها بدقة",
-      "default-6": "يفكر بعمق ويستكشف جوهر المواضيع"
+      "default-1": "مديرة قسم البيئة في راين لاب، تشرح المعرفة بوضوح ومتعة عبر تشبيهات حية",
+      "default-2": "القائدة العلنية لجزيرة رودز، تساعد الجميع بلطف وصبر على فهم النقاط الأساسية",
+      "default-3": "عاملة فيلين هادئة ومركّزة، تطرح أحيانًا أسئلة بريئة لكنها عميقة",
+      "default-4": "فتاة رسول مرحة وفضولية، تجلب دائمًا مواضيع خفيفة وممتعة"
     },
     "close": "إغلاق",
     "save": "حفظ",
@@ -1399,7 +1395,8 @@
     "providerElevenLabsTTS": "ElevenLabs TTS",
     "providerMiniMaxTTS": "MiniMax TTS",
     "providerLemonadeTTS": "Lemonade TTS (محلي)",
-    "providerGenieTTS": "Genie TTS (Local)",
+    "providerMimoTTS": "MiMo TTS (Xiaomi Voice Clone)",
+    "providerStepfunTTS": "StepFun TTS (Voice Clone)",
     "providerBrowserNativeTTS": "تحويل النص إلى كلام المدمج في المتصفح",
     "voxcpmBackend": "الخلفية",
     "voxcpmBaseUrlPending": "أدخل Base URL لإنشاء عنوان الطلب",
@@ -1867,7 +1864,7 @@
       "download": "تنزيل",
       "detailFailed": "تعذّر تحميل تفاصيل المهارة",
       "contentLabel": "المحتوى",
-      "builtinDetailNote": "هذه المهارة مرفقة مع OpenMAIC. نزّلها لاستيرادها إلى مساحة عمل وكيل أخرى.",
+      "builtinDetailNote": "هذه المهارة مرفقة مع OMAIC-R. نزّلها لاستيرادها إلى مساحة عمل وكيل أخرى.",
       "upload": "رفع",
       "uploading": "جارٍ الرفع…",
       "uploadFailed": "تعذّر رفع المهارة. تحقّق من الملف وحاول مرة أخرى.",
@@ -1979,7 +1976,7 @@
   },
   "profile": {
     "title": "الملف الشخصي",
-    "defaultNickname": "متعلّم",
+    "defaultNickname": "دكتور",
     "chooseAvatar": "اختر صورة رمزية",
     "uploadAvatar": "رفع",
     "bioPlaceholder": "أخبرنا عن نفسك — سيقوم المعلم الذكي بتخصيص الدروس لك...",

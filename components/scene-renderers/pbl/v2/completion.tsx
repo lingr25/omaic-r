@@ -546,7 +546,7 @@ function ActGoalReviewItem({
             <div className="min-w-0 flex-1">
               <span className="text-slate-200">{g.goal}</span>
               {g.skillFocus && (
-                <span className="ml-1.5 inline-block rounded bg-violet-300/[0.10] px-1.5 py-0.5 text-[10px] text-violet-200">
+                <span className="ml-1.5 inline-block rounded bg-teal-300/[0.10] px-1.5 py-0.5 text-[10px] text-teal-200">
                   {g.skillFocus}
                 </span>
               )}
@@ -586,7 +586,7 @@ function ActGoalListItem({
             <div className="min-w-0 flex-1">
               <span className="text-slate-200">{g.goal}</span>
               {g.skillFocus && (
-                <span className="ml-1.5 inline-block rounded bg-violet-300/[0.10] px-1.5 py-0.5 text-[10px] text-violet-200">
+                <span className="ml-1.5 inline-block rounded bg-teal-300/[0.10] px-1.5 py-0.5 text-[10px] text-teal-200">
                   {g.skillFocus}
                 </span>
               )}
@@ -645,7 +645,7 @@ function StageReviewItem({
         <span className="text-sm font-medium text-slate-100">
           {detail.milestoneTitle}
           {detail.isCoreStage && (
-            <span className="ml-1.5 rounded-full border border-violet-300/20 bg-violet-300/[0.08] px-1.5 py-0.5 text-[10px] text-violet-200">
+            <span className="ml-1.5 rounded-full border border-teal-300/20 bg-teal-300/[0.08] px-1.5 py-0.5 text-[10px] text-teal-200">
               {t('pbl.v2.completion.coreStageBadge')}
             </span>
           )}
@@ -677,7 +677,7 @@ function StageReviewItem({
           )}
           {detail.isCoreStage && detail.coreConcept && detail.synthesisQuality && (
             <li className="text-xs text-slate-200">
-              <span className="mr-1 text-violet-300/80">+</span>
+              <span className="mr-1 text-teal-300/80">+</span>
               {t('pbl.v2.completion.coreConceptGrasp', {
                 concept: detail.coreConcept,
                 quality: t(`pbl.v2.completion.synthesisQuality.${detail.synthesisQuality}`),

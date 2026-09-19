@@ -120,7 +120,7 @@ export function NewFolderDialog({
             }}
             placeholder={t('classroom.folderNamePlaceholder')}
             maxLength={80}
-            className="mt-1.5 w-full rounded-lg border border-border bg-background px-3 py-2 text-[14px] outline-none focus:ring-2 focus:ring-violet-400/40 focus:border-violet-400"
+            className="mt-1.5 w-full rounded-lg border border-border bg-background px-3 py-2 text-[14px] outline-none focus:ring-2 focus:ring-teal-400/40 focus:border-teal-400"
           />
           <div className="mt-1.5 flex items-center justify-between text-[11px]">
             <span className={error ? 'text-destructive' : 'text-muted-foreground/70'}>

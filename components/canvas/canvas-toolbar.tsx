@@ -248,10 +248,10 @@ export function CanvasToolbar({
                       'bg-gray-200 dark:bg-gray-600',
                       '[writing-mode:vertical-lr] [direction:rtl]',
                       '[&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:h-3',
-                      '[&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-violet-500 [&::-webkit-slider-thumb]:dark:bg-violet-400',
+                      '[&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-teal-500 [&::-webkit-slider-thumb]:dark:bg-teal-400',
                       '[&::-webkit-slider-thumb]:shadow-sm [&::-webkit-slider-thumb]:cursor-pointer',
                       '[&::-moz-range-thumb]:w-3 [&::-moz-range-thumb]:h-3',
-                      '[&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-violet-500 [&::-moz-range-thumb]:border-0',
+                      '[&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-teal-500 [&::-moz-range-thumb]:border-0',
                     )}
                   />
                 </div>
@@ -274,7 +274,7 @@ export function CanvasToolbar({
                       'text-[11px] font-semibold tabular-nums leading-none',
                       'active:scale-90',
                       playbackSpeed !== 1
-                        ? 'text-violet-600 dark:text-violet-400 bg-violet-500/10 dark:bg-violet-400/10'
+                        ? 'text-teal-600 dark:text-teal-400 bg-teal-500/10 dark:bg-teal-400/10'
                         : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200',
                     )}
                     aria-label="Playback speed"
@@ -331,7 +331,7 @@ export function CanvasToolbar({
                     e.stopPropagation();
                     onContinueDiscussion();
                   }}
-                  className="flex items-center gap-1.5 h-6 px-2.5 rounded-md border border-purple-200 dark:border-purple-700 bg-white/70 dark:bg-gray-800/70 text-purple-600 dark:text-purple-300 text-[11px] font-semibold whitespace-nowrap hover:bg-purple-50 dark:hover:bg-purple-900/20 active:scale-95 transition-all cursor-pointer"
+                  className="flex items-center gap-1.5 h-6 px-2.5 rounded-md border border-teal-200 dark:border-teal-700 bg-white/70 dark:bg-gray-800/70 text-teal-600 dark:text-teal-300 text-[11px] font-semibold whitespace-nowrap hover:bg-teal-50 dark:hover:bg-teal-900/20 active:scale-95 transition-all cursor-pointer"
                   title={t('roundtable.softClosing')}
                 >
                   {t('roundtable.softClosing')}
@@ -350,7 +350,7 @@ export function CanvasToolbar({
                 ctrlBtn,
                 'w-7 h-6',
                 engineState === 'playing'
-                  ? 'text-violet-600 dark:text-violet-400'
+                  ? 'text-teal-600 dark:text-teal-400'
                   : 'text-gray-500 dark:text-gray-400',
               )}
               aria-label={engineState === 'playing' ? 'Pause' : 'Play'}
@@ -391,7 +391,7 @@ export function CanvasToolbar({
                       ctrlBtn,
                       'w-8 h-6',
                       autoPlayLecture
-                        ? 'text-violet-600 dark:text-violet-400'
+                        ? 'text-teal-600 dark:text-teal-400'
                         : 'text-gray-500 dark:text-gray-400',
                     )}
                     aria-label="Auto-play"
@@ -416,14 +416,14 @@ export function CanvasToolbar({
               ctrlBtn,
               'w-6 h-6',
               whiteboardOpen
-                ? 'text-violet-600 dark:text-violet-400'
+                ? 'text-teal-600 dark:text-teal-400'
                 : 'text-gray-500 dark:text-gray-400',
             )}
             title={whiteboardOpen ? t('whiteboard.minimize') : t('whiteboard.open')}
           >
             <PencilLine className="w-3.5 h-3.5" />
             {!whiteboardOpen && whiteboardElementCount > 0 && (
-              <span className="absolute top-0.5 right-0.5 w-1.5 h-1.5 bg-violet-500 dark:bg-violet-400 rounded-full" />
+              <span className="absolute top-0.5 right-0.5 w-1.5 h-1.5 bg-teal-500 dark:bg-teal-400 rounded-full" />
             )}
           </button>
 
@@ -438,7 +438,7 @@ export function CanvasToolbar({
               className={cn(
                 'relative flex h-6 items-center gap-1 rounded-md px-2 text-[11px] font-medium transition-all',
                 elementPickActive
-                  ? 'bg-violet-500/15 text-violet-700 ring-1 ring-violet-400/40 dark:text-violet-300'
+                  ? 'bg-teal-500/15 text-teal-700 ring-1 ring-teal-400/40 dark:text-teal-300'
                   : 'text-gray-500 hover:bg-gray-500/[0.08] dark:text-gray-400',
                 !canPickSlideElement && 'cursor-not-allowed opacity-35',
               )}
@@ -467,7 +467,7 @@ export function CanvasToolbar({
               ctrlBtn,
               'w-6 h-6',
               isPresenting
-                ? 'text-violet-600 dark:text-violet-400'
+                ? 'text-teal-600 dark:text-teal-400'
                 : 'text-gray-500 dark:text-gray-400',
             )}
             aria-label={presentationLabel}

@@ -1,3 +1,3 @@
 @echo off
 echo Starting FunASR SenseVoice server (localhost:8000)...
-"C:\Users\cheny\AppData\Local\Python\pythoncore-3.14-64\Scripts\funasr-server.exe" --device cpu --model sensevoice --host 127.0.0.1 --port 8000
+funasr-server --device cpu --model sensevoice --host 127.0.0.1 --port 8000

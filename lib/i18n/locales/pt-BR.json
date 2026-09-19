@@ -10,7 +10,7 @@
     "close": "Fechar"
   },
   "home": {
-    "slogan": "Aprendizagem Generativa em Sala de Aula Interativa Multi-Agente",
+    "slogan": "Sala de aula Rhodes Island · Aprendizagem generativa multiagente",
     "greetingWithName": "Olá, {{name}}"
   },
   "toolbar": {
@@ -126,7 +126,7 @@
   },
   "chat": {
     "lecture": "Aula",
-    "noConversations": "Sem conversas",
+    "noConversations": "Nenhuma conversa — Doutor, a palavra é sua",
     "startConversation": "Digite uma mensagem abaixo para começar",
     "noMessages": "Ainda não há mensagens",
     "ended": "encerrada",
@@ -1003,7 +1003,7 @@
     "folderDeleteFailed": "Falha ao excluir a pasta",
     "moveFailed": "Falha ao mover o curso",
     "emptyFolderHint": "Esta pasta está vazia",
-    "emptyLibraryHint": "Nenhum curso ainda — crie um acima ou importe um curso.",
+    "emptyLibraryHint": "O acervo está vazio — Doutor, crie um curso acima ou importe um.",
     "folderNameEmpty": "O nome da pasta não pode estar vazio",
     "deleteFolderOnly": "Excluir apenas a pasta",
     "deleteFolderAndCourses": "Excluir pasta e {{count}} curso",
@@ -1017,7 +1017,7 @@
     "pdfSizeLimit": "Suporta arquivos PDF de até 50 MB",
     "courseMaterialSizeLimit": "Documentos, apresentações, planilhas, imagens e texto — até 50 MB (formatos aceitos dependem do extrator selecionado)",
     "generateFailed": "Falha ao gerar a sala, tente novamente",
-    "requirementPlaceholder": "Conte-me o que você quer aprender, por exemplo:\n\"Me ensine Python do zero em 30 minutos\"\n\"Explique a Transformada de Fourier no quadro\"\n\"Como jogar o jogo de tabuleiro Avalon\"",
+    "requirementPlaceholder": "Doutor, o que você quer aprender hoje? Ex.:\n\"Me ensine Python do zero em 30 minutos\"\n\"Explique a Transformada de Fourier no quadro\"\n\"Como jogar o jogo de tabuleiro Avalon\"",
     "requirementRequired": "Por favor, descreva os objetivos do curso",
     "fileTooLarge": "Arquivo muito grande. Selecione um arquivo com menos de 50 MB",
     "courseMaterialCountLimit": "Você pode enviar até 5 arquivos de material do curso",
@@ -1033,7 +1033,7 @@
     "courseMaterialParseFailed": "Falha ao analisar o material do curso",
     "streamNotReadable": "Não foi possível ler o fluxo de geração",
     "generatingOutlines": "Esboçando o Roteiro do Curso",
-    "generatingOutlinesDesc": "Estruturando o caminho de aprendizagem...",
+    "generatingOutlinesDesc": "PRTS está estruturando o caminho de aprendizagem…",
     "generatingSlideContent": "Gerando Conteúdo das Páginas",
     "generatingSlideContentDesc": "Criando slides, questionários e conteúdo interativo...",
     "generatingActions": "Gerando Ações de Ensino",
@@ -1048,7 +1048,7 @@
     "sessionNotFoundDesc": "Preencha os objetivos do curso para iniciar a geração.",
     "goBackAndRetry": "Voltar e Tentar de Novo",
     "classroomReady": "Seu ambiente de aprendizagem com IA foi gerado com sucesso.",
-    "aiWorking": "Agentes de IA Trabalhando...",
+    "aiWorking": "Conectando ao terminal da Rhodes Island — PRTS calculando…",
     "textTruncated": "O texto do documento é longo; usando os primeiros {{n}} caracteres",
     "imageTruncated": "{{total}} imagens encontradas, excedendo o limite de {{max}}. As imagens excedentes usarão apenas descrições em texto",
     "agentGeneration": "Gerando os Papéis da Sala",
@@ -1188,12 +1188,10 @@
     "selectedAgents": "Agentes Selecionados",
     "required": "Obrigatório",
     "agentNames": {
-      "default-1": "Professor de IA",
-      "default-2": "Assistente de IA",
-      "default-3": "Animador da Turma",
-      "default-4": "Mente Curiosa",
-      "default-5": "Anotador",
-      "default-6": "Pensador Profundo"
+      "default-1": "Muelsyse",
+      "default-2": "Amiya",
+      "default-3": "Rosmontis",
+      "default-4": "Angelina"
     },
     "agentRoles": {
       "teacher": "Professor",
@@ -1201,12 +1199,10 @@
       "student": "Estudante"
     },
     "agentDescriptions": {
-      "default-1": "Professor principal com explicações claras e bem estruturadas",
-      "default-2": "Apoia o aprendizado e ajuda a esclarecer pontos-chave",
-      "default-3": "Traz humor e energia para a sala de aula",
-      "default-4": "Sempre curioso, adora perguntar por quê e como",
-      "default-5": "Registra e organiza as anotações da aula com dedicação",
-      "default-6": "Pensa profundamente e explora a essência dos temas"
+      "default-1": "Diretora do departamento de ecologia do Rhine Lab; explica o conhecimento de forma clara e divertida com analogias vívidas",
+      "default-2": "A líder pública de Rhodes Island; ajuda a todos com gentileza e paciência a entender os pontos principais",
+      "default-3": "Uma operadora felina quieta e focada, que ocasionalmente faz perguntas ingênuas, mas profundas",
+      "default-4": "Uma mensageira animada e curiosa que sempre traz assuntos leves e divertidos"
     },
     "close": "Fechar",
     "save": "Salvar",
@@ -1399,7 +1395,8 @@
     "providerElevenLabsTTS": "ElevenLabs TTS",
     "providerMiniMaxTTS": "MiniMax TTS",
     "providerLemonadeTTS": "Lemonade TTS (Local)",
-    "providerGenieTTS": "Genie TTS (Local)",
+    "providerMimoTTS": "MiMo TTS (Xiaomi Voice Clone)",
+    "providerStepfunTTS": "StepFun TTS (Voice Clone)",
     "providerBrowserNativeTTS": "TTS Nativo do Navegador",
     "voxcpmBackend": "Backend",
     "voxcpmBaseUrlPending": "Digite uma URL base para gerar a URL da requisição",
@@ -1867,7 +1864,7 @@
       "download": "Baixar",
       "detailFailed": "Não foi possível carregar os detalhes do skill",
       "contentLabel": "Conteúdo",
-      "builtinDetailNote": "Este skill acompanha o OpenMAIC. Baixe-o para importar em outro espaço de trabalho de agente.",
+      "builtinDetailNote": "Este skill acompanha o OMAIC-R. Baixe-o para importar em outro espaço de trabalho de agente.",
       "upload": "Enviar",
       "uploading": "Enviando…",
       "uploadFailed": "Não foi possível enviar o skill. Verifique o arquivo e tente novamente.",
@@ -1979,7 +1976,7 @@
   },
   "profile": {
     "title": "Perfil",
-    "defaultNickname": "Estudante",
+    "defaultNickname": "Doutor",
     "chooseAvatar": "Escolher Avatar",
     "uploadAvatar": "Enviar",
     "bioPlaceholder": "Conte um pouco sobre você — o professor de IA vai personalizar as aulas...",

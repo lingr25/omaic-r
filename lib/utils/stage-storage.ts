@@ -101,6 +101,8 @@ export type PendingChange =
   | { kind: 'currentScene' }
   | { kind: 'chats' };
 
+type ThumbnailSlide = import('@openmaic/dsl').Slide;
+
 export interface StageListItem {
   id: string;
   name: string;
@@ -112,6 +114,12 @@ export interface StageListItem {
   taskEngineMode?: boolean;
   /** Folder this course belongs to; undefined = unfiled. Device-local only. */
   folderId?: string;
+  /**
+   * First-slide preview from the shareable on-disk classroom store. Present
+   * only for courses that are not in the local document store, so the home
+   * grid can thumbnail a batch-generated classroom without hydrating it.
+   */
+  previewSlide?: ThumbnailSlide;
 }
 
 function stampStage(stageId: string, stage: Stage, now: number): Stage {
@@ -753,6 +761,63 @@ async function performStageDeletion(stageId: string): Promise<void> {
   clearStoreForDeletedStage(stageId);
 }
 
+const SHAREABLE_CLASSROOMS_LIST_URL = '/api/classroom';
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null;
+}
+
+function shareableClassroomToListItem(raw: unknown): StageListItem | null {
+  if (!isRecord(raw) || typeof raw.id !== 'string' || typeof raw.name !== 'string') {
+    return null;
+  }
+  const createdAt = typeof raw.createdAt === 'number' ? raw.createdAt : 0;
+  const updatedAt = typeof raw.updatedAt === 'number' ? raw.updatedAt : createdAt;
+  const previewSlide = isRecord(raw.firstSlide)
+    ? (raw.firstSlide as ThumbnailSlide)
+    : undefined;
+  return {
+    id: raw.id,
+    name: raw.name,
+    sceneCount: typeof raw.sceneCount === 'number' ? raw.sceneCount : 0,
+    createdAt,
+    updatedAt,
+    ...(typeof raw.description === 'string' ? { description: raw.description } : {}),
+    ...(raw.interactiveMode === true ? { interactiveMode: true } : {}),
+    ...(raw.taskEngineMode === true ? { taskEngineMode: true } : {}),
+    ...(previewSlide ? { previewSlide } : {}),
+  };
+}
+
+/**
+ * `generate-classroom` (and the biology batch runner) persist to
+ * `data/classrooms/*.json`, not the browser document store that the home
+ * grid reads. Merge those shareable classrooms into the library so a course
+ * generated on the server appears next to locally authored ones. Failures
+ * are swallowed: a down listing endpoint must not blank an already-usable
+ * IndexedDB / owner list.
+ */
+async function mergeShareableClassrooms(local: StageListItem[]): Promise<StageListItem[]> {
+  try {
+    const res = await fetch(SHAREABLE_CLASSROOMS_LIST_URL);
+    if (!res.ok) return local;
+    const body = (await res.json().catch(() => null)) as { classrooms?: unknown } | null;
+    if (!body || !Array.isArray(body.classrooms)) return local;
+    const seen = new Set(local.map((item) => item.id));
+    const extra: StageListItem[] = [];
+    for (const raw of body.classrooms) {
+      const item = shareableClassroomToListItem(raw);
+      if (!item || seen.has(item.id)) continue;
+      seen.add(item.id);
+      extra.push(item);
+    }
+    if (extra.length === 0) return local;
+    return [...local, ...extra].sort((a, b) => b.updatedAt - a.updatedAt);
+  } catch {
+    return local;
+  }
+}
+
 /**
  * PG mode: the owner-scoped course listing.
  *
@@ -777,7 +842,7 @@ async function listOwnerStagesFromServer(): Promise<StageListItem[]> {
   }
   const memberships = await db.stageFolders.toArray();
   const folderByStage = new Map(memberships.map((m) => [m.stageId, m.folderId]));
-  return (body.stages as DocumentSummary[])
+  const listed = (body.stages as DocumentSummary[])
     .map((item) => {
       const base: StageListItem = {
         id: item.id,
@@ -793,6 +858,7 @@ async function listOwnerStagesFromServer(): Promise<StageListItem[]> {
       return folderId ? { ...base, folderId } : base;
     })
     .sort((a, b) => b.updatedAt - a.updatedAt);
+  return mergeShareableClassrooms(listed);
 }
 
 /**
@@ -821,7 +887,7 @@ export async function listStages(): Promise<StageListItem[]> {
     // not in the DocumentStore; join it in so callers can group courses.
     const memberships = await db.stageFolders.toArray();
     const folderByStage = new Map(memberships.map((m) => [m.stageId, m.folderId]));
-    return [
+    const listed = [
       ...summaries,
       ...legacyOnly
         .filter((stage) => stage !== null)
@@ -840,6 +906,7 @@ export async function listStages(): Promise<StageListItem[]> {
         folderByStage.get(item.id) ? { ...item, folderId: folderByStage.get(item.id) } : item,
       )
       .sort((a, b) => b.updatedAt - a.updatedAt);
+    return mergeShareableClassrooms(listed);
   } catch (error) {
     log.error('Failed to list stages:', error);
     throw error;
@@ -853,8 +920,6 @@ type ThumbnailMediaElement = {
   mediaRef?: string;
   poster?: string;
 };
-
-type ThumbnailSlide = import('@openmaic/dsl').Slide;
 
 function isResolvableThumbnailMediaRef(value: unknown): value is string {
   return typeof value === 'string' && !!value && !isConcreteMediaAddress(value);

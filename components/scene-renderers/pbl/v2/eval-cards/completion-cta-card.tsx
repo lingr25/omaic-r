@@ -34,7 +34,7 @@ export function CompletionCtaCard({ onView, className }: Props) {
   return (
     <div
       className={cn(
-        'space-y-3 rounded-2xl border border-cyan-100/[0.13] bg-gradient-to-br from-emerald-300/[0.16] via-primary/[0.16] to-purple-300/[0.14] p-5 shadow-[0_18px_46px_rgba(6,16,34,0.28)]',
+        'space-y-3 rounded-2xl border border-cyan-100/[0.13] bg-gradient-to-br from-emerald-300/[0.16] via-primary/[0.16] to-teal-300/[0.14] p-5 shadow-[0_18px_46px_rgba(6,16,34,0.28)]',
         className,
       )}
     >

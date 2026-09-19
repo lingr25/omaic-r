@@ -131,7 +131,7 @@ describe('user profile store', () => {
   it('ignores an existing raw blob and purges it, rather than migrating it', async () => {
     localStorageStub.setItem(
       'user-profile-storage',
-      JSON.stringify({ state: { nickname: 'Ada', bio: 'hi', avatar: '/avatars/user.png' } }),
+      JSON.stringify({ state: { nickname: 'Ada', bio: 'hi', avatar: '/avatars/doctor.png' } }),
     );
 
     const { useUserProfileStore } = await import('@/lib/store/user-profile');

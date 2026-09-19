@@ -16,7 +16,7 @@ const COMMON: readonly string[] = [
   '#eab308',
   '#22c55e',
   '#3b82f6',
-  '#8b5cf6',
+  '#14b8a6',
 ];
 
 // EyeDropper API (not in `lib.dom` yet under our TS config). Feature-detected

@@ -297,6 +297,11 @@ describe('PG-mode folder listing and creation', () => {
       },
       {
         method: 'GET',
+        url: '/api/classroom',
+        respond: () => jsonResponse(200, { success: true, classrooms: [] }),
+      },
+      {
+        method: 'GET',
         url: '/api/folders',
         respond: () =>
           jsonResponse(200, { folders: created ? [...OWNER_FOLDERS, NEW_FOLDER] : OWNER_FOLDERS }),

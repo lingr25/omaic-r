@@ -244,9 +244,9 @@ function StageLabel({ stage }: { readonly stage: ScenarioStage }) {
   if (stage === 'roleplay') {
     return (
       <div className="ml-3 mt-2 mb-0.5 flex items-center px-1">
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-violet-500/20 px-2.5 py-1 ring-1 ring-violet-400/35 shadow-[0_4px_14px_rgba(124,92,255,0.25)]">
-          <Drama className="h-3 w-3 text-violet-100" />
-          <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-violet-50">
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-teal-500/20 px-2.5 py-1 ring-1 ring-teal-400/35 shadow-[0_4px_14px_rgba(124,92,255,0.25)]">
+          <Drama className="h-3 w-3 text-teal-100" />
+          <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-teal-50">
             {t(labelKey)}
           </span>
         </span>
@@ -309,11 +309,11 @@ function MilestoneNode({
     if (milestone.status === 'completed') return <Check className="w-3.5 h-3.5 text-emerald-600" />;
     if (milestone.status === 'active')
       return (
-        <CircleDot className={cn('w-3.5 h-3.5', isRoleplay ? 'text-violet-200' : 'text-primary')} />
+        <CircleDot className={cn('w-3.5 h-3.5', isRoleplay ? 'text-teal-200' : 'text-primary')} />
       );
     return (
       <Lock
-        className={cn('w-3.5 h-3.5', isRoleplay ? 'text-violet-300/70' : 'text-muted-foreground')}
+        className={cn('w-3.5 h-3.5', isRoleplay ? 'text-teal-300/70' : 'text-muted-foreground')}
       />
     );
   })();
@@ -326,13 +326,13 @@ function MilestoneNode({
         // indented off the flush-left bookends, a left accent rail like a stage
         // edge, a violet→fuchsia gradient fill and a soft glow. The prep/wrapup
         // bookends stay deliberately plain so the contrast carries the meaning.
-        isRoleplay && 'ml-3 rounded-xl border-l-[3px] border-l-violet-400/70',
+        isRoleplay && 'ml-3 rounded-xl border-l-[3px] border-l-teal-400/70',
         isRoleplay &&
           !active &&
-          'border-violet-400/25 bg-gradient-to-br from-violet-500/[0.15] via-violet-500/[0.07] to-fuchsia-500/[0.05] shadow-[0_8px_24px_rgba(124,92,255,0.16)]',
+          'border-teal-400/25 bg-gradient-to-br from-teal-500/[0.15] via-teal-500/[0.07] to-fuchsia-500/[0.05] shadow-[0_8px_24px_rgba(124,92,255,0.16)]',
         isRoleplay &&
           active &&
-          'border-violet-300/45 bg-gradient-to-br from-violet-500/[0.24] to-fuchsia-500/[0.10] shadow-[0_12px_32px_rgba(124,92,255,0.34)] ring-1 ring-violet-300/45',
+          'border-teal-300/45 bg-gradient-to-br from-teal-500/[0.24] to-fuchsia-500/[0.10] shadow-[0_12px_32px_rgba(124,92,255,0.34)] ring-1 ring-teal-300/45',
         // Bookends & ordinary projects keep the original primary active highlight.
         !isRoleplay &&
           active &&
@@ -395,7 +395,7 @@ function MilestoneNode({
             disabled={sceneBusy}
             className={cn(
               'flex w-full items-center justify-center gap-1.5 rounded-md px-3 py-2 text-xs font-semibold transition-colors',
-              'bg-gradient-to-r from-primary to-violet-400 text-primary-foreground shadow-[0_8px_22px_rgba(124,92,255,0.30)] hover:brightness-110',
+              'bg-gradient-to-r from-primary to-teal-400 text-primary-foreground shadow-[0_8px_22px_rgba(124,92,255,0.30)] hover:brightness-110',
               'disabled:cursor-not-allowed disabled:opacity-60',
             )}
           >
@@ -446,7 +446,7 @@ function MicrotaskRow({
       className={cn(
         'rounded-md px-1.5 py-1 text-[11px] transition-colors',
         task.status === 'in_progress' &&
-          'bg-cyan-100/[0.08] text-foreground font-medium shadow-[inset_2px_0_0_rgba(157,140,255,0.9)]',
+          'bg-cyan-100/[0.08] text-foreground font-medium shadow-[inset_2px_0_0_rgba(20,184,166,0.9)]',
         task.status === 'completed' && 'text-muted-foreground line-through',
         task.status === 'todo' && 'text-muted-foreground/72',
       )}
@@ -462,7 +462,7 @@ function MicrotaskRow({
           disabled={taskBusy}
           className={cn(
             'ml-5 mt-1.5 inline-flex min-w-[64px] items-center justify-center gap-1 rounded-md px-2.5 py-1 text-[11px] font-semibold',
-            'border border-violet-100/15 bg-primary/72 text-white shadow-[0_6px_16px_rgba(157,140,255,0.16)] transition-colors hover:bg-primary/88',
+            'border border-teal-100/15 bg-primary/72 text-white shadow-[0_6px_16px_rgba(20,184,166,0.16)] transition-colors hover:bg-primary/88',
             'disabled:cursor-not-allowed disabled:opacity-60',
           )}
         >

@@ -10,7 +10,7 @@
     "close": "Fermer"
   },
   "home": {
-    "slogan": "L’apprentissage génératif en classe interactive multi-agents",
+    "slogan": "Classe de Rhodes Island · Apprentissage génératif multi-agents",
     "greetingWithName": "Bonjour, {{name}}"
   },
   "toolbar": {
@@ -126,7 +126,7 @@
   },
   "chat": {
     "lecture": "Cours",
-    "noConversations": "Aucune conversation",
+    "noConversations": "Aucune conversation — Docteur, à vous la parole",
     "startConversation": "Écrivez un message ci-dessous pour commencer à discuter",
     "noMessages": "Aucun message pour l’instant",
     "ended": "terminé",
@@ -987,7 +987,7 @@
     "deleteFolderOnly": "Supprimer le dossier uniquement",
     "deleteFolderTitle": "Supprimer le dossier « {{name}} »",
     "emptyFolderHint": "Ce dossier est vide",
-    "emptyLibraryHint": "Aucun cours pour le moment — créez-en un ci-dessus, ou importez un cours.",
+    "emptyLibraryHint": "Les archives sont vides — Docteur, créez un cours ci-dessus ou importez-en un.",
     "folderBadge": "Dossier",
     "folderCountLimit": "Limite de dossiers atteinte.",
     "folderCourseCountUnit": "cours",
@@ -1017,7 +1017,7 @@
     "pdfSizeLimit": "Accepte les fichiers PDF jusqu’à 50 Mo",
     "courseMaterialSizeLimit": "Documents, présentations, tableurs, images et texte brut, jusqu’à 50 Mo (les formats acceptés dépendent de l’extracteur choisi)",
     "generateFailed": "Échec de la génération de la classe, veuillez réessayer",
-    "requirementPlaceholder": "Dites-moi ce que vous voulez apprendre, par exemple :\n« Apprends-moi Python en partant de zéro en 30 minutes »\n« Explique la transformation de Fourier au tableau »\n« Comment jouer au jeu de société Avalon »",
+    "requirementPlaceholder": "Docteur, que voulez-vous apprendre aujourd'hui ? Par ex. :\n« Apprends-moi Python en partant de zéro en 30 minutes »\n« Explique la transformation de Fourier au tableau »\n« Comment jouer au jeu de société Avalon »",
     "requirementRequired": "Veuillez saisir vos attentes pour le cours",
     "fileTooLarge": "Fichier trop volumineux. Veuillez choisir un fichier de moins de 50 Mo",
     "courseMaterialCountLimit": "Vous pouvez envoyer jusqu’à 5 supports de cours",
@@ -1033,7 +1033,7 @@
     "courseMaterialParseFailed": "Échec de l’analyse du support de cours",
     "streamNotReadable": "Impossible de lire le flux de génération",
     "generatingOutlines": "Rédaction du plan du cours",
-    "generatingOutlinesDesc": "Structuration du parcours d’apprentissage…",
+    "generatingOutlinesDesc": "PRTS structure le parcours d'apprentissage…",
     "generatingSlideContent": "Génération du contenu des pages",
     "generatingSlideContentDesc": "Création des diapositives, des quiz et du contenu interactif…",
     "generatingActions": "Génération des actions pédagogiques",
@@ -1048,7 +1048,7 @@
     "sessionNotFoundDesc": "Veuillez renseigner vos attentes pour lancer la génération.",
     "goBackAndRetry": "Revenir en arrière et réessayer",
     "classroomReady": "Votre environnement d’apprentissage IA personnalisé a été généré avec succès.",
-    "aiWorking": "Les agents IA travaillent…",
+    "aiWorking": "Connexion au terminal de Rhodes Island — PRTS calcule…",
     "textTruncated": "Le texte du document est long, les {{n}} premiers caractères seront utilisés pour la génération",
     "imageTruncated": "{{total}} images trouvées, au-delà de la limite de {{max}} images. Les images excédentaires seront réduites à une description textuelle",
     "agentGeneration": "Génération des rôles de la classe",
@@ -1188,12 +1188,10 @@
     "selectedAgents": "Agents sélectionnés",
     "required": "Obligatoire",
     "agentNames": {
-      "default-1": "Professeur IA",
-      "default-2": "Assistant IA",
-      "default-3": "Le boute-en-train",
-      "default-4": "L’esprit curieux",
-      "default-5": "Le preneur de notes",
-      "default-6": "Le penseur"
+      "default-1": "Muelsyse",
+      "default-2": "Amiya",
+      "default-3": "Rosmontis",
+      "default-4": "Angelina"
     },
     "agentRoles": {
       "teacher": "Professeur",
@@ -1201,12 +1199,10 @@
       "student": "Élève"
     },
     "agentDescriptions": {
-      "default-1": "Professeur principal, aux explications claires et structurées",
-      "default-2": "Accompagne l’apprentissage et aide à clarifier les points clés",
-      "default-3": "Apporte humour et énergie à la classe",
-      "default-4": "Toujours curieux, adore demander pourquoi et comment",
-      "default-5": "Note et organise consciencieusement le contenu du cours",
-      "default-6": "Réfléchit en profondeur et explore l’essence des sujets"
+      "default-1": "Directrice du département d'écologie de Rhine Lab, elle explique les connaissances clairement avec des analogies vivantes",
+      "default-2": "La leader publique de Rhodes Island, elle aide chacun avec douceur et patience à saisir l'essentiel",
+      "default-3": "Une opératrice féline calme et concentrée, qui pose parfois des questions naïves mais profondes",
+      "default-4": "Une jeune messagère vive et curieuse, qui apporte toujours des sujets légers et amusants"
     },
     "close": "Fermer",
     "save": "Enregistrer",
@@ -1399,7 +1395,8 @@
     "providerElevenLabsTTS": "ElevenLabs TTS",
     "providerMiniMaxTTS": "MiniMax TTS",
     "providerLemonadeTTS": "Lemonade TTS (local)",
-    "providerGenieTTS": "Genie TTS (Local)",
+    "providerMimoTTS": "MiMo TTS (Xiaomi Voice Clone)",
+    "providerStepfunTTS": "StepFun TTS (Voice Clone)",
     "providerBrowserNativeTTS": "Synthèse vocale native du navigateur",
     "voxcpmBackend": "Moteur",
     "voxcpmBaseUrlPending": "Saisissez une URL de base pour générer l’URL de la requête",
@@ -1867,7 +1864,7 @@
       "download": "Télécharger",
       "detailFailed": "Impossible de charger les détails du skill",
       "contentLabel": "Contenu",
-      "builtinDetailNote": "Ce skill est fourni avec OpenMAIC. Téléchargez-le pour l’importer dans un autre espace de travail d’agent.",
+      "builtinDetailNote": "Ce skill est fourni avec OMAIC-R. Téléchargez-le pour l’importer dans un autre espace de travail d’agent.",
       "upload": "Importer",
       "uploading": "Importation…",
       "uploadFailed": "Impossible d’importer le skill. Vérifiez le fichier et réessayez.",
@@ -1979,7 +1976,7 @@
   },
   "profile": {
     "title": "Profil",
-    "defaultNickname": "Apprenant",
+    "defaultNickname": "Docteur",
     "chooseAvatar": "Choisir un avatar",
     "uploadAvatar": "Envoyer",
     "bioPlaceholder": "Parlez-nous de vous : le professeur IA personnalisera les cours en conséquence…",

@@ -114,7 +114,7 @@ export function BaseVideoElement({ elementInfo }: BaseVideoElementProps) {
         style={{ transform: `rotate(${elementInfo.rotate}deg)` }}
       >
         {showSkeleton ? (
-          <div className="w-full h-full bg-gradient-to-br from-indigo-50 via-violet-50/60 to-blue-50 dark:from-indigo-950/40 dark:via-violet-950/30 dark:to-blue-950/20 flex items-center justify-center rounded">
+          <div className="w-full h-full bg-gradient-to-br from-indigo-50 via-teal-50/60 to-blue-50 dark:from-indigo-950/40 dark:via-teal-950/30 dark:to-blue-950/20 flex items-center justify-center rounded">
             <style>{`
               @keyframes vid-pulse-ring { 0%, 100% { opacity: 0.15; transform: scale(0.85); } 50% { opacity: 0.35; transform: scale(1.1); } }
             `}</style>

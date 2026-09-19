@@ -20,7 +20,7 @@ interface SessionListProps {
 const sessionBadgeStyles = {
   qa: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300',
   discussion: 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300',
-  lecture: 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300',
+  lecture: 'bg-teal-100 text-teal-700 dark:bg-teal-900/30 dark:text-teal-300',
 };
 
 // Labels are provided via i18n in the component
@@ -60,7 +60,7 @@ export function SessionList({
         const isActive = session.status === 'active' || session.status === 'soft-closing';
         const dotColor =
           session.type === 'lecture'
-            ? 'bg-purple-500'
+            ? 'bg-teal-500'
             : session.type === 'qa'
               ? 'bg-blue-500'
               : 'bg-amber-500';
@@ -71,7 +71,7 @@ export function SessionList({
             className={cn(
               'rounded-xl border transition-all duration-500 overflow-hidden',
               isActive
-                ? 'border-purple-200 dark:border-purple-700 bg-purple-50/30 dark:bg-purple-900/20 shadow-sm'
+                ? 'border-teal-200 dark:border-teal-700 bg-teal-50/30 dark:bg-teal-900/20 shadow-sm'
                 : 'border-gray-100 dark:border-gray-800 bg-white/50 dark:bg-gray-800/50',
             )}
           >

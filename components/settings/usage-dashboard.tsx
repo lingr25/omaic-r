@@ -116,7 +116,7 @@ export function UsageDashboard() {
     const chart = chartInstance.current;
     const axis = isDark ? 'rgba(255,255,255,0.45)' : 'rgba(0,0,0,0.45)';
     const split = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)';
-    const accent = isDark ? '#a78bfa' : '#7c3aed'; // violet, matches primary
+    const accent = isDark ? '#a78bfa' : '#0d9488'; // violet, matches primary
 
     chart.setOption({
       tooltip: { trigger: 'axis' },
