@@ -3,10 +3,7 @@ import { beforeEach, describe, expect, it, vi, type Mock } from 'vitest';
 import { DEFAULT_TTS_MODELS, DEFAULT_TTS_VOICES, TTS_PROVIDERS } from '@/lib/audio/constants';
 import { generateTTS } from '@/lib/audio/tts-providers';
 import { TTS_COALESCE_SPEECH_PROVIDERS, TTS_MAX_TEXT_LENGTH } from '@/lib/audio/tts-utils';
-import {
-  lookupStepfunVoiceMapping,
-  stepfunFilesBaseUrl,
-} from '@/lib/audio/stepfun-voice-ids';
+import { lookupStepfunVoiceMapping, stepfunFilesBaseUrl } from '@/lib/audio/stepfun-voice-ids';
 import { loadClassroomVoices, readClassroomAudio } from '@/lib/audio/classroom-voices';
 import { useAgentRegistry } from '@/lib/orchestration/registry/store';
 
@@ -144,10 +141,7 @@ describe('StepFun TTS synthesis', () => {
 
   it('throws on an unknown classroom voice without calling the API', async () => {
     await expect(
-      generateTTS(
-        { providerId: 'stepfun-tts', apiKey: 'sk-step', voice: 'not-a-voice' },
-        'hi',
-      ),
+      generateTTS({ providerId: 'stepfun-tts', apiKey: 'sk-step', voice: 'not-a-voice' }, 'hi'),
     ).rejects.toThrow(/unknown voice/);
     expect(mockFetch).not.toHaveBeenCalled();
   });

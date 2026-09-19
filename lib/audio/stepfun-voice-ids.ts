@@ -68,11 +68,7 @@ function writeDiskCache(voices: Record<string, StepfunVoiceMapEntry>): void {
   fs.mkdirSync(path.dirname(file), { recursive: true });
   const existing = readMapFile(file);
   const merged = { ...existing, ...voices };
-  fs.writeFileSync(
-    file,
-    `${JSON.stringify({ voices: merged }, null, 2)}\n`,
-    'utf-8',
-  );
+  fs.writeFileSync(file, `${JSON.stringify({ voices: merged }, null, 2)}\n`, 'utf-8');
 }
 
 /** Lookup a previously registered vendor id when the wav hash still matches. */
@@ -96,11 +92,7 @@ async function uploadReferenceWav(opts: {
 }): Promise<string> {
   const form = new FormData();
   form.append('purpose', 'storage');
-  form.append(
-    'file',
-    new Blob([new Uint8Array(opts.bytes)], { type: 'audio/wav' }),
-    opts.filename,
-  );
+  form.append('file', new Blob([new Uint8Array(opts.bytes)], { type: 'audio/wav' }), opts.filename);
   const response = await fetch(`${opts.filesBase}/files`, {
     method: 'POST',
     headers: { Authorization: `Bearer ${opts.apiKey}` },

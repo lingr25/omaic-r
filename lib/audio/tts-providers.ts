@@ -1096,7 +1096,10 @@ async function generateMimoTTS(
     body: JSON.stringify({
       model: config.modelId || 'mimo-v2.5-tts-voiceclone',
       messages: [
-        { role: 'user', content: '用自然、清晰的课堂口吻朗读。希腊字母和科学符号要读出来，不要跳过。' },
+        {
+          role: 'user',
+          content: '用自然、清晰的课堂口吻朗读。希腊字母和科学符号要读出来，不要跳过。',
+        },
         { role: 'assistant', content: spoken },
       ],
       audio: {

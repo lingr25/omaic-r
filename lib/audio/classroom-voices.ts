@@ -39,7 +39,11 @@ export function resolveClassroomAudioPath(audioPath: string): string {
   return path.isAbsolute(audioPath) ? audioPath : path.resolve(process.cwd(), audioPath);
 }
 
-export function readClassroomAudio(audioPath: string): { bytes: Buffer; hash: string; abs: string } {
+export function readClassroomAudio(audioPath: string): {
+  bytes: Buffer;
+  hash: string;
+  abs: string;
+} {
   const abs = resolveClassroomAudioPath(audioPath);
   const bytes = fs.readFileSync(abs);
   const hash = createHash('sha256').update(bytes).digest('hex');

@@ -96,11 +96,7 @@ export function splitLongSpeechText(text: string, maxLength: number): string[] {
  * within the TTS provider's text length limit. Each sub-action gets its
  * own independent audio file — no byte concatenation needed.
  */
-function canCoalesceSpeech(
-  previous: SpeechAction,
-  next: SpeechAction,
-  maxLength: number,
-): boolean {
+function canCoalesceSpeech(previous: SpeechAction, next: SpeechAction, maxLength: number): boolean {
   if (!previous.text || !next.text) return false;
   if (previous.voice && next.voice && previous.voice !== next.voice) return false;
   if (previous.speed != null && next.speed != null && previous.speed !== next.speed) return false;
@@ -135,10 +131,7 @@ export function mergeConsecutiveSpeechActions(actions: Action[], maxLength: numb
  * Provider-aware prep: merge short consecutive lines where queue cost dominates,
  * then split anything still over the provider cap.
  */
-export function prepareSpeechActionsForTts(
-  actions: Action[],
-  providerId: TTSProviderId,
-): Action[] {
+export function prepareSpeechActionsForTts(actions: Action[], providerId: TTSProviderId): Action[] {
   const maxLength = TTS_MAX_TEXT_LENGTH[providerId];
   const coalesced =
     TTS_COALESCE_SPEECH_PROVIDERS.has(providerId) && maxLength

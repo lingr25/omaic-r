@@ -217,6 +217,6 @@ describe('registry persistence excludes generated agents', () => {
     expect(merged.agents['gen-old']).toBeUndefined();
     expect(merged.agents['custom-1']).toBeDefined();
     // Default agents always use code-defined values, not the cached copy.
-    expect(merged.agents['default-1'].name).toBe('AI teacher');
+    expect(merged.agents['default-1'].name).toBe('缪尔赛思');
   });
 });
